@@ -6,9 +6,10 @@ import * as MenuActions from '../actions'
 
 class App extends Component {
   render() {
+    const styles = require('./App.scss');
     const { menus, actions } = this.props
     return (
-      <div>
+      <div className={styles.app}>
         <MainSection menus={menus} actions={actions} />
       </div>
     )
