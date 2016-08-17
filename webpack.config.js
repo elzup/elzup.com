@@ -1,39 +1,28 @@
-var path = require('path')
-var webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
-  entry: [
-    'webpack-hot-middleware/client',
-    './index'
-  ],
+  entry: './src/main.js',
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    path: './dist/',
+    filename: 'bundle.js'
   },
-  plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin("bundle.css")
-  ],
   module: {
     loaders: [
       {
-        test: /\.js$/,
-        loaders: [ 'babel' ],
+        loader: 'babel',
         exclude: /node_modules/,
-        include: __dirname
+        test: /\.js[x]?$/,
+        query: {
+          cacheDirectory: true,
+          presets: ['es2015']
+        }
       },
       {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-      },
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
-     }
+        test: /\.html$/,
+        loader: "html"
+      }
     ]
-  }
+  },
+  resolve: {
+    extensions: ['', '.js']
+  },
+  plugins: []
 }
