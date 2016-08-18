@@ -1,7 +1,10 @@
-module.exports = {
-  entry: './src/main.js',
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+module.exports = [{
+  entry: './src/components/main.js',
   output: {
-    path: './dist/',
+    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   module: {
@@ -18,6 +21,14 @@ module.exports = {
       {
         test: /\.html$/,
         loader: "html"
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
       }
     ]
   },
@@ -25,4 +36,27 @@ module.exports = {
     extensions: ['', '.js']
   },
   plugins: []
-}
+}, {
+  entry: {
+    style: './src/styles/main.js'
+  },
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: '[name].css'
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
+      }
+    ]
+  },
+  plugins: [
+    new ExtractTextPlugin("[name].css")
+  ]
+}]
