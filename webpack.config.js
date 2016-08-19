@@ -1,5 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
 
 module.exports = [{
   entry: './src/components/main.js',
@@ -21,14 +23,6 @@ module.exports = [{
       {
         test: /\.html$/,
         loader: "html"
-      },
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-      },
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
       }
     ]
   },
@@ -47,16 +41,13 @@ module.exports = [{
   module: {
     loaders: [
       {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-      },
-      {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
+        loader: ExtractTextPlugin.extract("style", ["css", "postcss"])
       }
     ]
   },
   plugins: [
     new ExtractTextPlugin("[name].css")
-  ]
-}]
+  ],
+  postcss: [ autoprefixer, precss ]
+}];

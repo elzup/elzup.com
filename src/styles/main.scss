@@ -1,3 +1,65 @@
+$golden_rate: 161.8046%;
+$golden_rate2: $golden_rate - 100%;
+$golden_rate3: 100% - $golden_rate2;
+
+html {
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: table;
+  background: ghostwhite;
+}
+
 body {
-  background: navajowhite;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#app {
+}
+
+#top-container {
+  display: flex;
+  background: red;
+  width: 760px;
+  height: 470px;
+  margin: 0 auto;
+
+  #eye-catch {
+    width: $golden_rate2
+  }
+  #layer2 {
+    width: $golden_rate3
+  }
+}
+
+#eye-catch {
+}
+
+ul#menu {
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    background: black;
+    list-style-type: none;
+    margin: 1%;
+    width: 120px;
+    height: 120px;
+    box-align: center;
+
+    a {
+      color: white;
+      text-decoration: none;
+      vertical-align: bottom;
+      text-align: center;
+      display: block;
+    }
+  }
+}
+
+#layer2 {
+
 }
