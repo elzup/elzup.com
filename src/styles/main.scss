@@ -7,6 +7,7 @@ html {
   margin: 0 auto;
   padding: 0;
   display: table;
+  font-family: "Hiragino Kaku Gothic Pro W3", "ヒラギノ角ゴ Pro W3", "Meiryo", "メイリオ", "Noto Sans Japanese Regular", sans-serif;
   background: ghostwhite;
 }
 
@@ -37,29 +38,53 @@ body {
 }
 
 #eye-catch {
+  padding: 155px 0;
+  h1 {
+    text-align: center;
+    font-size: 60px;
+  }
 }
 
-ul#menu {
+#layer2 {
+  background: green;
+}
+
+#layer3 {
+  display: flex;
+  #layer4 { width: $golden_rate3 }
+  #contacts { width: $golden_rate2 }
+}
+
+@mixin square-box($bw) {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   li {
     background: black;
     list-style-type: none;
     margin: 1%;
-    width: 120px;
-    height: 120px;
-    box-align: center;
+    width: $bw;
+    height: $bw;
+    position: relative;
 
+    // align center with block
     a {
+      display: block;
       color: white;
       text-decoration: none;
-      vertical-align: bottom;
       text-align: center;
-      display: block;
+      padding: (($bw - 20px) / 2) 0;
+      height: 20px;
     }
   }
 }
 
-#layer2 {
+ul#menu {
+  @include square-box(139px);
+}
 
+ul#contacts {
+  @include square-box(55px);
+  justify-content: flex-end;
 }

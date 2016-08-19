@@ -42,12 +42,15 @@ module.exports = [{
     loaders: [
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract("style", ["css", "postcss"])
+        loader: ExtractTextPlugin.extract("style", ["css", "postcss", "sass"])
       }
     ]
   },
   plugins: [
     new ExtractTextPlugin("[name].css")
   ],
-  postcss: [ autoprefixer, precss ]
+  postcss: [
+    autoprefixer,
+    precss
+  ]
 }];

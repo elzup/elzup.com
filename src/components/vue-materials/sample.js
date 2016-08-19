@@ -15,7 +15,7 @@ var app = new Vue({
     },
     'contact': {
       props: ['name', 'href', 'type'],
-      template: require('./template-menuitem.html')
+      template: require('./template-contact.html')
     }
   }
 });
