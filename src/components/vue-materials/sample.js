@@ -8,6 +8,14 @@ var app = new Vue({
     },
     'my-foo': {
       template: require('./template-foo.html')
+    },
+    'menu-item': {
+      props: ['name', 'href'],
+      template: require('./template-menuitem.html')
+    },
+    'contact': {
+      props: ['name', 'href', 'type'],
+      template: require('./template-menuitem.html')
     }
   }
 });
