@@ -14,7 +14,12 @@ var app = new Vue({
       template: require('./template-menuitem.html')
     },
     'contact': {
-      props: ['name', 'href', 'type'],
+      props: {
+        'name': String,
+        'href': String,
+        'type': String,
+        'is_not_skip': { type: Boolean, default: true }
+      },
       template: require('./template-contact.html')
     }
   }

@@ -87,4 +87,18 @@ ul#menu {
 ul#contacts {
   @include square-box(55px);
   justify-content: flex-end;
+  li a {
+    &.github { background-image: url(/images/icon/icon_github.png); }
+    &.twitter { background-image: url(/images/icon/icon_twitter.png); }
+    &.facebook { background-image: url(/images/icon/icon_facebook.png); }
+    &.hatena { background-image: url(/images/icon/icon_hatena.png); }
+    &.qiita { background-image: url(/images/icon/icon_qiita.png); }
+    &.tumblr { background-image: url(/images/icon/icon_tumblr.png); }
+    background-size: 68%;
+    background-repeat: no-repeat;
+    background-position: 9px;
+  }
+  li.skip {
+    background: none;
+  }
 }
