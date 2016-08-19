@@ -19,7 +19,8 @@
   "homepage": "https://elzup.com",
   "dependencies": {
     "extract-text-webpack-plugin": "^1.0.1",
-    "normalize-scss": "^5.0.3"
+    "normalize-scss": "^5.0.3",
+    "react": "^15.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
@@ -36,7 +37,6 @@
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "sugarss": "^0.1.5",
-    "vue": "^1.0.26",
     "webpack": "^1.13.1"
   }
 }

@@ -4,7 +4,7 @@ const precss = require('precss');
 const autoprefixer = require('autoprefixer');
 
 module.exports = [{
-  entry: './src/components/main.js',
+  entry: './main.js',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -17,12 +17,8 @@ module.exports = [{
         test: /\.js[x]?$/,
         query: {
           cacheDirectory: true,
-          presets: ['es2015']
+          presets: ['es2015', 'react']
         }
-      },
-      {
-        test: /\.html$/,
-        loader: "html"
       }
     ]
   },
