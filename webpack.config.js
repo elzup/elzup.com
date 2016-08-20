@@ -3,10 +3,13 @@ const precss = require('precss');
 const autoprefixer = require('autoprefixer');
 
 module.exports =[{
-  entry: './index.js',
+  entry: {
+    "index": './src/index.js',
+    "product": './src/product.js'
+  },
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'public', 'dist', 'scripts'),
+    filename: '[name].bundle.js'
   },
   module: {
     loaders: [
@@ -27,6 +30,9 @@ module.exports =[{
   },
   resolve: {
     extensions: ['', '.js', '.css']
+  },
+  devServer: {
+    contentBase: './public'
   },
   postcss: [autoprefixer, precss]
 }];

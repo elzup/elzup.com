@@ -4,6 +4,21 @@
   --golden_rate3: calc(100% - var(--golden_rate2));
 }
 
+html, body, main {
+  height: 100%;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main>div {
+  width: 760px;
+  height: 470px;
+}
+
 .toppage {
   display: flex;
 }
