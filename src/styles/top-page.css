@@ -8,90 +8,38 @@
   display: flex;
 }
 
-.toppage>#eye-catch { width: var(--golden_rate2) }
-.toppage>#layer2 { width: var(--golden_rate3) }
+.eyecatch { width: var(--golden_rate2) }
+.layer2 { width: var(--golden_rate3) }
 
-#eye-catch {
+.eyecatch {
   padding: 155px 0;
 }
 
-#eye-catch h1 {
+.eyecatch h1 {
   text-align: center;
   font-size: 60px;
 }
 
-#layer2 {
+.layer2 {
 }
 
-#layer3 {
+.layer3 {
   display: flex;
 }
-#layer3 #layer4 { width: var(--golden_rate3) }
-#layer3 #contacts { width: var(--golden_rate2) }
+.layer3 .layer4 { width: var(--golden_rate3) }
+.layer3 .contacts { width: var(--golden_rate2) }
 
-ul#menu {
+.menu {
   margin: 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
 }
-ul#menu li {
-  background: black;
-  list-style-type: none;
-  margin: 1%;
-  width: 139px;
-  height: 139px;
-  position: relative;
-}
 
-/*align center with block*/
-#ul#menu li a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  text-align: center;
-  padding: 60px 0;
-  height: 20px;
-}
-
-ul#contacts {
+.contacts {
   margin: 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-}
-ul#contacts li {
-  background: black;
-  list-style-type: none;
-  margin: 1%;
-  width: 55px;
-  height: 55px;
-  position: relative;
-}
-
-/*align center with block*/
-ul#contacts li a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  text-align: center;
-  padding: 17.5px 0;
-  height: 20px;
-}
-
-ul#contacts li a {
-  background-size: 68%;
-  background-repeat: no-repeat;
-  background-position: 9px;
-}
-ul#contacts li a.github { background-image: url(/images/icon/icon_github.png); }
-ul#contacts li a.twitter { background-image: url(/images/icon/icon_twitter.png); }
-ul#contacts li a.facebook { background-image: url(/images/icon/icon_facebook.png); }
-ul#contacts li a.hatena { background-image: url(/images/icon/icon_hatena.png); }
-ul#contacts li a.qiita { background-image: url(/images/icon/icon_qiita.png); }
-ul#contacts li a.tumblr { background-image: url(/images/icon/icon_tumblr.png); }
-
-ul#contacts li.skip {
-  background: none;
 }

@@ -1,40 +1,33 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Item } from '../components/item.jsx'
-import css from '../styles/top-page.css'
+import {Item} from '../components/item.jsx'
+import {Contact} from '../components/contact.jsx'
+import style from '../styles/top-page.css'
 
 
 export class TopPage extends React.Component {
   render() {
     return (
-      <div className={css.toppage}>
-        <div id="eye-catch">
+      <div className={style.toppage}>
+        <div className={style.eyecatch}>
           <h1>elzup.com</h1>
         </div>
-        <div id="layer2">
-          <ul id="menu">
+        <div className={style.layer2}>
+          <ul className={style.menu}>
             <Item label="Product" name="product"/>
             <Item label="Art" name="art"/>
             <Item label="Log" name="log"/>
           </ul>
-          <div id="layer3">
-            <div id="layer4">
+          <div className={style.layer3}>
+            <div className={style.layer4}>
             </div>
-            <ul id="contacts">
-              <contact name="Github" href="//github.com/elzup"
-                       type="github"></contact>
-              <contact name="Twitter" href="//twitter.com/_elzup_"
-                       type="twitter"></contact>
-              <contact name="Facebook" href="//www.facebook.com/takahashiroto"
-                       type="facebook"></contact>
-              <contact name="" href="" type="skip"
-                       is_not_skip="false"></contact>
-              <contact name="Hatena" href="//twitter.com/_elzup_"
-                       type="hatena"></contact>
-              <contact name="Qiita" href="//qiita.com/elzup"
-                       type="qiita"></contact>
-              <contact name="Tumbler" href="//elzup.tumblr.com"
-                       type="tumblr"></contact>
+            <ul className={style.contacts}>
+              <Contact label="Github" link="//github.com/elzup" type="github"/>
+              <Contact label="Twitter" link="//twitter.com/_elzup_" type="twitter"/>
+              <Contact label="Facebook" link="//www.facebook.com/takahashiroto" type="facebook"/>
+              <Contact label="Hatena" link="//twitter.com/_elzup_" type="hatena"/>
+              <Contact label="Qiita" link="//qiita.com/elzup" type="qiita"/>
+              <Contact label="Tumbler" link="//elzup.tumblr.com" type="tumblr"/>
             </ul>
           </div>
         </div>
