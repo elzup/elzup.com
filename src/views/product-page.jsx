@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import style from '../styles/product-page.css'
-import Product from '../components/product.jsx'
+import {Product} from '../components/product.jsx'
 import request from 'superagent'
-
 
 export class ProductPage extends React.Component {
   constructor(props) {
@@ -21,14 +20,18 @@ export class ProductPage extends React.Component {
       .get(url)
       .set('Accept', 'application/json')
       .end((err, res) => {
+        // HACKME:
+        res.body.products = res.body.products.map((x) => {
+          x.level = parseInt(x.level)
+          x.is_alive = x.is_alive == "TRUE"
+          return x;
+        })
         this.setState(res.body)
       })
   }
 
   render() {
-    console.log(this.state)
-    console.log(this.state.products.map((x) => <Product {...x} />))
-    const productsNodes = []
+    const productsNodes = this.state.products.map((x) => <Product key={x.sid} {...x} />)
     return (
       <div className={style.productpage}>
         <ul className={style.menu}>
