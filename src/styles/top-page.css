@@ -4,33 +4,12 @@
   --golden_rate3: calc(100% - var(--golden_rate2));
 }
 
-html {
-  height: 100%;
-  margin: 0 auto;
-  padding: 0;
-  display: table;
-  font-family: "Hiragino Kaku Gothic Pro W3", "ヒラギノ角ゴ Pro W3", "Meiryo", "メイリオ", "Noto Sans Japanese Regular", sans-serif;
-  background: ghostwhite;
-}
-
-body {
-  min-height: 100%;
-  margin: 0 auto;
-  padding: 0;
-  display: table-cell;
-  vertical-align: middle;
-}
-
-#top-container {
+.toppage {
   display: flex;
-  width: 760px;
-  height: 470px;
-  margin: 0 auto;
-
 }
 
-#top-container>#eye-catch { width: var(--golden_rate2) }
-#top-container>#layer2 { width: var(--golden_rate3) }
+.toppage>#eye-catch { width: var(--golden_rate2) }
+.toppage>#layer2 { width: var(--golden_rate3) }
 
 #eye-catch {
   padding: 155px 0;

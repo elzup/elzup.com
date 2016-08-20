@@ -7,7 +7,7 @@ import css from '../styles/top-page.css'
 export class TopPage extends React.Component {
   render() {
     return (
-      <div>
+      <div className={css.toppage}>
         <div id="eye-catch">
           <h1>elzup.com</h1>
         </div>
