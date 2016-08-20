@@ -4,7 +4,7 @@ const precss = require('precss');
 const autoprefixer = require('autoprefixer');
 
 module.exports = [{
-  entry: './main.js',
+  entry: './index.js',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js'
