@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Item } from '../components/item.jsx'
+import css from '../styles/top-page.css'
+
 
 export class TopPage extends React.Component {
   render() {

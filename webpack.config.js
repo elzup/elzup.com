@@ -1,9 +1,8 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
 
-module.exports = [{
+module.exports =[{
   entry: './index.js',
   output: {
     path: path.join(__dirname, 'dist'),
@@ -19,34 +18,15 @@ module.exports = [{
           cacheDirectory: true,
           presets: ['es2015', 'react']
         }
+      },
+      {
+        test: /\.css$/,
+        loader: "style!css?modules!postcss"
       }
     ]
   },
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.css']
   },
-  plugins: []
-}, {
-  entry: {
-    style: './src/styles/main.js'
-  },
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: '[name].css'
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract("style", ["css", "postcss", "sass"])
-      }
-    ]
-  },
-  plugins: [
-    new ExtractTextPlugin("[name].css")
-  ],
-  postcss: [
-    autoprefixer,
-    precss
-  ]
+  postcss: [autoprefixer, precss]
 }];
