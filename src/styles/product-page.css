@@ -1,0 +1,16 @@
+
+.productpage {
+
+}
+
+.menu {
+    display: flex;
+}
+
+.products_filter {
+    display: flex;
+}
+
+.products {
+    display: flex;
+}
