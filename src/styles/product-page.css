@@ -1,3 +1,10 @@
+:root {
+    --w: calc(768px - 40px);
+}
+
+body {
+    padding: 20px;
+}
 
 .productpage {
 
@@ -13,4 +20,6 @@
 
 .products {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
