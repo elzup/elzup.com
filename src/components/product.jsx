@@ -1,7 +1,6 @@
 import React from 'react'
 const Type = React.PropTypes
 import style from '../styles/product.css'
-import FontAwesome from 'react-fontawesome'
 
 export class Product extends React.Component {
   constructor(props) {
@@ -10,8 +9,26 @@ export class Product extends React.Component {
 
   render() {
     const img_url = '/images/product/sc_' + this.props.sid + '.png';
+    const links = [];
+    if (this.props.link != undefined) {
+      links.push(
+        <a key={1} href={this.props.link} className={style.link} target="_blank">
+          <span>↗</span>
+        </a>)
+    }
+    if (this.props.github != undefined) {
+      links.push(
+        <a key={2} href={this.props.github} className={style.link_github} target="_blank">
+          <img src="/images/icon/mk-github.png" alt=""/>
+        </a>)
+    }
+    if (this.props.trello != undefined) {
+      links.push(
+        <a key={3} href={this.props.trello} className={style.link_trello} target="_blank">
+          <img src="/images/icon/mk-trello.png" alt=""/>
+        </a>)
+    }
     return (
-
       <li className={style.product}>
         <div className={style.img_wrap}>
           <img src={img_url} />
@@ -19,8 +36,8 @@ export class Product extends React.Component {
         <h2>{this.props.title}</h2>
         <p>{this.props.subtitle}</p>
         <p dangerouslySetInnerHTML={{__html: this.props.description}} />
-        <p>
-          <FontAwesome name='rocket' />
+        <p className={style.footer}>
+          {links}
         </p>
       </li>
     )

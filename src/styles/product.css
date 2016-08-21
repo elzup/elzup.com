@@ -8,7 +8,10 @@
     width: var(--pw);
     margin: 5px;
     padding: 5px;
+    padding-bottom: 2em;
     background: #aaa;
+    background: white;
+    position: relative;
 }
 
 .img_wrap {
@@ -16,10 +19,44 @@
     height: 219px;
     overflow: hidden;
 }
-.product img {
+.img_wrap>img {
     width: 100%;
 }
 
 .footer {
-    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+}
+
+.footer {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.footer>a {
+    display: block;
+    margin-left: 5px;
+    background-color: black;
+    padding: 5px 5px 1px 5px;
+}
+
+.footer>a>img {
+    width: 1.5em;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    font-size: 23px;
+    padding: 6px 6px 2px 5px;
+}
+
+.link_github {
+
+}
+
+.link_trello {
+
 }
