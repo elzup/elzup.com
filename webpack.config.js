@@ -1,6 +1,8 @@
+const webpack = require('webpack');
 const path = require('path');
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
+const postcss_import = require('postcss-import');
 
 module.exports =[{
   entry: {
@@ -34,5 +36,11 @@ module.exports =[{
   devServer: {
     contentBase: './public'
   },
-  postcss: [autoprefixer, precss]
+  postcss: [
+    autoprefixer,
+    precss,
+    postcss_import({
+      addDependencyTo: webpack
+    })
+  ]
 }];
