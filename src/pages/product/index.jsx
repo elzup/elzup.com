@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import style from './product-page.css'
 import {Product} from '../../components/product/product.jsx'
 import {HeadMenu} from '../../components/head-menu/head-menu.jsx'
+import {RankFilter} from '../../components/rank-filter/rank-filter.jsx'
 import request from 'superagent'
 
 export class ProductPage extends React.Component {
@@ -11,8 +12,14 @@ export class ProductPage extends React.Component {
     this.state = {
       types: [],
       tags: [],
-      products: []
+      products: [],
+      rank_filters: {
+        "1": true,
+        "2": true,
+        "3": true
+      }
     }
+    this._onRankChange = this._onRankChange.bind(this)
   }
 
   componentDidMount() {
@@ -37,10 +44,11 @@ export class ProductPage extends React.Component {
     return (
       <div className={style.productpage}>
         <header>
-          <HeadMenu current="Product" />
+          <HeadMenu current="Product"/>
           <h1>Product</h1>
           <p>制作物一覧</p>
-          <div className={style.products_filter}>
+          <div className={style.filters}>
+            <RankFilter onFilterToggle={this._onRankChange}/>
           </div>
         </header>
         <ul className={style.products}>
@@ -48,6 +56,10 @@ export class ProductPage extends React.Component {
         </ul>
       </div>
     );
+  }
+
+  _onRankChange(state) {
+    this.setState( { rank_filters: state })
   }
 }
 
