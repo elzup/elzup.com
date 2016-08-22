@@ -7,15 +7,23 @@
 .product {
     width: var(--pw);
     margin: 5px;
-    padding: 5px;
-    padding-bottom: 2em;
+    padding: 5px 5px 35px 5px;
     background: #aaa;
     background: white;
     position: relative;
+    box-shadow: 0 0 3px 2px white
 }
 
 .title_link {
     color: black;
+}
+
+.description {
+    font-size: 14px;
+}
+
+.members {
+    padding-bottom: 10px;
 }
 
 .img_wrap {

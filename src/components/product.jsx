@@ -57,7 +57,7 @@ export class Product extends React.Component {
         </div>
         { title }
         <p>{this.props.subtitle}</p>
-        <p dangerouslySetInnerHTML={{__html: this.props.description}} />
+        <p className={style.description}>{this.props.description}</p>
         <ul className={style.members}>
           {members}
         </ul>
