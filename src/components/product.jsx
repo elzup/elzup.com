@@ -1,6 +1,7 @@
 import React from 'react'
 const Type = React.PropTypes
 import style from '../styles/product.css'
+import ReactTooltip from 'react-tooltip'
 
 export class Product extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ export class Product extends React.Component {
     const img_url = '/images/product/sc_' + this.props.sid + '.png';
     const links = [];
     let title;
+    let tooltip = '';
     const base_title = <h2>{this.props.title}</h2>;
     if (this.props.is_alive) {
       title = <a href={this.props.link} className={style.title_link} target="_blank">{base_title}</a>
@@ -18,10 +20,18 @@ export class Product extends React.Component {
       title = base_title;
     }
     if (this.props.link != undefined) {
-      links.push(
-        <a key={1} href={this.props.link} className={style.link} target="_blank">
-          <span>↗</span>
-        </a>)
+      if (this.props.is_alive) {
+        links.push(
+          <a key={1} href={this.props.link} className={style.link} target="_blank">
+            <span>↗</span>
+          </a>)
+      } else {
+        tooltip = <ReactTooltip />
+        links.push(
+          <span key={1} className={style.broken_link} target="_blank">
+            <span data-tip="SITE CLOSED">↗</span>
+          </span>)
+      }
     }
     if (this.props.github != undefined) {
       links.push(
@@ -46,6 +56,10 @@ export class Product extends React.Component {
         <p className={style.footer}>
           {links}
         </p>
+        <div className={style.tags}>
+          {tags}
+        </div>
+        {tooltip}
       </li>
     )
   }

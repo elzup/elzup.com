@@ -57,6 +57,14 @@
     padding: 6px 6px 2px 5px;
 }
 
+.broken_link {
+    background-color: gray;
+    color: white;
+    text-decoration: none;
+    font-size: 23px;
+    padding: 6px 6px 2px 5px;
+}
+
 .link_github {
 
 }
