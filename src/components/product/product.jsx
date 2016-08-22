@@ -21,9 +21,8 @@ export class Product extends React.Component {
     }
     const members = this.props.members.map(x => {
       const link = "//twitter.com/" + x.name
-      return <li><a href={link}>@{x.name}</a>: {x.description}</li>
+      return <li key={this.props.sid + ":" + x.name}><a href={link}>@{x.name}</a>: {x.description}</li>
     })
-    const tags = this.props.tags.map(x => <div>{x}</div>)
     if (this.props.link != undefined) {
       if (this.props.is_alive) {
         links.push(
@@ -50,6 +49,7 @@ export class Product extends React.Component {
           <img src="/images/icon/mk-trello.png" alt=""/>
         </a>)
     }
+    const tags = this.props.tags.map(x => <div key={this.props.sid + ":" + x}>{x}</div>)
     return (
       <li className={style.product}>
         <div className={style.img_wrap}>
