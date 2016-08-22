@@ -6,10 +6,13 @@ import {ProductFooter} from '../product-footer/product-footer.jsx'
 export class Product extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      img_url: '/images/product/sc_' + props.sid + '.png',
+      no_img: false
+    }
   }
 
   render() {
-    const img_url = '/images/product/sc_' + this.props.sid + '.png';
     let title;
     const base_title = <h2>{this.props.title}</h2>;
     if (this.props.is_alive) {
@@ -25,10 +28,20 @@ export class Product extends React.Component {
     })
     const tags = this.props.tags.map(x => <div
       key={this.props.sid + ":" + x}>{x}</div>)
+    const img_style = this.state.no_img ? style.no_img : style.img
+    const on_error = () => {
+      this.setState({
+        img_url: '/images/404.png',
+        no_img: true
+      })
+    }
     return (
       <li className={style.product}>
         <div className={style.img_wrap}>
-          <img src={img_url}/>
+          <img
+            className={img_style}
+            src={this.state.img_url}
+            onError={on_error}/>
         </div>
         { title }
         <p>{this.props.subtitle}</p>
