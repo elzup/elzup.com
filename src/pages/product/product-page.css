@@ -1,16 +1,4 @@
-:root {
-    --w: calc(768px - 40px);
-}
-
-body {
-    padding: 20px;
-}
-
-header {
-    padding-left: 100px;
-}
-
-.productpage {
+.page {
 
 }
 

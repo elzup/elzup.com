@@ -32,8 +32,13 @@
     overflow: hidden;
 }
 
-.img_wrap > img {
+.img {
     width: 100%;
+}
+
+.no_img {
+    height: 100%;
+    margin: 0 auto;
 }
 
 .tags {

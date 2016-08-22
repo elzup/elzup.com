@@ -5,6 +5,14 @@ html {
     background: ghostwhite;
 }
 
+body {
+    padding: 20px;
+}
+
+header {
+    padding-left: 100px;
+}
+
 ul {
     padding: 0;
     margin: 0;

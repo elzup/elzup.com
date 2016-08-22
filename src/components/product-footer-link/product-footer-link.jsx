@@ -8,7 +8,7 @@ export class ProductFooterLink extends React.Component {
       return <span></span>
     }
     if (this.props.type == 'link') {
-      if (this.props.is_alive != undefined && this.props.is_alive) {
+      if (this.props.is_alive) {
         return (
           <a href={this.props.url} className={style.link} target="_blank">
             <span>↗</span>

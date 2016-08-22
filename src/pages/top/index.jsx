@@ -8,7 +8,7 @@ import style from './top-page.css'
 export class TopPage extends React.Component {
   render() {
     return (
-      <div className={style.toppage}>
+      <div className={style.page}>
         <div className={style.eyecatch}>
           <h1>elzup.com</h1>
         </div>
@@ -23,9 +23,12 @@ export class TopPage extends React.Component {
             </div>
             <ul className={style.contacts}>
               <Contact label="Github" link="//github.com/elzup" type="github"/>
-              <Contact label="Twitter" link="//twitter.com/_elzup_" type="twitter"/>
-              <Contact label="Facebook" link="//www.facebook.com/takahashiroto" type="facebook"/>
-              <Contact label="Hatena" link="//twitter.com/_elzup_" type="hatena"/>
+              <Contact label="Twitter" link="//twitter.com/_elzup_"
+                       type="twitter"/>
+              <Contact label="Facebook" link="//www.facebook.com/takahashiroto"
+                       type="facebook"/>
+              <Contact label="Hatena" link="//elzup.hatenablog.com/"
+                       type="hatena"/>
               <Contact label="Qiita" link="//qiita.com/elzup" type="qiita"/>
               <Contact label="Tumbler" link="//elzup.tumblr.com" type="tumblr"/>
             </ul>
@@ -38,5 +41,5 @@ export class TopPage extends React.Component {
 
 ReactDOM.render(
   <TopPage/>,
-  document.getElementById('top-container')
+  document.getElementById('container')
 )
