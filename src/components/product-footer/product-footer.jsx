@@ -12,7 +12,7 @@ export class ProductFooter extends React.Component {
     }
     return (
       <div className={style.footer}>
-        <ProductFooterLink is_broken={this.props.is_alive} type={"link"}
+        <ProductFooterLink is_alive={this.props.is_alive} type={"link"}
                            url={this.props.link}/>
         <ProductFooterLink type={"github"} url={this.props.github}/>
         <ProductFooterLink type={"trello"} url={this.props.trello}/>
