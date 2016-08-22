@@ -35,44 +35,6 @@
     width: 100%;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    right: 5px;
-}
-
-.footer {
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.footer>a {
-    display: block;
-    margin-left: 5px;
-    background-color: black;
-    padding: 5px 5px 1px 5px;
-}
-
-.footer>a>img {
-    width: 1.5em;
-}
-
-.link {
-    color: white;
-    text-decoration: none;
-    font-size: 23px;
-    padding: 6px 6px 2px 5px;
-}
-
-.broken_link {
-    background-color: gray;
-    color: white;
-    text-decoration: none;
-    font-size: 23px;
-    padding: 6px 6px 2px 5px;
-}
-
 .tags {
 }
 .tags>div {
@@ -83,12 +45,4 @@
     padding: 3px 5px;
     font-size: 0.5em;
     margin-bottom: 2px;
-}
-
-.link_github {
-
-}
-
-.link_trello {
-
 }

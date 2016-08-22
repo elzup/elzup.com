@@ -1,7 +1,7 @@
 import React from 'react'
 const Type = React.PropTypes
 import style from './product.css'
-import ReactTooltip from 'react-tooltip'
+import { ProductFooter} from '../product-footer/product-footer.jsx'
 
 export class Product extends React.Component {
   constructor(props) {
@@ -10,9 +10,7 @@ export class Product extends React.Component {
 
   render() {
     const img_url = '/images/product/sc_' + this.props.sid + '.png';
-    const links = [];
     let title;
-    let tooltip = '';
     const base_title = <h2>{this.props.title}</h2>;
     if (this.props.is_alive) {
       title = <a href={this.props.link} className={style.title_link} target="_blank">{base_title}</a>
@@ -23,32 +21,6 @@ export class Product extends React.Component {
       const link = "//twitter.com/" + x.name
       return <li key={this.props.sid + ":" + x.name}><a href={link}>@{x.name}</a>: {x.description}</li>
     })
-    if (this.props.link != undefined) {
-      if (this.props.is_alive) {
-        links.push(
-          <a key={1} href={this.props.link} className={style.link} target="_blank">
-            <span>↗</span>
-          </a>)
-      } else {
-        tooltip = <ReactTooltip />
-        links.push(
-          <span key={1} className={style.broken_link} target="_blank">
-            <span data-tip="SITE CLOSED">↗</span>
-          </span>)
-      }
-    }
-    if (this.props.github != undefined) {
-      links.push(
-        <a key={2} href={this.props.github} className={style.link_github} target="_blank">
-          <img src="/images/icon/mk-github.png" alt=""/>
-        </a>)
-    }
-    if (this.props.trello != undefined) {
-      links.push(
-        <a key={3} href={this.props.trello} className={style.link_trello} target="_blank">
-          <img src="/images/icon/mk-trello.png" alt=""/>
-        </a>)
-    }
     const tags = this.props.tags.map(x => <div key={this.props.sid + ":" + x}>{x}</div>)
     return (
       <li className={style.product}>
@@ -64,10 +36,13 @@ export class Product extends React.Component {
         <div className={style.tags}>
           {tags}
         </div>
-        <p className={style.footer}>
-          {links}
-        </p>
-        {tooltip}
+        <ProductFooter
+          key={this.props.sid}
+          is_alive={this.props.is_alive}
+          link={this.props.link}
+          github={this.props.github}
+          trello={this.props.trello}
+        />
       </li>
     )
   }
