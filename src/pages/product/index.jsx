@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import style from '../styles/product-page.css'
-import {Product} from '../components/product.jsx'
+import style from './product-page.css'
+import {Product} from '../../components/product/product.jsx'
 import request from 'superagent'
 
 export class ProductPage extends React.Component {

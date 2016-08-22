@@ -1,2 +1,2 @@
-import './views/product-page.jsx'
-import './styles/index.css'
+import './pages/product/index.jsx'
+import './pages/index.css'

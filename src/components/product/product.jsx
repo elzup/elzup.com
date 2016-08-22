@@ -1,6 +1,6 @@
 import React from 'react'
 const Type = React.PropTypes
-import style from '../styles/product.css'
+import style from './product.css'
 import ReactTooltip from 'react-tooltip'
 
 export class Product extends React.Component {

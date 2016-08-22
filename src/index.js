@@ -1,2 +1,2 @@
-import './views/top-page.jsx'
-import './styles/index.css'
+import './pages/top/index.jsx'
+import './pages/index.css'

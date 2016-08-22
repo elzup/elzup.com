@@ -1,5 +1,5 @@
 import React from 'react'
-import style from '../styles/item.css'
+import style from './item.css'
 
 export class Item extends React.Component {
   render() {

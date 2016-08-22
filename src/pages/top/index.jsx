@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Item} from '../components/item.jsx'
-import {Contact} from '../components/contact.jsx'
-import style from '../styles/top-page.css'
+import {Item} from '../../components/item/item.jsx'
+import {Contact} from '../../components/contact/contact.jsx'
+import style from './top-page.css'
 
 
 export class TopPage extends React.Component {

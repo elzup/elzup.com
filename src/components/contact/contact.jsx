@@ -1,5 +1,5 @@
 import React from 'react'
-import style from '../styles/contact.css'
+import style from './contact.css'
 
 export class Contact extends React.Component {
   render() {
