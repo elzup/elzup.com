@@ -23,7 +23,7 @@ export class FilterButton extends React.Component {
 
   _onToggle() {
     this.setState({toggle: !this.state.toggle})
-    this.props.onFilterToggle(this.state)
+    this.props.onFilterToggle(this.props.type, this.state.toggle)
   }
 }
 

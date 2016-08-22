@@ -21,15 +21,16 @@ export class RankFilter extends React.Component {
       <div>
         <FilterButton type="1" label="★" onFilterToggle={this._onToggle}/>
         <FilterButton type="2" label="★★" onFilterToggle={this._onToggle}/>
-        <FilterButton type="2" label="★★" onFilterToggle={this._onToggle}/>
+        <FilterButton type="3" label="★★★" onFilterToggle={this._onToggle}/>
       </div>
     )
   }
 
-  _onToggle(btn) {
-    const type = btn.type;
-    this.setState({ type: btn.toggle })
-    this.props.onFilterToggle(this.state)
+  _onToggle(type, toggle) {
+    const filters = this.state.filters
+    filters[type] = toggle
+    this.setState({ filters: filters })
+    this.props.onFilterToggle(this.state.filters)
   }
 }
 

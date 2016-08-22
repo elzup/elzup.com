@@ -39,7 +39,12 @@ export class ProductPage extends React.Component {
   }
 
   render() {
-    const productsNodes = this.state.products.map((x) => <Product
+    console.log(this.state.rank_filters)
+    const productsNodes = this.state.products
+      .filter((x) => {
+        return this.state.rank_filters[x.rank]
+      })
+      .map((x) => <Product
       key={x.sid} {...x} />)
     return (
       <div className={style.productpage}>
