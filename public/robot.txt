@@ -1,0 +1,3 @@
+User-Agent : *
+Sitemap : https://elzup.com/sitemap.xml
+Sitemap : https://elzup.com/sitemap-m.xml
