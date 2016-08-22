@@ -10,6 +10,7 @@ module.exports =[{
     "product": './src/product.js',
     "art": './src/art.js',
     "log": './src/log.js',
+    "404": './src/404.js',
   },
   output: {
     path: path.join(__dirname, 'public', 'dist', 'scripts'),
