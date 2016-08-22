@@ -1,0 +1,19 @@
+
+:root {
+    --on-color: #888;
+    --off-color: #eee;
+}
+
+.btn {
+    border: none;
+    border-left: 0.5em solid black;
+    width: 5em;
+}
+
+.btn[data-toggle=true] {
+    background: var(--on-color)
+}
+
+.btn[data-toggle=false] {
+    background: var(--off-color)
+}

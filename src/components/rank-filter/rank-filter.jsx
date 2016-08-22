@@ -18,7 +18,11 @@ export class RankFilter extends React.Component {
 
   render() {
     return (
-      <FilterButton type="1" label="★" onFilterToggle={this._onToggle}/>
+      <div>
+        <FilterButton type="1" label="★" onFilterToggle={this._onToggle}/>
+        <FilterButton type="2" label="★★" onFilterToggle={this._onToggle}/>
+        <FilterButton type="2" label="★★" onFilterToggle={this._onToggle}/>
+      </div>
     )
   }
 
