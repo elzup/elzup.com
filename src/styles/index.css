@@ -12,3 +12,7 @@ ul {
 li {
     list-style-type: none !important;
 }
+
+a {
+    color: black;
+}

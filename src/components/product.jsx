@@ -19,6 +19,10 @@ export class Product extends React.Component {
     } else {
       title = base_title;
     }
+    const members = this.props.members.map(x => {
+      const link = "//twitter.com/" + x.name
+      return <li><a href={link}>@{x.name}</a>: {x.description}</li>
+    })
     const tags = this.props.tags.map(x => <div>{x}</div>)
     if (this.props.link != undefined) {
       if (this.props.is_alive) {
@@ -54,12 +58,15 @@ export class Product extends React.Component {
         { title }
         <p>{this.props.subtitle}</p>
         <p dangerouslySetInnerHTML={{__html: this.props.description}} />
-        <p className={style.footer}>
-          {links}
-        </p>
+        <ul className={style.members}>
+          {members}
+        </ul>
         <div className={style.tags}>
           {tags}
         </div>
+        <p className={style.footer}>
+          {links}
+        </p>
         {tooltip}
       </li>
     )
