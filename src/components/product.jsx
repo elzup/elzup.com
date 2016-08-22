@@ -10,6 +10,13 @@ export class Product extends React.Component {
   render() {
     const img_url = '/images/product/sc_' + this.props.sid + '.png';
     const links = [];
+    let title;
+    const base_title = <h2>{this.props.title}</h2>;
+    if (this.props.is_alive) {
+      title = <a href={this.props.link} className={style.title_link} target="_blank">{base_title}</a>
+    } else {
+      title = base_title;
+    }
     if (this.props.link != undefined) {
       links.push(
         <a key={1} href={this.props.link} className={style.link} target="_blank">
@@ -33,7 +40,7 @@ export class Product extends React.Component {
         <div className={style.img_wrap}>
           <img src={img_url} />
         </div>
-        <h2>{this.props.title}</h2>
+        { title }
         <p>{this.props.subtitle}</p>
         <p dangerouslySetInnerHTML={{__html: this.props.description}} />
         <p className={style.footer}>
