@@ -1,4 +1,6 @@
-/data/products.json
+# Dinamic data file
+/public/data/products.json
+
 ### https://raw.github.com/github/gitignore/ad500c8a491fc51b00b10e1d57c1d10e1f677eb8/node.gitignore
 
 # Logs
@@ -30,4 +32,4 @@ build/Release
 # https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
 node_modules
 
-/dist
+/public/dist

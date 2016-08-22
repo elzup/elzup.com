@@ -1,0 +1,18 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+}
+
+.footer {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.footer > a {
+    display: block;
+    margin-left: 5px;
+    background-color: black;
+    padding: 5px 5px 1px 5px;
+}

@@ -1,13 +1,17 @@
+const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
+const postcss_import = require('postcss-import');
 
-module.exports = [{
-  entry: './src/components/main.js',
+module.exports =[{
+  entry: {
+    "index": './src/index.js',
+    "product": './src/product.js'
+  },
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'public', 'dist', 'scripts'),
+    filename: '[name].bundle.js'
   },
   module: {
     loaders: [
@@ -17,40 +21,26 @@ module.exports = [{
         test: /\.js[x]?$/,
         query: {
           cacheDirectory: true,
-          presets: ['es2015']
+          presets: ['es2015', 'react']
         }
       },
       {
-        test: /\.html$/,
-        loader: "html"
+        test: /\.css$/,
+        loader: "style!css?modules!postcss"
       }
     ]
   },
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.css']
   },
-  plugins: []
-}, {
-  entry: {
-    style: './src/styles/main.js'
+  devServer: {
+    contentBase: './public'
   },
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: '[name].css'
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract("style", ["css", "postcss", "sass"])
-      }
-    ]
-  },
-  plugins: [
-    new ExtractTextPlugin("[name].css")
-  ],
   postcss: [
     autoprefixer,
-    precss
+    precss,
+    postcss_import({
+      addDependencyTo: webpack
+    })
   ]
 }];

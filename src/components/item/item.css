@@ -1,0 +1,17 @@
+.item {
+    background: black;
+    list-style-type: none;
+    margin: 1%;
+    width: 139px;
+    height: 139px;
+    position: relative;
+}
+
+.item a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 60px 0;
+    height: 20px;
+}
