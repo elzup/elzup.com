@@ -6,12 +6,12 @@ body {
     padding: 20px;
 }
 
-.productpage {
-
+header {
+    padding-left: 100px;
 }
 
-.menu {
-    display: flex;
+.productpage {
+
 }
 
 .products_filter {

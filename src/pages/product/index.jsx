@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import style from './product-page.css'
 import {Product} from '../../components/product/product.jsx'
+import {HeadMenu} from '../../components/head-menu/head-menu.jsx'
 import request from 'superagent'
 
 export class ProductPage extends React.Component {
@@ -31,18 +32,17 @@ export class ProductPage extends React.Component {
   }
 
   render() {
-    const productsNodes = this.state.products.map((x) => <Product key={x.sid} {...x} />)
+    const productsNodes = this.state.products.map((x) => <Product
+      key={x.sid} {...x} />)
     return (
       <div className={style.productpage}>
-        <ul className={style.menu}>
-          <li>Top</li>
-          <li>Product</li>
-          <li>Art</li>
-          <li>Log</li>
-        </ul>
-        <h1>Product</h1>
-        <div className={style.products_filter}>
-        </div>
+        <header>
+          <HeadMenu current="Product" />
+          <h1>Product</h1>
+          <p>制作物一覧</p>
+          <div className={style.products_filter}>
+          </div>
+        </header>
         <ul className={style.products}>
           {productsNodes}
         </ul>
