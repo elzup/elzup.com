@@ -1,0 +1,15 @@
+:root {
+    --w: calc(768px - 40px);
+}
+
+body {
+    padding: 20px;
+}
+
+header {
+    padding-left: 100px;
+}
+
+.stop {
+    padding-left: 100px;
+}

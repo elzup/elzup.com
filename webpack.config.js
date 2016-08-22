@@ -7,7 +7,9 @@ const postcss_import = require('postcss-import');
 module.exports =[{
   entry: {
     "index": './src/index.js',
-    "product": './src/product.js'
+    "product": './src/product.js',
+    "art": './src/art.js',
+    "log": './src/log.js',
   },
   output: {
     path: path.join(__dirname, 'public', 'dist', 'scripts'),

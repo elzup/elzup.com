@@ -56,11 +56,11 @@ export class ProductPage extends React.Component {
       <CategoryFilter categories={this.state.categories}
                       onFilterToggle={this._onCategoryChange}/>) : '';
     return (
-      <div className={style.productpage}>
+      <div className={style.page}>
         <header>
           <HeadMenu current="Product"/>
           <h1>Product</h1>
-          <p>制作物一覧</p>
+          <p>えるざっぷの制作物一覧</p>
           <div className={style.filters}>
             <RankFilter onFilterToggle={this._onRankChange}/>
             {categoryFilter}

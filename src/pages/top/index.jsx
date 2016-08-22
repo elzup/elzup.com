@@ -8,7 +8,7 @@ import style from './top-page.css'
 export class TopPage extends React.Component {
   render() {
     return (
-      <div className={style.toppage}>
+      <div className={style.page}>
         <div className={style.eyecatch}>
           <h1>elzup.com</h1>
         </div>
@@ -38,5 +38,5 @@ export class TopPage extends React.Component {
 
 ReactDOM.render(
   <TopPage/>,
-  document.getElementById('top-container')
+  document.getElementById('container')
 )
