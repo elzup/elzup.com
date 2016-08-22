@@ -19,6 +19,7 @@ export class Product extends React.Component {
     } else {
       title = base_title;
     }
+    const tags = this.props.tags.map(x => <div>{x}</div>)
     if (this.props.link != undefined) {
       if (this.props.is_alive) {
         links.push(
