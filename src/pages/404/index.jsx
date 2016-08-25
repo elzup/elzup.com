@@ -15,7 +15,6 @@ export class ArtPage extends React.Component {
         <header>
           <HeadMenu current="404"/>
           <h1>404</h1>
-          <p></p>
         </header>
         <div className={style.stop}>
           Not Found

@@ -1,6 +1,5 @@
 import React from 'react'
 const Type = React.PropTypes
-import style from './category-filter.css'
 import { FilterButton } from '../filter-button/filter-button.jsx'
 
 export class CategoryFilter extends React.Component {
