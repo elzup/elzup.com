@@ -1,71 +1,71 @@
 :root {
-    --golden_rate: 161.8046%;
-    --golden_rate2: calc(var(--golden_rate) - 100%);
-    --golden_rate3: calc(100% - var(--golden_rate2));
+	--golden_rate: 161.8046%;
+	--golden_rate2: calc(var(--golden_rate) - 100%);
+	--golden_rate3: calc(100% - var(--golden_rate2));
 }
 
 html, body, main {
-    height: 100%;
+	height: 100%;
 }
 
 main {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
 }
 
 main > div {
-    width: 760px;
-    height: 470px;
+	width: 760px;
+	height: 470px;
 }
 
 .page {
-    display: flex;
+	display: flex;
 }
 
 .eyecatch {
-    width: var(--golden_rate2)
+	width: var(--golden_rate2)
 }
 
 .layer2 {
-    width: var(--golden_rate3)
+	width: var(--golden_rate3)
 }
 
 .eyecatch {
-    padding: 155px 0;
+	padding: 155px 0;
 }
 
 .eyecatch h1 {
-    text-align: center;
-    font-size: 60px;
+	text-align: center;
+	font-size: 60px;
 }
 
 .layer2 {
 }
 
 .layer3 {
-    display: flex;
+	display: flex;
 }
 
 .layer3 .layer4 {
-    width: var(--golden_rate3)
+	width: var(--golden_rate3)
 }
 
 .layer3 .contacts {
-    width: var(--golden_rate2)
+	width: var(--golden_rate2)
 }
 
 .menu {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .contacts {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
 }

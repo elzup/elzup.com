@@ -3,11 +3,11 @@
 }
 
 .products_filter {
-    display: flex;
+	display: flex;
 }
 
 .products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
