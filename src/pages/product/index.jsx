@@ -55,7 +55,7 @@ export default class ProductPage extends React.Component {
 			<CategoryFilter categories={this.state.categories}
 											onFilterToggle={this._onCategoryChange}/>) : '';
 		return (
-			<div className={style.page}>
+			<main className={style.page}>
 				<header>
 					<HeadMenu current="Product"/>
 					<h1>Product</h1>
@@ -68,7 +68,7 @@ export default class ProductPage extends React.Component {
 				<ul className={style.products}>
 					{productsNodes}
 				</ul>
-			</div>
+			</main>
 		);
 	}
 

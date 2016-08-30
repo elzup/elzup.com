@@ -4,23 +4,17 @@
 	--golden_rate3: calc(100% - var(--golden_rate2));
 }
 
-html, body, main {
-	height: 100%;
-}
-
-main {
+.wrap_main {
 	display: flex !important;
 	justify-content: center;
 	align-items: center;
-}
-
-main > div {
-	width: 760px;
-	height: 470px;
+	height: 100%;
 }
 
 .page {
 	display: flex;
+	width: 760px;
+	height: 470px;
 }
 
 .eyecatch {

@@ -10,7 +10,7 @@ export default class ArtPage extends React.Component {
 	render() {
 		const style = require("./art-page.css");
 		return (
-			<div className={style.page}>
+			<main className={style.page}>
 				<header>
 					<HeadMenu current="Art"/>
 					<h1>Art</h1>
@@ -19,7 +19,7 @@ export default class ArtPage extends React.Component {
 				<div className={style.stop}>
 					Under Construction
 				</div>
-			</div>
+			</main>
 		);
 	}
 }

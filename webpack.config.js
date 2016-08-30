@@ -3,6 +3,7 @@ const path = require('path');
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
 const postcss_import = require('postcss-import');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports =[{
   entry: './src/index.js',
@@ -23,7 +24,7 @@ module.exports =[{
       },
       {
         test: /\.css$/,
-        loader: "style!css?modules!postcss"
+        loader: ExtractTextPlugin.extract('style', 'css?modules!postcss')
       }
     ]
   },
@@ -40,5 +41,8 @@ module.exports =[{
     postcss_import({
       addDependencyTo: webpack
     })
-  ]
+  ],
+	plugins: [
+		new ExtractTextPlugin('bundle.css')
+	]
 }];
