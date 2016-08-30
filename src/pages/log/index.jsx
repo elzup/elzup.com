@@ -1,15 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import style from './log-page.css'
-import {HeadMenu} from '../../components/head-menu/head-menu.jsx'
+import React from "react";
+import {HeadMenu} from "../../components/head-menu/head-menu.jsx";
 
-export class LogPage extends React.Component {
+export default class LogPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {}
 	}
 
 	render() {
+		const style = require("./log-page.css");
 		return (
 			<div className={style.page}>
 				<header>
@@ -24,8 +23,3 @@ export class LogPage extends React.Component {
 		);
 	}
 }
-
-ReactDOM.render(
-	<LogPage/>,
-	document.getElementById('container')
-)
