@@ -1,12 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import {Item} from '../../components/item/item.jsx'
-import {Contact} from '../../components/contact/contact.jsx'
-import style from './top-page.css'
+import React from "react";
+import {Item} from "../../components/item/item.jsx";
+import {Contact} from "../../components/contact/contact.jsx";
 
-
-export class TopPage extends React.Component {
+export default class TopPage extends React.Component {
 	render() {
+		const style = require("./top-page.css");
 		return (
 			<div className={style.page}>
 				<div className={style.eyecatch}>
@@ -47,8 +45,3 @@ export class TopPage extends React.Component {
 		);
 	}
 }
-
-ReactDOM.render(
-	<TopPage/>,
-	document.getElementById('container')
-)

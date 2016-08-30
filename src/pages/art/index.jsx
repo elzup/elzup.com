@@ -1,15 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import style from './art-page.css'
-import {HeadMenu} from '../../components/head-menu/head-menu.jsx'
+import React from "react";
+import {HeadMenu} from "../../components/head-menu/head-menu.jsx";
 
-export class ArtPage extends React.Component {
+export default class ArtPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {}
 	}
 
 	render() {
+		const style = require("./art-page.css");
 		return (
 			<div className={style.page}>
 				<header>
@@ -24,8 +23,3 @@ export class ArtPage extends React.Component {
 		);
 	}
 }
-
-ReactDOM.render(
-	<ArtPage/>,
-	document.getElementById('container')
-)

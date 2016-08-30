@@ -1,13 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import style from './product-page.css'
-import {Product} from '../../components/product/product.jsx'
-import {HeadMenu} from '../../components/head-menu/head-menu.jsx'
-import {RankFilter} from '../../components/rank-filter/rank-filter.jsx'
-import {CategoryFilter} from '../../components/category-filter/category-filter.jsx'
-import request from 'superagent'
+import React from "react";
+import {Product} from "../../components/product/product.jsx";
+import {HeadMenu} from "../../components/head-menu/head-menu.jsx";
+import {RankFilter} from "../../components/rank-filter/rank-filter.jsx";
+import {CategoryFilter} from "../../components/category-filter/category-filter.jsx";
+import request from "superagent";
 
-export class ProductPage extends React.Component {
+export default class ProductPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -48,6 +46,7 @@ export class ProductPage extends React.Component {
 	}
 
 	render() {
+		const style = require("./product-page.css");
 		const productsNodes = this.state.products
 			.filter((x) => this.state.rank_filters[x.rank] && this.state.category_filters[x.category])
 			.map((x) => <Product
@@ -81,8 +80,3 @@ export class ProductPage extends React.Component {
 		this.setState({category_filters: state})
 	}
 }
-
-ReactDOM.render(
-	<ProductPage/>,
-	document.getElementById('container')
-)

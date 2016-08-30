@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "elzup.com Web Site",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --hisotry-api-fallback",
     "watch": "webpack -d --watch"
   },
   "main": "index.js",
@@ -19,7 +19,8 @@
   "dependencies": {
     "extract-text-webpack-plugin": "^1.0.1",
     "react": "^15.3.1",
-    "react-fontawesome": "^1.1.0"
+    "react-fontawesome": "^1.1.0",
+    "react-router": "^2.7.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
@@ -39,6 +40,7 @@
     "postcss-simple-vars": "^3.0.0",
     "precss": "^1.4.0",
     "react-dom": "^15.3.1",
+    "react-router": "^2.7.0",
     "react-tooltip": "^3.1.6",
     "sugarss": "^0.1.5",
     "superagent": "^2.2.0",

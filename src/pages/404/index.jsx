@@ -1,15 +1,14 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import style from './404.css'
 import {HeadMenu} from '../../components/head-menu/head-menu.jsx'
 
-export class ArtPage extends React.Component {
+export default class NotFoundPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {}
 	}
 
 	render() {
+		const style = require('./404.css')
 		return (
 			<div className={style.page}>
 				<header>
@@ -23,9 +22,3 @@ export class ArtPage extends React.Component {
 		);
 	}
 }
-
-ReactDOM.render(
-	<ArtPage/>,
-	document.getElementById('container')
-)
-
