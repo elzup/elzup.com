@@ -4,8 +4,7 @@
   "description": "elzup.com Web Site",
   "scripts": {
     "start": "webpack-dev-server",
-    "watch": "webpack -d --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "webpack -d --watch"
   },
   "main": "index.js",
   "repository": {
