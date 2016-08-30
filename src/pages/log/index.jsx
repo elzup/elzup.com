@@ -10,7 +10,7 @@ export default class LogPage extends React.Component {
 	render() {
 		const style = require("./log-page.css");
 		return (
-			<div className={style.page}>
+			<main className={style.page}>
 				<header>
 					<HeadMenu current="Log"/>
 					<h1>Log</h1>
@@ -19,7 +19,7 @@ export default class LogPage extends React.Component {
 				<div className={style.stop}>
 					Under Construction
 				</div>
-			</div>
+			</main>
 		);
 	}
 }

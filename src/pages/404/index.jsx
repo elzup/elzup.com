@@ -10,7 +10,7 @@ export default class NotFoundPage extends React.Component {
 	render() {
 		const style = require('./404.css')
 		return (
-			<div className={style.page}>
+			<main className={style.page}>
 				<header>
 					<HeadMenu current="404"/>
 					<h1>404</h1>
@@ -18,7 +18,7 @@ export default class NotFoundPage extends React.Component {
 				<div className={style.stop}>
 					Not Found
 				</div>
-			</div>
+			</main>
 		);
 	}
 }
