@@ -5,7 +5,7 @@
 }
 
 .product {
-	width: var(--pw);
+	width: 344px;
 	margin: 5px;
 	padding: 5px 5px 35px 5px;
 	background: #aaa;

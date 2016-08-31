@@ -57,6 +57,7 @@ export default class TopPage extends React.Component {
 		// HACK: extract text plugins side effect
 		document.getElementsByTagName('html')[0].style.height = '100%'
 		document.getElementsByTagName('body')[0].style.height = '100%'
+		document.getElementsByTagName('body')[0].style.padding = '0'
 		document.getElementById('container').style.height = '100%'
 	}
 }
