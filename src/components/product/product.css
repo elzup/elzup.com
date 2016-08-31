@@ -53,3 +53,13 @@
 	font-size: 0.5em;
 	margin-bottom: 2px;
 }
+
+@media screen and (max-width: 480px) {
+	.product {
+		width: 94%;
+	}
+
+	.tags > div {
+		font-size: 1em;
+	}
+}
