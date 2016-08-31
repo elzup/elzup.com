@@ -5,7 +5,7 @@
 }
 
 .product {
-	width: var(--pw);
+	width: 344px;
 	margin: 5px;
 	padding: 5px 5px 35px 5px;
 	background: #aaa;
@@ -52,4 +52,14 @@
 	padding: 3px 5px;
 	font-size: 0.5em;
 	margin-bottom: 2px;
+}
+
+@media screen and (max-width: 480px) {
+	.product {
+		width: 94%;
+	}
+
+	.tags > div {
+		font-size: 1em;
+	}
 }

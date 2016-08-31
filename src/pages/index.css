@@ -25,3 +25,17 @@ li {
 a {
 	color: black;
 }
+
+@media screen and (max-width: 480px) {
+	header {
+		padding: 14px;
+	}
+
+	body {
+		padding: 0;
+	}
+
+	p {
+		padding: .1em 0;
+	}
+}

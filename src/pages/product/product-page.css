@@ -11,3 +11,9 @@
 	flex-wrap: wrap;
 	justify-content: center;
 }
+
+@media screen and (max-width: 480px) {
+	.filters>* {
+		margin-bottom: 10px;
+	}
+}

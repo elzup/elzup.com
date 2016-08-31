@@ -4,3 +4,9 @@
 .item:not(:first-child) {
 	margin-left: 2em;
 }
+
+@media screen and (max-width: 480px) {
+	.item:not(:first-child) {
+		margin-left: 0;
+	}
+}
