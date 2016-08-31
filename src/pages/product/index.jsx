@@ -1,8 +1,8 @@
 import React from "react";
-import {Product} from "../../components/product/product.jsx";
-import {HeadMenu} from "../../components/head-menu/head-menu.jsx";
-import {RankFilter} from "../../components/rank-filter/rank-filter.jsx";
-import {CategoryFilter} from "../../components/category-filter/category-filter.jsx";
+import Product from "../../components/product/product.jsx";
+import HeadMenu from "../../components/head-menu/head-menu.jsx";
+import RankFilter from "../../components/rank-filter/rank-filter.jsx";
+import CategoryFilter from "../../components/category-filter/category-filter.jsx";
 import request from "superagent";
 
 export default class ProductPage extends React.Component {

@@ -1,9 +1,17 @@
 import React from 'react'
 const Type = React.PropTypes
-import style from './product-footer-link.css'
 
-export class ProductFooterLink extends React.Component {
+export default class ProductFooterLink extends React.Component {
+	static getTypes() {
+		return {
+			is_alive: Type.bool,
+			url: Type.string,
+			type: Type.string
+		}
+	}
+
 	render() {
+		const style = require('./product-footer-link.css')
 		if (this.props.url == undefined) {
 			return <span></span>
 		}
@@ -14,7 +22,8 @@ export class ProductFooterLink extends React.Component {
 						<span>↗</span>
 					</a>)
 			} else {
-				return (<span className={style.broken_link} target="_blank">
+				return (
+					<span className={style.broken_link} target="_blank">
             <span data-tip="SITE CLOSED">↗</span>
           </span>)
 			}
@@ -24,15 +33,12 @@ export class ProductFooterLink extends React.Component {
 			'trello': style.link_trello
 		}[this.props.type]
 		return (
-			<a href={this.props.url} className={link_style}
-				 target="_blank">
+			<a
+				href={this.props.url}
+				className={link_style}
+				target="_blank">
 				<img src={"/images/icon/mk-" + this.props.type + ".png"} alt=""/>
 			</a>)
 	}
 }
 
-ProductFooterLink.propTypes = {
-	is_alive: Type.bool,
-	url: Type.string,
-	type: Type.string
-}

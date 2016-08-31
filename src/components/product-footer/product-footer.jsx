@@ -1,15 +1,22 @@
 import React from 'react'
 const Type = React.PropTypes
-import style from './product-footer.css'
 import ReactTooltip from 'react-tooltip'
-import {ProductFooterLink} from '../product-footer-link/product-footer-link.jsx'
+import ProductFooterLink from '../product-footer-link/product-footer-link.jsx'
 
-export class ProductFooter extends React.Component {
-	render() {
-		let tooltip = '';
-		if (!this.props.is_alive) {
-			tooltip = <ReactTooltip />
+export default class ProductFooter extends React.Component {
+
+	static getTypes() {
+		return {
+			is_alive: Type.bool.isRequired,
+			link: Type.string,
+			github: Type.string,
+			trello: Type.string,
 		}
+	}
+
+	render() {
+		const style = require('./product-footer.css')
+		const tooltip = this.props.is_alive ? '' : <ReactTooltip />;
 		return (
 			<div className={style.footer}>
 				<ProductFooterLink
@@ -22,11 +29,4 @@ export class ProductFooter extends React.Component {
 			</div>
 		)
 	}
-}
-
-ProductFooter.propTypes = {
-	is_alive: Type.bool.isRequired,
-	link: Type.string,
-	github: Type.string,
-	trello: Type.string,
 }

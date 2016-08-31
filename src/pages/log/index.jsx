@@ -1,5 +1,5 @@
 import React from "react";
-import {HeadMenu} from "../../components/head-menu/head-menu.jsx";
+import HeadMenu from "../../components/head-menu/head-menu.jsx";
 
 export default class LogPage extends React.Component {
 	constructor(props) {

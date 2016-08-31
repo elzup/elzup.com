@@ -1,8 +1,8 @@
 import React from 'react'
-import style from './item.css'
 
-export class Item extends React.Component {
+export default class Item extends React.Component {
 	render() {
+		const style = require('./item.css')
 		const href = '/' + this.props.name;
 		return (
 			<li className={style.item}>
