@@ -54,7 +54,7 @@
   "assets": [
 	{
 	  "sid": "loading-image",
-	  "label": "Loading...",
+	  "label": "Preloader",
 	  "ext": "svg",
 	  "link": ""
 	}
