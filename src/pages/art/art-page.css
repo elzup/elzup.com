@@ -1,3 +1,13 @@
 .stop {
 	padding-left: 100px;
 }
+
+.icons_box {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+h2 {
+	padding-left: 100px;
+}
