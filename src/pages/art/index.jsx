@@ -1,5 +1,5 @@
 import React from "react";
-import {HeadMenu} from "../../components/head-menu/head-menu.jsx";
+import HeadMenu from "../../components/head-menu/head-menu.jsx";
 import ArtIcon from "../../components/art-icon/art-icon.jsx"
 import request from "superagent";
 
@@ -34,7 +34,7 @@ export default class ArtPage extends React.Component {
 					<h1>Art</h1>
 					<p>えるざっぷの芸術作品</p>
 				</header>
-				<h2>AppIcon</h2>
+				<h2 className={style.subtitle}>AppIcon</h2>
 				<ul className={style.icons_box}>
 					{icons}
 				</ul>

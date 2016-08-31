@@ -1,8 +1,7 @@
 import React from 'react'
 const Type = React.PropTypes
-import style from './filter-button.css'
 
-export class FilterButton extends React.Component {
+export default class FilterButton extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -11,7 +10,16 @@ export class FilterButton extends React.Component {
 		this._onToggle = this._onToggle.bind(this)
 	}
 
+	static getTypes() {
+		return {
+			type: Type.string.isRequired,
+			label: Type.string.isRequired,
+			onFilterToggle: Type.func.isRequired,
+		}
+	}
+
 	render() {
+		const style = require('./filter-button.css')
 		return (
 			<input
 				className={style.btn}
@@ -25,10 +33,4 @@ export class FilterButton extends React.Component {
 		this.setState({toggle: !this.state.toggle})
 		this.props.onFilterToggle(this.props.type, this.state.toggle)
 	}
-}
-
-FilterButton.propTypes = {
-	type: Type.string.isRequired,
-	label: Type.string.isRequired,
-	onFilterToggle: Type.func.isRequired,
 }

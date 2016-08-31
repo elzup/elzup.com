@@ -1,10 +1,16 @@
 import React from 'react'
 const Type = React.PropTypes
-import style from './head-menu.css'
-import {HeadMenuItem} from '../head-menu-item/head-menu-item.jsx'
+import HeadMenuItem from '../head-menu-item/head-menu-item.jsx'
 
-export class HeadMenu extends React.Component {
+export default class HeadMenu extends React.Component {
+	static getTypes() {
+		return {
+			current: Type.oneOf(['Top', 'Product', 'Art', 'Log']),
+		}
+	}
+
 	render() {
+		const style = require('./head-menu.css')
 		const pages = [
 			{label: 'Top', path: '/'},
 			{label: 'Product', path: '/product'},
@@ -24,8 +30,4 @@ export class HeadMenu extends React.Component {
 			</ul>
 		)
 	}
-}
-
-HeadMenu.propTypes = {
-	current: Type.oneOf(['Top', 'Product', 'Art', 'Log']),
 }

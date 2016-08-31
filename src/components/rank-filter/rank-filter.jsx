@@ -1,9 +1,8 @@
 import React from 'react'
 const Type = React.PropTypes
-import style from './rank-filter.css'
-import {FilterButton} from '../filter-button/filter-button.jsx'
+import FilterButton from '../filter-button/filter-button.jsx'
 
-export class RankFilter extends React.Component {
+export default class RankFilter extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -14,6 +13,12 @@ export class RankFilter extends React.Component {
 			}
 		}
 		this._onToggle = this._onToggle.bind(this)
+	}
+
+	static getTypes() {
+		return {
+			onFilterToggle: Type.func.isRequired,
+		}
 	}
 
 	render() {
@@ -32,8 +37,4 @@ export class RankFilter extends React.Component {
 		this.setState({filters: filters})
 		this.props.onFilterToggle(this.state.filters)
 	}
-}
-
-RankFilter.propTypes = {
-	onFilterToggle: Type.func.isRequired,
 }
