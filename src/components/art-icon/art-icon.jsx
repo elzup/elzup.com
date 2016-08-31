@@ -21,10 +21,12 @@ export default class ArtIcon extends React.Component {
 		return (
 			<li className={style.icon}>
 				<h3>{this.props.label}</h3>
-				<img
-					className={style.img}
-					src={this.state.img_url}
-					onError={on_error}/>
+				<div className={style.mat}>
+					<img
+						className={style.img}
+						src={this.state.img_url}
+						onError={on_error}/>
+				</div>
 			</li>
 		)
 	}
