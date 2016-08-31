@@ -3,7 +3,7 @@
 	margin: 5px;
 }
 
-.mat {
+.icon .mat {
 	width: 278px;
 	height: 278px;
 	padding: 10px;
@@ -19,4 +19,18 @@
 .img {
 	width: 100%;
 	margin: 0 auto;
+	vertical-align: bottom;
+}
+
+.logo, .asset {
+	width: 450px;
+	margin: 5px;
+}
+
+.logo .mat, .asset .mat {
+	background-color: white;
+	background: linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd),
+	linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd);
+	background-size: 20px 20px;
+	background-position: 0 0, 10px 10px;
 }

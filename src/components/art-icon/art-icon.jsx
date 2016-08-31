@@ -5,7 +5,7 @@ export default class ArtIcon extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			img_url: `/images/art/icon_${props.sid}.${props.ext}`,
+			img_url: `/images/art/${props.type}_${props.sid}.${props.ext}`,
 			no_img: false
 		}
 	}
@@ -15,7 +15,8 @@ export default class ArtIcon extends React.Component {
 			sid: Type.string.isRequired,
 			level: Type.number.isRequired,
 			ext: Type.string.isRequired,
-			link: Type.string
+			link: Type.string,
+			type: Type.oneOf(['icon', 'logo', 'asset']).isRequired
 		}
 	}
 
@@ -27,8 +28,10 @@ export default class ArtIcon extends React.Component {
 				no_img: true
 			})
 		}
+
+		const work_style = style[this.props.type]
 		return (
-			<li className={style.icon}>
+			<li className={work_style}>
 				<h3>{this.props.label}</h3>
 				<div className={style.mat}>
 					<img

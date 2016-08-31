@@ -26,7 +26,11 @@ export default class ArtPage extends React.Component {
 	render() {
 		const style = require("./art-page.css");
 		const icons = this.state.icons.map((x) =>
-			<ArtIcon key={x.sid} {...x} />)
+			<ArtIcon key={x.sid} type="icon" {...x} />)
+		const logos = this.state.logos.map((x) =>
+			<ArtIcon key={x.sid} type="logo" {...x} />)
+		const assets = this.state.assets.map((x) =>
+			<ArtIcon key={x.sid} type="asset" {...x} />)
 		return (
 			<main className={style.page}>
 				<header>
@@ -35,8 +39,16 @@ export default class ArtPage extends React.Component {
 					<p>えるざっぷの芸術作品</p>
 				</header>
 				<h2 className={style.subtitle}>AppIcon</h2>
-				<ul className={style.icons_box}>
+				<ul className={style.work_box}>
 					{icons}
+				</ul>
+				<h2 className={style.subtitle}>Logo</h2>
+				<ul className={style.work_box}>
+					{logos}
+				</ul>
+				<h2 className={style.subtitle}>Parts Asset</h2>
+				<ul className={style.work_box}>
+					{assets}
 				</ul>
 			</main>
 		);
