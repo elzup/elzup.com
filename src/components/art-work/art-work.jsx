@@ -1,7 +1,7 @@
 import React from 'react'
 const Type = React.PropTypes
 
-export default class ArtIcon extends React.Component {
+export default class ArtWork extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -21,7 +21,7 @@ export default class ArtIcon extends React.Component {
 	}
 
 	render() {
-		const style = require('./art-icon.css')
+		const style = require('./art-work.css')
 		const on_error = () => {
 			this.setState({
 				img_url: '/images/404.png',

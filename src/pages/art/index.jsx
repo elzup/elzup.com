@@ -1,6 +1,6 @@
 import React from "react";
 import HeadMenu from "../../components/head-menu/head-menu.jsx";
-import ArtIcon from "../../components/art-icon/art-icon.jsx"
+import ArtWork from "../../components/art-work/art-work.jsx"
 import request from "superagent";
 
 export default class ArtPage extends React.Component {
@@ -26,11 +26,11 @@ export default class ArtPage extends React.Component {
 	render() {
 		const style = require("./art-page.css");
 		const icons = this.state.icons.map((x) =>
-			<ArtIcon key={x.sid} type="icon" {...x} />)
+			<ArtWork key={x.sid} type="icon" {...x} />)
 		const logos = this.state.logos.map((x) =>
-			<ArtIcon key={x.sid} type="logo" {...x} />)
+			<ArtWork key={x.sid} type="logo" {...x} />)
 		const assets = this.state.assets.map((x) =>
-			<ArtIcon key={x.sid} type="asset" {...x} />)
+			<ArtWork key={x.sid} type="asset" {...x} />)
 		return (
 			<main className={style.page}>
 				<header>
