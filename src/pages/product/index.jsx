@@ -12,12 +12,9 @@ export default class ProductPage extends React.Component {
 			types: [],
 			tags: [],
 			products: [],
-			category_filters: [],
-			rank_filters: {
-				"1": true,
-				"2": true,
-				"3": true
-			}
+			categories: [],
+			categorySelect: 'ALL',
+			rankSelect: 0
 		}
 		this._onRankChange = this._onRankChange.bind(this)
 		this._onCategoryChange = this._onCategoryChange.bind(this)
@@ -32,28 +29,30 @@ export default class ProductPage extends React.Component {
 				let state = res.body
 				// HACKME:
 				state.products = state.products.map((x) => {
-					x.level = parseInt(x.level)
+					x.rank = parseInt(x.rank)
 					x.is_alive = x.is_alive == "TRUE"
 					return x;
 				})
-				state.category_filters = state.categories.reduce((m, v) => {
-					m[v] = true;
-					return m;
-				}, {})
+				state.categories.unshift('ALL')
 				this.setState(state)
-
 			})
 	}
 
 	render() {
 		const style = require("./product-page.css");
 		const productsNodes = this.state.products
-			.filter((x) => this.state.rank_filters[x.rank] && this.state.category_filters[x.category])
+			.filter((x) => {
+				console.log(this.state.rankSelect)
+				console.log(x.rank)
+				console.log(this.state.rankSelect == x.rank)
+				console.log(this.state.rankSelect == 0)
+				console.log(this.state.categorySelect == 'ALL' || this.state.categorySelect == x.category)
+				return ((this.state.rankSelect == 0 || this.state.rankSelect == x.rank)
+				&& (this.state.categorySelect == 'ALL' || this.state.categorySelect == x.category))
+				}
+			)
 			.map((x) => <Product
 				key={x.sid} {...x} />)
-		const categoryFilter = this.state.categories != undefined ? (
-			<CategoryFilter categories={this.state.categories}
-											onFilterToggle={this._onCategoryChange}/>) : '';
 		return (
 			<main className={style.page}>
 				<header>
@@ -61,8 +60,13 @@ export default class ProductPage extends React.Component {
 					<h1>Product</h1>
 					<p>えるざっぷの制作物一覧</p>
 					<div className={style.filters}>
-						<RankFilter onFilterToggle={this._onRankChange}/>
-						{categoryFilter}
+						<RankFilter
+							select={this.state.rankSelect}
+							onFilterToggle={this._onRankChange}/>
+						<CategoryFilter
+							select={this.state.categorySelect}
+							categories={this.state.categories}
+							onFilterToggle={this._onCategoryChange}/>
 					</div>
 				</header>
 				<ul className={style.products}>
@@ -72,11 +76,11 @@ export default class ProductPage extends React.Component {
 		);
 	}
 
-	_onRankChange(state) {
-		this.setState({rank_filters: state})
+	_onRankChange(select) {
+		this.setState({rankSelect: select})
 	}
 
 	_onCategoryChange(state) {
-		this.setState({category_filters: state})
+		this.setState({categorySelect: state})
 	}
 }

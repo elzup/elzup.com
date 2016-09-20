@@ -2,39 +2,31 @@ import React from 'react'
 const Type = React.PropTypes
 import FilterButton from '../filter-button/filter-button.jsx'
 
-export default class RankFilter extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			filters: {
-				"1": true,
-				"2": true,
-				"3": true
-			}
-		}
-		this._onToggle = this._onToggle.bind(this)
-	}
+const RankFilter = (props) => (
+	<div>
+		<FilterButton
+			type={0} label="ALL"
+			toggle={props.select == 0}
+			onFilterToggle={props.onFilterToggle}/>
+		<FilterButton
+			type={1} label="★"
+			toggle={props.select == 1}
+			onFilterToggle={props.onFilterToggle}/>
+		<FilterButton
+			type={2} label="★★"
+			toggle={props.select == 2}
+			onFilterToggle={props.onFilterToggle}/>
+		<FilterButton
+			type={3} label="★★★"
+			toggle={props.select == 3}
+			onFilterToggle={props.onFilterToggle}/>
+	</div>
+)
 
-	static getTypes() {
-		return {
-			onFilterToggle: Type.func.isRequired,
-		}
-	}
 
-	render() {
-		return (
-			<div>
-				<FilterButton type="1" label="★" onFilterToggle={this._onToggle}/>
-				<FilterButton type="2" label="★★" onFilterToggle={this._onToggle}/>
-				<FilterButton type="3" label="★★★" onFilterToggle={this._onToggle}/>
-			</div>
-		)
-	}
-
-	_onToggle(type, toggle) {
-		const filters = this.state.filters
-		filters[type] = toggle
-		this.setState({filters: filters})
-		this.props.onFilterToggle(this.state.filters)
-	}
+RankFilter.propType = {
+	select: Type.number.isRequired,
+	onFilterToggle: Type.func.isRequired,
 }
+
+export default RankFilter;
