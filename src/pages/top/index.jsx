@@ -64,8 +64,25 @@ export default class TopPage extends React.Component {
 		canvas.style.position = 'fixed'
 		canvas.style.top = "0px"
 		canvas.style.left = "0px"
-		canvas.style.width = "100%"
-		canvas.style.height = "100%"
-		body.appendChild(canvas)
+		const w = canvas.width = body.clientWidth
+		const h = canvas.height = body.clientHeight
+		canvas.setAttribute('width', w)
+		canvas.setAttribute('height', h)
+		canvas.style.width = w + "px"
+		canvas.style.height = h + "px"
+		body.insertBefore(canvas, body.firstChild)
+		const ctx = canvas.getContext('2d')
+		const point = {
+			x: 0,
+			y: 0
+		}
+		ctx.lineWidth = 1
+		setInterval(() => {
+			ctx.beginPath()
+			point.x += 1
+			point.y += 1
+			ctx.arc(point.x, point.y, 1, 0, Math.PI * 2, false)
+			ctx.fill()
+		}, 50)
 	}
 }
