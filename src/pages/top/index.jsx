@@ -56,8 +56,16 @@ export default class TopPage extends React.Component {
 	componentDidMount() {
 		// HACK: extract text plugins side effect
 		document.getElementsByTagName('html')[0].style.height = '100%'
-		document.getElementsByTagName('body')[0].style.height = '100%'
-		document.getElementsByTagName('body')[0].style.padding = '0'
+		const body = document.getElementsByTagName('body')[0];
+		body.style.height = '100%'
+		body.style.padding = '0'
 		document.getElementById('container').style.height = '100%'
+		const canvas = document.createElement('canvas')
+		canvas.style.position = 'fixed'
+		canvas.style.top = "0px"
+		canvas.style.left = "0px"
+		canvas.style.width = "100%"
+		canvas.style.height = "100%"
+		body.appendChild(canvas)
 	}
 }
