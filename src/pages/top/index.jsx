@@ -72,17 +72,33 @@ export default class TopPage extends React.Component {
 		canvas.style.height = h + "px"
 		body.insertBefore(canvas, body.firstChild)
 		const ctx = canvas.getContext('2d')
-		const point = {
+		const points = [{
 			x: 0,
-			y: 0
-		}
+			y: 0,
+			vx: 2,
+			vy: 2
+		}]
 		ctx.lineWidth = 1
 		setInterval(() => {
-			ctx.beginPath()
-			point.x += 1
-			point.y += 1
-			ctx.arc(point.x, point.y, 1, 0, Math.PI * 2, false)
-			ctx.fill()
+			ctx.clearRect(0, 0, w, h)
+			for (let i = 0; i < points.length; i++) {
+				points[i].x += points[i].vx
+				points[i].y += points[i].vy
+				ctx.beginPath()
+				ctx.arc(points[i].x, points[i].y, 3, 0, Math.PI * 2, false)
+				ctx.fill()
+				ctx.closePath()
+			}
 		}, 50)
+		canvas.onclick
+		canvas.addEventListener('click', e => {
+			points.push({
+				x: e.clientX,
+				y: e.clientY,
+				vx: 2,
+				vy: 2
+				}
+			)
+		}, false);
 	}
 }
