@@ -56,8 +56,49 @@ export default class TopPage extends React.Component {
 	componentDidMount() {
 		// HACK: extract text plugins side effect
 		document.getElementsByTagName('html')[0].style.height = '100%'
-		document.getElementsByTagName('body')[0].style.height = '100%'
-		document.getElementsByTagName('body')[0].style.padding = '0'
+		const body = document.getElementsByTagName('body')[0];
+		body.style.height = '100%'
+		body.style.padding = '0'
 		document.getElementById('container').style.height = '100%'
+		const canvas = document.createElement('canvas')
+		canvas.style.position = 'fixed'
+		canvas.style.top = "0px"
+		canvas.style.left = "0px"
+		const w = canvas.width = body.clientWidth
+		const h = canvas.height = body.clientHeight
+		canvas.setAttribute('width', w)
+		canvas.setAttribute('height', h)
+		canvas.style.width = w + "px"
+		canvas.style.height = h + "px"
+		body.insertBefore(canvas, body.firstChild)
+		const ctx = canvas.getContext('2d')
+		const points = [{
+			x: 0,
+			y: 0,
+			vx: 2,
+			vy: 2
+		}]
+		ctx.lineWidth = 1
+		setInterval(() => {
+			ctx.clearRect(0, 0, w, h)
+			for (let i = 0; i < points.length; i++) {
+				points[i].x += points[i].vx
+				points[i].y += points[i].vy
+				ctx.beginPath()
+				ctx.arc(points[i].x, points[i].y, 3, 0, Math.PI * 2, false)
+				ctx.fill()
+				ctx.closePath()
+			}
+		}, 50)
+		canvas.onclick
+		canvas.addEventListener('click', e => {
+			points.push({
+				x: e.clientX,
+				y: e.clientY,
+				vx: 2,
+				vy: 2
+				}
+			)
+		}, false);
 	}
 }
