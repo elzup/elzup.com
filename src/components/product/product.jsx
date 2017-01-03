@@ -1,6 +1,7 @@
 import React from 'react'
 const Type = React.PropTypes
 import ProductFooter from '../product-footer/product-footer.jsx'
+import LazyLoad from 'react-lazy-load'
 
 export default class Product extends React.Component {
 	constructor(props) {
@@ -55,10 +56,12 @@ export default class Product extends React.Component {
 		return (
 			<li className={style.product}>
 				<div className={style.img_wrap}>
-					<img
-						className={img_style}
-						src={this.state.img_url}
-						onError={on_error}/>
+					<LazyLoad height={219}>
+						<img
+							className={img_style}
+							src={this.state.img_url}
+							onError={on_error}/>
+					</LazyLoad>
 				</div>
 				{ title }
 				<p>{this.props.subtitle}</p>
