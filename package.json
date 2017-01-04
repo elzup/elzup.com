@@ -4,6 +4,7 @@
   "description": "elzup.com Web Site",
   "scripts": {
     "start": "webpack-dev-server --hisotry-api-fallback",
+    "build": "webpack --config webpack-production.config.js --progress",
     "watch": "webpack -d --watch"
   },
   "main": "index.js",

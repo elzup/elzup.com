@@ -43,7 +43,17 @@ module.exports =[{
     })
   ],
 	plugins: [
-		new webpack.optimize.UglifyJsPlugin(),
+		new webpack.DefinePlugin({
+			'process.env': {
+				NODE_ENV: JSON.stringify('production')
+			}
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				// 圧縮する時に警告を除去する
+				warnings: false
+			}
+		}),
 		new ExtractTextPlugin('bundle.css')
 	]
 }];
