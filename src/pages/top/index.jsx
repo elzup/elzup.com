@@ -35,7 +35,7 @@ export default class TopPage extends React.Component {
 									type="facebook"/>
 								<Contact
 									label="Hatena"
-									link="//elzup.hatenablog.com/"
+									link="http://elzup.hatenablog.com/"
 									type="hatena"/>
 								<Contact
 									label="Qiita"
