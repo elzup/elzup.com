@@ -1,5 +1,6 @@
 import React from 'react'
 const Type = React.PropTypes
+import LazyLoad from 'react-lazy-load'
 
 export default class ArtWork extends React.Component {
 	constructor(props) {
@@ -34,10 +35,12 @@ export default class ArtWork extends React.Component {
 			<li className={work_style}>
 				<h3>{this.props.label}</h3>
 				<div className={style.mat}>
-					<img
-						className={style.img}
-						src={this.state.img_url}
-						onError={on_error}/>
+					<LazyLoad height={300}>
+						<img
+							className={style.img}
+							src={this.state.img_url}
+							onError={on_error}/>
+					</LazyLoad>
 				</div>
 			</li>
 		)
