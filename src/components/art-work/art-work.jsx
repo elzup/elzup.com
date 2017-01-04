@@ -35,7 +35,7 @@ export default class ArtWork extends React.Component {
 			<li className={work_style}>
 				<h3>{this.props.label}</h3>
 				<div className={style.mat}>
-					<LazyLoad height={300}>
+					<LazyLoad>
 						<img
 							className={style.img}
 							src={this.state.img_url}
