@@ -21,8 +21,7 @@ export default class TopPage extends React.Component {
 							<div className={style.layer4}>
 							</div>
 							<ul className={style.contacts}>
-								<Contact
-									label="Github"
+								<Contact label="Github"
 									link="//github.com/elzup"
 									type="github"/>
 								<Contact
@@ -72,6 +71,9 @@ export default class TopPage extends React.Component {
 		canvas.style.height = h + "px"
 		body.insertBefore(canvas, body.firstChild)
 		const ctx = canvas.getContext('2d')
+		ctx.lineWidth = 5;
+		ctx.strokeStyle = 'black';
+		const mousePositions = []
 		const points = [{
 			x: 0,
 			y: 0,
@@ -89,8 +91,31 @@ export default class TopPage extends React.Component {
 				ctx.fill()
 				ctx.closePath()
 			}
+			// mousePath
+			ctx.beginPath()
+			if (mousePositions.length < 1) {
+				return;
+			}
+			let l = mousePositions.length;
+			ctx.moveTo(mousePositions[l - 1].x, mousePositions[l - 1].y);
+			for (let i = l - 8; i > 0; i -= 8) {
+				ctx.quadraticCurveTo(
+					mousePositions[i + 4].x,
+					mousePositions[i + 4].y,
+					mousePositions[i].x,
+					mousePositions[i].y);
+			}
+			ctx.stroke()
 		}, 50)
 		canvas.onclick
+		let k = 0
+		canvas.addEventListener('mousemove', e => {
+			k ++;
+			mousePositions.push({
+				x: e.clientX,
+				y: e.clientY
+			})
+		}, false);
 		canvas.addEventListener('click', e => {
 			points.push({
 				x: e.clientX,
