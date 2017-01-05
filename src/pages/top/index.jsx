@@ -75,33 +75,47 @@ export default class TopPage extends React.Component {
 		ctx.strokeStyle = 'black';
 
 		// draw Logics
-		const points = [{
-			x: 0,
-			y: 0,
-			vx: 2,
-			vy: 2
-		}]
-		ctx.lineWidth = 1
+		const points = []
+		const footstamps = []
+
+		const v = 20;
+		const direcitons = [{ vx: v, vy: 0 }, { vx: 0, vy: v }, { vx: -v, vy: 0 }, { vx: 0, vy: -v }];
+		for (let i = 0; i < 20; i++) {
+			const p = {
+				x: Math.random() * w,
+				y: Math.random() * h,
+				dire: {}
+			}
+			Object.assign(p.dire, direcitons[Math.floor(Math.random() * 4)])
+			points.push(p)
+		}
 		setInterval(() => {
 			ctx.clearRect(0, 0, w, h)
 			for (let i = 0; i < points.length; i++) {
-				points[i].x += points[i].vx
-				points[i].y += points[i].vy
-				ctx.beginPath()
-				ctx.arc(points[i].x, points[i].y, 3, 0, Math.PI * 2, false)
-				ctx.fill()
-				ctx.closePath()
+				const x = points[i].x + points[i].dire.vx
+				const y = points[i].y + points[i].dire.vy
+				if (x < 0 || x >= w || y < 0 || y >= h) {
+					points[i].dire.vx *= -1;
+					points[i].dire.vy *= -1;
+				}
+				const footstamp = {
+					life: 6
+				};
+				points[i].x += points[i].dire.vx
+				points[i].y += points[i].dire.vy
+				Object.assign(footstamp, points[i]);
+				footstamps.push(footstamp);
+			}
+			for (let i = 0; i < footstamps.length; i++) {
+				if (footstamps[i].life < 1) {
+					continue;
+				}
+				ctx.beginPath();
+				ctx.arc(footstamps[i].x, footstamps[i].y, footstamps[i].life, 0, Math.PI * 2, false);
+				footstamps[i].life --;
+				ctx.fill();
+				ctx.closePath();
 			}
 		}, 50)
-		canvas.onclick
-		canvas.addEventListener('click', e => {
-			points.push({
-				x: e.clientX,
-				y: e.clientY,
-				vx: 2,
-				vy: 2
-				}
-			)
-		}, false);
 	}
 }
