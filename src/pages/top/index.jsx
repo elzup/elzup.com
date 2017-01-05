@@ -78,10 +78,10 @@ export default class TopPage extends React.Component {
 		const points = []
 		const footstamps = []
 
-		const v = 20;
+		const v = 1;
 		const directions = [{ vx: v, vy: 0 }, { vx: 0, vy: v }, { vx: -v, vy: 0 }, { vx: 0, vy: -v }];
-		const seqAgeMax = 20;
-		const seqAgeMin = 5;
+		const seqAgeMax = 50;
+		const seqAgeMin = 10;
 		for (let i = 0; i < 20; i++) {
 			const p = {
 				x: Math.random() * w,
@@ -105,10 +105,10 @@ export default class TopPage extends React.Component {
 				const footstamp = {
 					life: 6
 				};
-				p.x += p.dire.vx
-				p.y += p.dire.vy
+				p.x += p.dire.vx * p.seqAge;
+				p.y += p.dire.vy * p.seqAge;
 				p.seqAge --;
-				if (p.seqAge < 1) {
+				if (p.seqAge < 5) {
 					p.seqAge = Math.floor(Math.random() * (seqAgeMax - seqAgeMin) + seqAgeMin);
 					const t = p.dire.vy;
 					p.dire.vy = p.dire.vx;
@@ -122,7 +122,7 @@ export default class TopPage extends React.Component {
 					continue;
 				}
 				ctx.beginPath();
-				ctx.arc(footstamps[i].x, footstamps[i].y, footstamps[i].life, 0, Math.PI * 2, false);
+				ctx.arc(footstamps[i].x, footstamps[i].y, footstamps[i].life / 2, 0, Math.PI * 2, false);
 				footstamps[i].life --;
 				ctx.fill();
 				ctx.closePath();
