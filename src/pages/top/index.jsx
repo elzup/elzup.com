@@ -7,7 +7,7 @@ export default class TopPage extends React.Component {
 		const style = require("./top-page.css");
 		return (
 			<main className={style.wrap_main}>
-				<div className={style.page}>
+				<div className={style.page} id="face">
 					<div className={style.eyecatch}>
 						<h1>elzup.com</h1>
 					</div>
@@ -35,7 +35,7 @@ export default class TopPage extends React.Component {
 									type="facebook"/>
 								<Contact
 									label="Hatena"
-									link="//elzup.hatenablog.com/"
+									link="http://elzup.hatenablog.com/"
 									type="hatena"/>
 								<Contact
 									label="Qiita"
@@ -72,33 +72,78 @@ export default class TopPage extends React.Component {
 		canvas.style.height = h + "px"
 		body.insertBefore(canvas, body.firstChild)
 		const ctx = canvas.getContext('2d')
-		const points = [{
-			x: 0,
-			y: 0,
-			vx: 2,
-			vy: 2
-		}]
-		ctx.lineWidth = 1
+		ctx.lineWidth = 5;
+		ctx.strokeStyle = 'black';
+
+		// draw Logics
+		const points = []
+		let footstamps = []
+
+		const v = 1;
+		const directions = [{vx: v, vy: 0}, {vx: 0, vy: v}, {vx: -v, vy: 0}, {vx: 0, vy: -v}];
+		const seqAgeMax = 50;
+		const seqAgeMin = 10;
+		const mouse = {x: -100, y: -100};
+		for (let i = 0; i < 20; i++) {
+			const p = {
+				x: Math.random() * w,
+				y: Math.random() * h,
+				dire: {},
+				seqAge: Math.floor(Math.random() * (seqAgeMax - seqAgeMin) + seqAgeMin)
+			}
+			Object.assign(p.dire, directions[Math.floor(Math.random() * 4)]);
+			points.push(p);
+		}
+		const distance = (pos1, pos2) => {
+			const dx = pos1.x - pos2.x;
+			const dy = pos1.y - pos2.y;
+			return Math.sqrt(dx * dx + dy * dy);
+		}
 		setInterval(() => {
 			ctx.clearRect(0, 0, w, h)
 			for (let i = 0; i < points.length; i++) {
-				points[i].x += points[i].vx
-				points[i].y += points[i].vy
-				ctx.beginPath()
-				ctx.arc(points[i].x, points[i].y, 3, 0, Math.PI * 2, false)
-				ctx.fill()
-				ctx.closePath()
-			}
-		}, 50)
-		canvas.onclick
-		canvas.addEventListener('click', e => {
-			points.push({
-				x: e.clientX,
-				y: e.clientY,
-				vx: 2,
-				vy: 2
+				const p = points[i];
+				const x = p.x + p.dire.vx;
+				const y = p.y + p.dire.vy;
+				if (x < 0 || x >= w || y < 0 || y >= h) {
+					p.dire.vx *= -1;
+					p.dire.vy *= -1;
 				}
-			)
-		}, false);
+				const footstamp = {
+					life: 6
+				};
+				p.x += p.dire.vx * p.seqAge;
+				p.y += p.dire.vy * p.seqAge;
+				p.seqAge--;
+				if (p.seqAge < 5) {
+					p.seqAge = Math.floor(Math.random() * (seqAgeMax - seqAgeMin) + seqAgeMin);
+					const t = p.dire.vy;
+					p.dire.vy = p.dire.vx;
+					p.dire.vx = t;
+				}
+				Object.assign(footstamp, p);
+				footstamps.push(footstamp);
+			}
+			let dieIndex = 0;
+			for (let i = 0; i < footstamps.length; i++) {
+				const fsp = footstamps[i];
+				if (fsp.life < 1) {
+					dieIndex = i;
+					continue;
+				}
+				const rate = distance(fsp, mouse) / w;
+				const r = fsp.life * rate;
+				ctx.beginPath();
+				ctx.arc(fsp.x, fsp.y, r, 0, Math.PI * 2, false);
+				fsp.life--;
+				ctx.fill();
+				ctx.closePath();
+			}
+			footstamps = footstamps.slice(dieIndex + 1);
+		}, 50)
+		canvas.addEventListener("mousemove", e => {
+			mouse.x = e.clientX;
+			mouse.y = e.clientY;
+		});
 	}
 }
