@@ -42,11 +42,6 @@ export default class ProductPage extends React.Component {
 		const style = require("./product-page.css");
 		const productsNodes = this.state.products
 			.filter((x) => {
-				console.log(this.state.rankSelect)
-				console.log(x.rank)
-				console.log(this.state.rankSelect == x.rank)
-				console.log(this.state.rankSelect == 0)
-				console.log(this.state.categorySelect == 'ALL' || this.state.categorySelect == x.category)
 				return ((this.state.rankSelect == 0 || this.state.rankSelect == x.rank)
 				&& (this.state.categorySelect == 'ALL' || this.state.categorySelect == x.category))
 				}
