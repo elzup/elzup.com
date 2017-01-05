@@ -94,6 +94,11 @@ export default class TopPage extends React.Component {
 			Object.assign(p.dire, directions[Math.floor(Math.random() * 4)]);
 			points.push(p);
 		}
+		const distance = (pos1, pos2) => {
+			const dx = pos1.x - pos2.x;
+			const dy = pos1.y - pos2.y;
+			return Math.sqrt(dx * dx + dy * dy);
+		}
 		setInterval(() => {
 			ctx.clearRect(0, 0, w, h)
 			for (let i = 0; i < points.length; i++) {
@@ -120,12 +125,15 @@ export default class TopPage extends React.Component {
 				footstamps.push(footstamp);
 			}
 			for (let i = 0; i < footstamps.length; i++) {
-				if (footstamps[i].life < 1) {
+				const fsp = footstamps[i];
+				if (fsp.life < 1) {
 					continue;
 				}
+				const rate = distance(fsp, mouse) / w;
+				const r = fsp.life * rate;
 				ctx.beginPath();
-				ctx.arc(footstamps[i].x, footstamps[i].y, footstamps[i].life / 2, 0, Math.PI * 2, false);
-				footstamps[i].life--;
+				ctx.arc(fsp.x, fsp.y, r, 0, Math.PI * 2, false);
+				fsp.life--;
 				ctx.fill();
 				ctx.closePath();
 			}
