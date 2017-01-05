@@ -7,7 +7,7 @@ export default class TopPage extends React.Component {
 		const style = require("./top-page.css");
 		return (
 			<main className={style.wrap_main}>
-				<div className={style.page}>
+				<div className={style.page} id="face">
 					<div className={style.eyecatch}>
 						<h1>elzup.com</h1>
 					</div>
@@ -73,7 +73,8 @@ export default class TopPage extends React.Component {
 		const ctx = canvas.getContext('2d')
 		ctx.lineWidth = 5;
 		ctx.strokeStyle = 'black';
-		const mousePositions = []
+
+		// draw Logics
 		const points = [{
 			x: 0,
 			y: 0,
@@ -91,31 +92,8 @@ export default class TopPage extends React.Component {
 				ctx.fill()
 				ctx.closePath()
 			}
-			// mousePath
-			ctx.beginPath()
-			if (mousePositions.length < 1) {
-				return;
-			}
-			let l = mousePositions.length;
-			ctx.moveTo(mousePositions[l - 1].x, mousePositions[l - 1].y);
-			for (let i = l - 8; i > 0; i -= 8) {
-				ctx.quadraticCurveTo(
-					mousePositions[i + 4].x,
-					mousePositions[i + 4].y,
-					mousePositions[i].x,
-					mousePositions[i].y);
-			}
-			ctx.stroke()
 		}, 50)
 		canvas.onclick
-		let k = 0
-		canvas.addEventListener('mousemove', e => {
-			k ++;
-			mousePositions.push({
-				x: e.clientX,
-				y: e.clientY
-			})
-		}, false);
 		canvas.addEventListener('click', e => {
 			points.push({
 				x: e.clientX,
