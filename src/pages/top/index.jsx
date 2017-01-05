@@ -79,31 +79,32 @@ export default class TopPage extends React.Component {
 		const footstamps = []
 
 		const v = 20;
-		const direcitons = [{ vx: v, vy: 0 }, { vx: 0, vy: v }, { vx: -v, vy: 0 }, { vx: 0, vy: -v }];
+		const directions = [{ vx: v, vy: 0 }, { vx: 0, vy: v }, { vx: -v, vy: 0 }, { vx: 0, vy: -v }];
 		for (let i = 0; i < 20; i++) {
 			const p = {
 				x: Math.random() * w,
 				y: Math.random() * h,
 				dire: {}
 			}
-			Object.assign(p.dire, direcitons[Math.floor(Math.random() * 4)])
-			points.push(p)
+			Object.assign(p.dire, directions[Math.floor(Math.random() * 4)]);
+			points.push(p);
 		}
 		setInterval(() => {
 			ctx.clearRect(0, 0, w, h)
 			for (let i = 0; i < points.length; i++) {
-				const x = points[i].x + points[i].dire.vx
-				const y = points[i].y + points[i].dire.vy
+				const p = points[i];
+				const x = p.x + p.dire.vx;
+				const y = p.y + p.dire.vy;
 				if (x < 0 || x >= w || y < 0 || y >= h) {
-					points[i].dire.vx *= -1;
-					points[i].dire.vy *= -1;
+					p.dire.vx *= -1;
+					p.dire.vy *= -1;
 				}
 				const footstamp = {
 					life: 6
 				};
-				points[i].x += points[i].dire.vx
-				points[i].y += points[i].dire.vy
-				Object.assign(footstamp, points[i]);
+				p.x += p.dire.vx
+				p.y += p.dire.vy
+				Object.assign(footstamp, p);
 				footstamps.push(footstamp);
 			}
 			for (let i = 0; i < footstamps.length; i++) {
