@@ -80,11 +80,14 @@ export default class TopPage extends React.Component {
 
 		const v = 20;
 		const directions = [{ vx: v, vy: 0 }, { vx: 0, vy: v }, { vx: -v, vy: 0 }, { vx: 0, vy: -v }];
+		const seqAgeMax = 20;
+		const seqAgeMin = 5;
 		for (let i = 0; i < 20; i++) {
 			const p = {
 				x: Math.random() * w,
 				y: Math.random() * h,
-				dire: {}
+				dire: {},
+				seqAge: Math.floor(Math.random() * (seqAgeMax - seqAgeMin) + seqAgeMin)
 			}
 			Object.assign(p.dire, directions[Math.floor(Math.random() * 4)]);
 			points.push(p);
@@ -104,6 +107,13 @@ export default class TopPage extends React.Component {
 				};
 				p.x += p.dire.vx
 				p.y += p.dire.vy
+				p.seqAge --;
+				if (p.seqAge < 1) {
+					p.seqAge = Math.floor(Math.random() * (seqAgeMax - seqAgeMin) + seqAgeMin);
+					const t = p.dire.vy;
+					p.dire.vy = p.dire.vx;
+					p.dire.vx = t;
+				}
 				Object.assign(footstamp, p);
 				footstamps.push(footstamp);
 			}
