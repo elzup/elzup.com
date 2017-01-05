@@ -77,7 +77,7 @@ export default class TopPage extends React.Component {
 
 		// draw Logics
 		const points = []
-		const footstamps = []
+		let footstamps = []
 
 		const v = 1;
 		const directions = [{vx: v, vy: 0}, {vx: 0, vy: v}, {vx: -v, vy: 0}, {vx: 0, vy: -v}];
@@ -124,9 +124,11 @@ export default class TopPage extends React.Component {
 				Object.assign(footstamp, p);
 				footstamps.push(footstamp);
 			}
+			let dieIndex = 0;
 			for (let i = 0; i < footstamps.length; i++) {
 				const fsp = footstamps[i];
 				if (fsp.life < 1) {
+					dieIndex = i;
 					continue;
 				}
 				const rate = distance(fsp, mouse) / w;
@@ -137,6 +139,7 @@ export default class TopPage extends React.Component {
 				ctx.fill();
 				ctx.closePath();
 			}
+			footstamps = footstamps.slice(dieIndex + 1);
 		}, 50)
 		canvas.addEventListener("mousemove", e => {
 			mouse.x = e.clientX;
