@@ -21,7 +21,8 @@ export default class TopPage extends React.Component {
 							<div className={style.layer4}>
 							</div>
 							<ul className={style.contacts}>
-								<Contact label="Github"
+								<Contact
+									label="Github"
 									link="//github.com/elzup"
 									type="github"/>
 								<Contact
@@ -79,9 +80,10 @@ export default class TopPage extends React.Component {
 		const footstamps = []
 
 		const v = 1;
-		const directions = [{ vx: v, vy: 0 }, { vx: 0, vy: v }, { vx: -v, vy: 0 }, { vx: 0, vy: -v }];
+		const directions = [{vx: v, vy: 0}, {vx: 0, vy: v}, {vx: -v, vy: 0}, {vx: 0, vy: -v}];
 		const seqAgeMax = 50;
 		const seqAgeMin = 10;
+		const mouse = {x: -100, y: -100};
 		for (let i = 0; i < 20; i++) {
 			const p = {
 				x: Math.random() * w,
@@ -107,7 +109,7 @@ export default class TopPage extends React.Component {
 				};
 				p.x += p.dire.vx * p.seqAge;
 				p.y += p.dire.vy * p.seqAge;
-				p.seqAge --;
+				p.seqAge--;
 				if (p.seqAge < 5) {
 					p.seqAge = Math.floor(Math.random() * (seqAgeMax - seqAgeMin) + seqAgeMin);
 					const t = p.dire.vy;
@@ -123,10 +125,14 @@ export default class TopPage extends React.Component {
 				}
 				ctx.beginPath();
 				ctx.arc(footstamps[i].x, footstamps[i].y, footstamps[i].life / 2, 0, Math.PI * 2, false);
-				footstamps[i].life --;
+				footstamps[i].life--;
 				ctx.fill();
 				ctx.closePath();
 			}
 		}, 50)
+		canvas.addEventListener("mousemove", e => {
+			mouse.x = e.clientX;
+			mouse.y = e.clientY;
+		});
 	}
 }
