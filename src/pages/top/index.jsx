@@ -1,6 +1,8 @@
 import React from "react";
 import Item from "../../components/item/item.jsx";
 import Contact from "../../components/contact/contact.jsx";
+import request from "superagent";
+import Rx from 'rx';
 
 export default class TopPage extends React.Component {
 	render() {
@@ -74,6 +76,27 @@ export default class TopPage extends React.Component {
 		const ctx = canvas.getContext('2d')
 		ctx.lineWidth = 5;
 		ctx.strokeStyle = 'black';
+
+		// welcome print
+		const reqText = (path) => {
+			return new Promise((resolve, reject) => {
+				request
+					.get(path)
+					.end((error, res) => {
+						error ? reject(error) : resolve(res.text);
+					});
+			});
+		}
+		reqText('/data/welcome_aa.txt').then(
+			(text) => {
+				console.log(text);
+				return reqText('/data/elzup_aa.txt')
+			}
+		).then(
+			(text) => {
+				console.log(`%c${text}%c`, 'font-size: 10px;');
+			}
+		)
 
 		// draw Logics
 		const points = []
