@@ -95,12 +95,13 @@ export default class TopPage extends React.Component {
 		}
 		reqText('/data/welcome_aa.txt').then(
 			(text) => {
+				/* eslint-disable no-console */
 				console.log(text);
 				return reqText('/data/elzup_aa.txt')
 			}
 		).then(
 			(text) => {
-				console.log(`%c${text}%c`, 'font-size: 10px;');
+				console.log(`%c${text}`, 'font-size: 10px;');
 			}
 		)
 
