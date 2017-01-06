@@ -13,7 +13,10 @@ const CategoryFilter = props => {
 				onFilterToggle={props.onFilterToggle}/>)
 	return (
 		<div>
-			{btns}
+			<p>Category Select</p>
+			<div>
+				{btns}
+			</div>
 		</div>
 	)
 }

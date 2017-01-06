@@ -4,6 +4,8 @@ import FilterButton from '../filter-button/filter-button.jsx'
 
 const RankFilter = (props) => (
 	<div>
+		<p>Quality Select</p>
+		<div>
 		<FilterButton
 			type={0} label="ALL"
 			toggle={props.select == 0}
@@ -20,6 +22,7 @@ const RankFilter = (props) => (
 			type={3} label="★★★"
 			toggle={props.select == 3}
 			onFilterToggle={props.onFilterToggle}/>
+		</div>
 	</div>
 )
 
