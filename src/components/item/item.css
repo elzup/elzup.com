@@ -5,6 +5,7 @@
 	width: 139px;
 	height: 139px;
 	position: relative;
+	border-radius: 5px;
 }
 
 .item a {

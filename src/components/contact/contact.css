@@ -5,6 +5,7 @@
 	width: 55px;
 	height: 55px;
 	position: relative;
+	border-radius: 5px;
 }
 
 /*align center with block*/
