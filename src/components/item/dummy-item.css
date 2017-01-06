@@ -1,0 +1,16 @@
+.item {
+	background: rgba(0, 0, 0, 0);
+	list-style-type: none;
+	margin: 2px;
+	width: 139px;
+	height: 139px;
+	position: relative;
+}
+
+@media screen and (max-width: 480px) {
+	.item {
+		display: none;
+		width: 46%;
+		margin: 2%;
+	}
+}

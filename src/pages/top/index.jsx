@@ -1,5 +1,6 @@
 import React from "react";
 import Item from "../../components/item/item.jsx";
+import DummyItem from "../../components/item/dummy-item.jsx";
 import Contact from "../../components/contact/contact.jsx";
 import request from "superagent";
 import Rx from 'rx';
@@ -17,6 +18,7 @@ export default class TopPage extends React.Component {
 						<ul className={style.menu}>
 							<Item label="Product" name="product"/>
 							<Item label="Art" name="art"/>
+							<DummyItem />
 							<Item label="Log" name="log"/>
 						</ul>
 						<div className={style.layer3}>
