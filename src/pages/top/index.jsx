@@ -2,6 +2,7 @@ import React from "react";
 import Item from "../../components/item/item.jsx";
 import DummyItem from "../../components/item/dummy-item.jsx";
 import Contact from "../../components/contact/contact.jsx";
+import DummyContact from "../../components/contact/dummy-contact.jsx";
 import request from "superagent";
 import Rx from 'rx';
 
@@ -25,10 +26,13 @@ export default class TopPage extends React.Component {
 							<div className={style.layer4}>
 							</div>
 							<ul className={style.contacts}>
+								<DummyContact />
+								<DummyContact />
 								<Contact
 									label="Github"
 									link="//github.com/elzup"
 									type="github"/>
+								<DummyContact />
 								<Contact
 									label="Twitter"
 									link="//twitter.com/_elzup_"
