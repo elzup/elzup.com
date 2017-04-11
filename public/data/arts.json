@@ -1,6 +1,24 @@
 {
   "icons": [
 	{
+	  "sid": "planckunits",
+	  "label": "Planck Units Inc.",
+	  "ext": "svg",
+	  "link": ""
+	},
+	{
+	  "sid": "ssconnect",
+	  "label": "SSConnectApp",
+	  "ext": "svg",
+	  "link": ""
+	},
+	{
+	  "sid": "annicteye",
+	  "label": "Annict Eye",
+	  "ext": "svg",
+	  "link": ""
+	},
+	{
 	  "sid": "com-color",
 	  "label": "Com Color",
 	  "ext": "svg",
@@ -32,6 +50,18 @@
 	}
   ],
   "logos": [
+	{
+	  "sid": "esckey",
+	  "label": "巨大 Esc キーのラベル",
+	  "ext": "png",
+	  "link": ""
+	},
+	{
+	  "sid": "planckunits",
+	  "label": "Planck Units Inc.",
+	  "ext": "png",
+	  "link": ""
+	},
 	{
 	  "sid": "cpslab",
 	  "label": "CPS Lab.",

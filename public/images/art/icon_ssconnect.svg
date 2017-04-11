@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43 (38999) - http://www.bohemiancoding.com/sketch -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="49.6663901%" cy="49.0922341%" fx="49.6663901%" fy="49.0922341%" r="47.4940696%" id="radialGradient-1">
+            <stop stop-color="#323232" offset="0%"></stop>
+            <stop stop-color="#282828" offset="69.2900118%"></stop>
+            <stop stop-color="#1E1E1E" offset="100%"></stop>
+        </radialGradient>
+        <filter x="-9.6%" y="-3.4%" width="119.7%" height="109.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-9.6%" y="-3.4%" width="119.7%" height="109.6%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon">
+            <text id="SSC" font-family="HiraginoSans-W1, Hiragino Sans" font-size="15" font-weight="300" fill="#000000">
+                <tspan x="69" y="96">SSC</tspan>
+            </text>
+            <rect id="Rectangle" fill="url(#radialGradient-1)" x="0" y="0" width="512" height="512"></rect>
+            <path d="M82,131 L82,346 L276,346 L276,357 L79,357 L71,357 L71,125.5 L71,120 L278,120 L278,125.5 L278,175 L267,175 L267,131 L82,131 Z" id="Combined-Shape" fill="#656565"></path>
+            <path d="M299.5,370 C277.684752,370 260,352.315248 260,330.5 C260,308.684752 277.684752,291 299.5,291 C321.315248,291 339,308.684752 339,330.5 C339,352.315248 321.315248,370 299.5,370 Z M299.5,354.5 C312.754834,354.5 323.5,343.754834 323.5,330.5 C323.5,317.245166 312.754834,306.5 299.5,306.5 C286.245166,306.5 275.5,317.245166 275.5,330.5 C275.5,343.754834 286.245166,354.5 299.5,354.5 Z" id="Combined-Shape" fill="#A9A9A9"></path>
+            <ellipse id="Oval-Copy" fill="#A9A9A9" cx="245.5" cy="179.5" rx="39.5" ry="39.5"></ellipse>
+            <g id="S" filter="url(#filter-2)" transform="translate(285.000000, 224.000000)" fill="#FFFFFF">
+                <path d="M157,39 L157,15.0027905 C157,6.72277021 150.284062,0 141.999532,0 L15.0004679,0 C6.7209607,0 0,6.71697808 0,15.0027905 L0,72.9972095 C0,81.2772298 6.71593825,88 15.0004679,88 L141.999532,88 C146.439028,88 150.43042,86.0687778 153.177843,83 L96,83 L96,58.5 L29.5,58.5 L29.5,29.5 L127.5,29.5 L127.5,39 L157,39 Z" id="Combined-Shape"></path>
+                <path d="M1.24964376,67 C3.56594667,61.7021944 8.85369554,58 15.0004679,58 L141.999532,58 C150.284062,58 157,64.7227702 157,73.0027905 L157,130.99721 C157,139.283022 150.279039,146 141.999532,146 L15.0004679,146 C6.71593825,146 0,139.27723 0,130.99721 L0,105 L29.5,105 L29.5,116.5 L127.5,116.5 L127.5,87.5 L39,87.5 L39,67 L1.24964376,67 Z" id="Combined-Shape"></path>
+            </g>
+            <g id="S" filter="url(#filter-3)" transform="translate(103.000000, 140.000000)" fill="#FFFFFF">
+                <path d="M157,39 L157,15.0027905 C157,6.72277021 150.284062,0 141.999532,0 L15.0004679,0 C6.7209607,0 0,6.71697808 0,15.0027905 L0,72.9972095 C0,81.2772298 6.71593825,88 15.0004679,88 L141.999532,88 C146.439028,88 150.43042,86.0687778 153.177843,83 L96,83 L96,58.5 L29.5,58.5 L29.5,29.5 L127.5,29.5 L127.5,39 L157,39 Z" id="Combined-Shape"></path>
+                <path d="M1.24964376,67 C3.56594667,61.7021944 8.85369554,58 15.0004679,58 L141.999532,58 C150.284062,58 157,64.7227702 157,73.0027905 L157,130.99721 C157,139.283022 150.279039,146 141.999532,146 L15.0004679,146 C6.71593825,146 0,139.27723 0,130.99721 L0,105 L29.5,105 L29.5,116.5 L127.5,116.5 L127.5,87.5 L39,87.5 L39,67 L1.24964376,67 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
