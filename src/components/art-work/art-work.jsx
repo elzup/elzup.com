@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react"
 const Type = React.PropTypes
-import LazyLoad from 'react-lazy-load'
+import LazyLoad from "react-lazy-load"
 
 export default class ArtWork extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			img_url: `/images/art/${props.type}_${props.sid}.${props.ext}`,
-			no_img: false
+			no_img: false,
 		}
 	}
 
@@ -17,16 +17,16 @@ export default class ArtWork extends React.Component {
 			level: Type.number.isRequired,
 			ext: Type.string.isRequired,
 			link: Type.string,
-			type: Type.oneOf(['icon', 'logo', 'asset']).isRequired
+			type: Type.oneOf(["icon", "logo", "asset"]).isRequired,
 		}
 	}
 
 	render() {
-		const style = require('./art-work.css')
+		const style = require("./art-work.css")
 		const on_error = () => {
 			this.setState({
-				img_url: '/images/404.png',
-				no_img: true
+				img_url: "/images/404.png",
+				no_img: true,
 			})
 		}
 
@@ -39,7 +39,8 @@ export default class ArtWork extends React.Component {
 						<img
 							className={style.img}
 							src={this.state.img_url}
-							onError={on_error}/>
+							onError={on_error}
+						/>
 					</LazyLoad>
 				</div>
 			</li>

@@ -1,39 +1,44 @@
-import React from "react";
-import HeadMenu from "../../components/head-menu/head-menu.jsx";
+import React from "react"
+import HeadMenu from "../../components/head-menu/head-menu.jsx"
 import ArtWork from "../../components/art-work/art-work.jsx"
-import axios from 'axios';
+import axios from "axios"
 
 export default class ArtPage extends React.Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			icons: [],
 			logos: [],
-			assets: []
+			assets: [],
 		}
 	}
 
 	componentDidMount() {
-		this.loadArt();
+		this.loadArt()
 	}
 
 	async loadArt() {
-		const res = await axios.get('/data/arts.json', { 'Accept': 'application/json' });
+		const res = await axios.get("/data/arts.json", {
+			Accept: "application/json",
+		})
 		this.setState(Object.assign(this.state, res.data))
 	}
 
 	render() {
-		const style = require("./art-page.css");
-		const icons = this.state.icons.map((x) =>
-			<ArtWork key={x.sid} type="icon" {...x} />)
-		const logos = this.state.logos.map((x) =>
-			<ArtWork key={x.sid} type="logo" {...x} />)
-		const assets = this.state.assets.map((x) =>
-			<ArtWork key={x.sid} type="asset" {...x} />)
+		const style = require("./art-page.css")
+		const icons = this.state.icons.map(x => (
+			<ArtWork key={x.sid} type="icon" {...x} />
+		))
+		const logos = this.state.logos.map(x => (
+			<ArtWork key={x.sid} type="logo" {...x} />
+		))
+		const assets = this.state.assets.map(x => (
+			<ArtWork key={x.sid} type="asset" {...x} />
+		))
 		return (
 			<main className={style.page}>
 				<header>
-					<HeadMenu current="Art"/>
+					<HeadMenu current="Art" />
 					<h1>Art</h1>
 					<p>えるざっぷの芸術作品</p>
 				</header>
@@ -50,6 +55,6 @@ export default class ArtPage extends React.Component {
 					{assets}
 				</ul>
 			</main>
-		);
+		)
 	}
 }
