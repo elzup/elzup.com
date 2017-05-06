@@ -1,6 +1,6 @@
 import React from "react"
 const Type = React.PropTypes
-import ProductFooter from "../product-footer/product-footer.jsx"
+import ProductFooter from "../product-footer"
 import LazyLoad from "react-lazy-load"
 
 export default class Product extends React.Component {

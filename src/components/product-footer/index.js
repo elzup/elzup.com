@@ -1,7 +1,7 @@
 import React from "react"
 const Type = React.PropTypes
 import ReactTooltip from "react-tooltip"
-import ProductFooterLink from "../product-footer-link/product-footer-link.jsx"
+import ProductFooterLink from "../product-footer-link"
 
 export default class ProductFooter extends React.Component {
 	static getTypes() {

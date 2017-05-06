@@ -1,8 +1,8 @@
 import React from "react"
-import Item from "../../components/item/item.jsx"
-import DummyItem from "../../components/item/dummy-item.jsx"
-import Contact from "../../components/contact/contact.jsx"
-import DummyContact from "../../components/contact/dummy-contact.jsx"
+import Item from "../../components/item"
+import DummyItem from "../../components/item/dummy-item.js"
+import Contact from "../../components/contact"
+import DummyContact from "../../components/contact/dummy-contact.js"
 import axios from "axios"
 
 const aa1_path = "/data/welcome_aa.txt"

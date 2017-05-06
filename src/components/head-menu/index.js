@@ -1,6 +1,6 @@
 import React from "react"
 const Type = React.PropTypes
-import HeadMenuItem from "../head-menu-item/head-menu-item.jsx"
+import HeadMenuItem from "../head-menu-item"
 
 export default class HeadMenu extends React.Component {
 	static getTypes() {

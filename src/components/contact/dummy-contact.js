@@ -1,5 +1,5 @@
 import React from "react"
-import Contact from "./contact.jsx"
+import Contact from "."
 
 export default class DummyContact extends Contact {
 	render() {

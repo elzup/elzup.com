@@ -1,6 +1,6 @@
 import React from "react"
 const Type = React.PropTypes
-import FilterButton from "../filter-button/filter-button.jsx"
+import FilterButton from "../filter-button"
 
 const RankFilter = props => (
 	<div>
@@ -9,25 +9,25 @@ const RankFilter = props => (
 			<FilterButton
 				type={0}
 				label="ALL"
-				toggle={props.select == 0}
+				toggle={props.select === 0}
 				onFilterToggle={props.onFilterToggle}
 			/>
 			<FilterButton
 				type={1}
 				label="★"
-				toggle={props.select == 1}
+				toggle={props.select === 1}
 				onFilterToggle={props.onFilterToggle}
 			/>
 			<FilterButton
 				type={2}
 				label="★★"
-				toggle={props.select == 2}
+				toggle={props.select === 2}
 				onFilterToggle={props.onFilterToggle}
 			/>
 			<FilterButton
 				type={3}
 				label="★★★"
-				toggle={props.select == 3}
+				toggle={props.select === 3}
 				onFilterToggle={props.onFilterToggle}
 			/>
 		</div>

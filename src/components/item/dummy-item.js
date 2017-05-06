@@ -1,5 +1,5 @@
 import React from "react"
-import Item from "./item.jsx"
+import Item from "."
 
 export default class DummyItem extends Item {
 	render() {

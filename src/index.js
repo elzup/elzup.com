@@ -4,11 +4,11 @@ import ReactDOM from "react-dom"
 
 import "babel-polyfill"
 
-import TopPage from "./pages/top/index.jsx"
-import ProductPage from "./pages/product/index.jsx"
-import ArtPage from "./pages/art/index.jsx"
-import LogPage from "./pages/log/index.jsx"
-import NotFoundPage from "./pages/404/index.jsx"
+import TopPage from "./pages/top"
+import ProductPage from "./pages/product/index"
+import ArtPage from "./pages/art/index"
+import LogPage from "./pages/log/index"
+import NotFoundPage from "./pages/404/index"
 
 import "./pages/index.css"
 

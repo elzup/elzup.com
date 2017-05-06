@@ -1,6 +1,6 @@
 import React from "react"
-import HeadMenu from "../../components/head-menu/head-menu.jsx"
-import ArtWork from "../../components/art-work/art-work.jsx"
+import HeadMenu from "../../components/head-menu"
+import ArtWork from "../../components/art-work"
 import axios from "axios"
 
 export default class ArtPage extends React.Component {

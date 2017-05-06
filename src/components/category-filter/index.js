@@ -1,6 +1,6 @@
 import React from "react"
 const Type = React.PropTypes
-import FilterButton from "../filter-button/filter-button.jsx"
+import FilterButton from "../filter-button"
 
 const CategoryFilter = props => {
 	const btns = props.categories.map(x => (
@@ -8,7 +8,7 @@ const CategoryFilter = props => {
 			key={x}
 			type={x}
 			label={x}
-			toggle={props.select == x}
+			toggle={props.select === x}
 			onFilterToggle={props.onFilterToggle}
 		/>
 	))

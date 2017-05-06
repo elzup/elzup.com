@@ -3,11 +3,10 @@ import _ from "lodash"
 
 import axios from "axios"
 
-import Product from "../../components/product/product.jsx"
-import HeadMenu from "../../components/head-menu/head-menu.jsx"
-import RankFilter from "../../components/rank-filter/rank-filter.jsx"
-import CategoryFilter
-	from "../../components/category-filter/category-filter.jsx"
+import Product from "../../components/product"
+import HeadMenu from "../../components/head-menu"
+import RankFilter from "../../components/rank-filter"
+import CategoryFilter from "../../components/category-filter"
 
 export default class ProductPage extends React.Component {
 	constructor(props) {
