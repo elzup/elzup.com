@@ -64,10 +64,6 @@
     "webpack-dev-server": "^1.14.1"
   },
   "lint-staged": {
-    "*.jsx": [
-      "prettier-eslint --write",
-      "git add"
-    ],
     "*.js": [
       "prettier-eslint --write",
       "git add"
