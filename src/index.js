@@ -1,24 +1,29 @@
-import React from 'react'
-import {Router, Route, browserHistory} from 'react-router'
-import ReactDOM from 'react-dom'
+import React from "react"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
+import ReactDOM from "react-dom"
 
-import "babel-polyfill";
+import "babel-polyfill"
 
-import TopPage from './pages/top/index.jsx'
-import ProductPage from './pages/product/index.jsx'
-import ArtPage from './pages/art/index.jsx'
-import LogPage from './pages/log/index.jsx'
-import NotFoundPage from './pages/404/index.jsx'
+import TopPage from "./pages/top"
+import ProductPage from "./pages/product/index"
+import ArtPage from "./pages/art/index"
+import LogPage from "./pages/log/index"
+import NotFoundPage from "./pages/404/index"
 
-import './pages/index.css'
+import "./pages/index.css"
 
 // Render the main component into the dom
-ReactDOM.render((
-	<Router history={browserHistory}>
-		<Route path="/" component={TopPage}/>
-		<Route path="product" component={ProductPage}/>
-		<Route path="art" component={ArtPage}/>
-		<Route path="log" component={LogPage}/>
-		<Route path="*" component={NotFoundPage}/>
-	</Router>
-), document.getElementById('container'))
+ReactDOM.render(
+	<BrowserRouter>
+		<div>
+			<Switch>
+				<Route exact path="/" component={TopPage} />
+				<Route path="/product" component={ProductPage} />
+				<Route path="/art" component={ArtPage} />
+				<Route path="/log" component={LogPage} />
+				<Route component={NotFoundPage} />
+			</Switch>
+		</div>
+	</BrowserRouter>,
+	document.getElementById("container")
+)

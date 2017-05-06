@@ -1,18 +1,18 @@
-import React from "react";
-import HeadMenu from "../../components/head-menu/head-menu.jsx";
+import React from "react"
+import HeadMenu from "../../components/head-menu"
 
 export default class LogPage extends React.Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {}
 	}
 
 	render() {
-		const style = require("./log-page.css");
+		const style = require("./log-page.css")
 		return (
 			<main className={style.page}>
 				<header>
-					<HeadMenu current="Log"/>
+					<HeadMenu current="Log" />
 					<h1>Log</h1>
 					<p>えるざっぷのログ</p>
 				</header>
@@ -20,6 +20,6 @@ export default class LogPage extends React.Component {
 					Under Construction
 				</div>
 			</main>
-		);
+		)
 	}
 }

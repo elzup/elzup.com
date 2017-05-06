@@ -1,16 +1,18 @@
-import React from 'react'
+import React from "react"
 const Type = React.PropTypes
 
 const FilterButton = props => {
-	const style = require('./filter-button.css')
+	const style = require("./filter-button.css")
 	return (
 		<input
 			className={style.btn}
-			type="button" data-toggle={props.toggle}
+			type="button"
+			data-toggle={props.toggle}
 			onClick={() => {
 				props.onFilterToggle(props.type)
 			}}
-			value={props.label}/>
+			value={props.label}
+		/>
 	)
 }
 

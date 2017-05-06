@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 const Type = React.PropTypes
 
 export default class HeadMenuItem extends React.Component {
@@ -11,10 +11,10 @@ export default class HeadMenuItem extends React.Component {
 	}
 
 	render() {
-		const style = require('./head-menu-item.css')
-		let inner = '';
+		const style = require("./head-menu-item.css")
+		let inner = ""
 		if (!this.props.is_active) {
-			inner = (<a href={this.props.path}>{this.props.label}</a>)
+			inner = <a href={this.props.path}>{this.props.label}</a>
 		} else {
 			inner = this.props.label
 		}
