@@ -32,15 +32,19 @@ export default class ProductPage extends React.Component {
 		const res = await axios.get(uri, { 'Access-Control-Allow-Origin': '*' });
 		const categories = [];
 		const allTags = [];
-		const products = res.body.map((product) => {
+		debugger;
+		const products = res.data.map((product) => {
 			const tags = product.tags.split('-');
+			const link = product.link || null;
+			const github = product.github || null;
+			const trello = product.trello || null;
 			const members = product.members.split('-').map( member => {
 				const [name, description] = member.split(':');
 				return { name, description };
 			});
 			allTags.push(...tags);
-			categories.push(products.category);
-			return { ...product, tags, members };
+			categories.push(product.category);
+			return { ...product, tags, members, link, github, trello };
 		})
 		categories.unshift('ALL');
 		this.setState({
