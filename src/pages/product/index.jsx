@@ -1,9 +1,12 @@
 import React from "react";
+import _ from 'lodash';
+
+import axios from 'axios';
+
 import Product from "../../components/product/product.jsx";
 import HeadMenu from "../../components/head-menu/head-menu.jsx";
 import RankFilter from "../../components/rank-filter/rank-filter.jsx";
 import CategoryFilter from "../../components/category-filter/category-filter.jsx";
-import request from "superagent";
 
 export default class ProductPage extends React.Component {
 	constructor(props) {
@@ -21,29 +24,38 @@ export default class ProductPage extends React.Component {
 	}
 
 	componentDidMount() {
-		const url = '/data/products.json';
-		request
-			.get(url)
-			.set('Accept', 'application/json')
-			.end((err, res) => {
-				let state = res.body
-				// HACKME:
-				state.products = state.products.map((x) => {
-					x.rank = parseInt(x.rank)
-					x.is_alive = x.is_alive == "TRUE"
-					return x;
-				})
-				state.categories.unshift('ALL')
-				this.setState(state)
-			})
+		this.loadProducts();
+	}
+
+	async loadProducts() {
+		const uri = 'https://script.googleusercontent.com/macros/echo?user_content_key=njSw0NlUahn9VG4J0Ydx6VOu0OjFJ9120zF2_-dQw2I4j4EP-OYtISj32OLOd-BRs9WD2mVgoxZ2_du9Cj1lMVHIPtP0zinTm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnCoBYuj4hganT42SDz8Jy-RSH6uFnN0GLeKFvmmAZURgsD8cl5mcfExCBSyeqOrwFiPIEyVC5G-3&lib=M4AumUuRYH4oWs3BKvnnNtH2y4DtNeKF1';
+		const res = await axios.get(uri, { 'Access-Control-Allow-Origin': '*' });
+		const categories = [];
+		const allTags = [];
+		const products = res.body.map((product) => {
+			const tags = product.tags.split('-');
+			const members = product.members.split('-').map( member => {
+				const [name, description] = member.split(':');
+				return { name, description };
+			});
+			allTags.push(...tags);
+			categories.push(products.category);
+			return { ...product, tags, members };
+		})
+		categories.unshift('ALL');
+		this.setState({
+			products,
+			categories: _.uniq(categories),
+			tags: _.uniq(allTags),
+		});
 	}
 
 	render() {
 		const style = require("./product-page.css");
 		const productsNodes = this.state.products
 			.filter((x) => {
-				return ((this.state.rankSelect == 0 || this.state.rankSelect == x.rank)
-				&& (this.state.categorySelect == 'ALL' || this.state.categorySelect == x.category))
+					return ((this.state.rankSelect == 0 || this.state.rankSelect == x.rank)
+					&& (this.state.categorySelect == 'ALL' || this.state.categorySelect == x.category))
 				}
 			)
 			.map((x) => <Product
