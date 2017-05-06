@@ -1,7 +1,7 @@
 import React from "react";
 import HeadMenu from "../../components/head-menu/head-menu.jsx";
 import ArtWork from "../../components/art-work/art-work.jsx"
-import request from "superagent";
+import axios from 'axios';
 
 export default class ArtPage extends React.Component {
 	constructor(props) {
@@ -14,13 +14,12 @@ export default class ArtPage extends React.Component {
 	}
 
 	componentDidMount() {
-		const url = '/data/arts.json';
-		request
-			.get(url)
-			.set('Accept', 'application/json')
-			.end((err, res) => {
-				this.setState(Object.assign(this.state, res.body))
-			})
+		this.loadArt();
+	}
+
+	async loadArt() {
+		const res = await axios.get('/data/arts.json', { 'Accept': 'application/json' });
+		this.setState(Object.assign(this.state, res.data))
 	}
 
 	render() {

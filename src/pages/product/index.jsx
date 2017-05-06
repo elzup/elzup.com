@@ -32,7 +32,6 @@ export default class ProductPage extends React.Component {
 		const res = await axios.get(uri, { 'Access-Control-Allow-Origin': '*' });
 		const categories = [];
 		const allTags = [];
-		debugger;
 		const products = res.data.map((product) => {
 			const tags = product.tags.split('-');
 			const link = product.link || null;

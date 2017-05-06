@@ -3,7 +3,10 @@ import Item from "../../components/item/item.jsx";
 import DummyItem from "../../components/item/dummy-item.jsx";
 import Contact from "../../components/contact/contact.jsx";
 import DummyContact from "../../components/contact/dummy-contact.jsx";
-import request from "superagent";
+import axios from 'axios';
+
+const aa1_path = '/data/welcome_aa.txt';
+const aa2_path = '/data/elzup_aa.txt';
 
 export default class TopPage extends React.Component {
 	render() {
@@ -82,27 +85,7 @@ export default class TopPage extends React.Component {
 		ctx.lineWidth = 5;
 		ctx.strokeStyle = 'black';
 
-		// welcome print
-		const reqText = (path) => {
-			return new Promise((resolve, reject) => {
-				request
-					.get(path)
-					.end((error, res) => {
-						error ? reject(error) : resolve(res.text);
-					});
-			});
-		}
-		reqText('/data/welcome_aa.txt').then(
-			(text) => {
-				/* eslint-disable no-console */
-				console.log(text);
-				return reqText('/data/elzup_aa.txt')
-			}
-		).then(
-			(text) => {
-				console.log(`%c${text}`, 'font-size: 10px;');
-			}
-		)
+		this.loadAA();
 
 		// draw Logics
 		const points = []
@@ -174,5 +157,11 @@ export default class TopPage extends React.Component {
 			mouse.x = e.clientX;
 			mouse.y = e.clientY;
 		});
+	}
+
+	async loadAA() {
+		const [aa1, aa2] = await Promise.all([aa1_path, aa2_path].map(axios.get));
+		console.log(aa1.data);
+		console.log(`%c${aa2.data}`, 'font-size: 10px;');
 	}
 }
