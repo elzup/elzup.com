@@ -1,5 +1,5 @@
 import React from 'react'
-import {Router, Route, browserHistory} from 'react-router'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import ReactDOM from 'react-dom'
 
 import "babel-polyfill";
@@ -14,11 +14,15 @@ import './pages/index.css'
 
 // Render the main component into the dom
 ReactDOM.render((
-	<Router history={browserHistory}>
-		<Route path="/" component={TopPage}/>
-		<Route path="product" component={ProductPage}/>
-		<Route path="art" component={ArtPage}/>
-		<Route path="log" component={LogPage}/>
-		<Route path="*" component={NotFoundPage}/>
-	</Router>
+	<BrowserRouter>
+		<div>
+			<Switch>
+				<Route exact path="/" component={TopPage}/>
+				<Route path="/product" component={ProductPage}/>
+				<Route path="/art" component={ArtPage}/>
+				<Route path="/log" component={LogPage}/>
+				<Route component={NotFoundPage}/>
+			</Switch>
+		</div>
+	</BrowserRouter>
 ), document.getElementById('container'))
