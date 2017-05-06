@@ -18,11 +18,18 @@
   },
   "homepage": "https://elzup.com",
   "dependencies": {
+    "axios": "^0.16.1",
+    "babel-polyfill": "^6.23.0",
+    "css-loader": "^0.28.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "lodash": "^4.17.4",
+    "normalize.css": "^7.0.0",
     "react": "^15.3.1",
     "react-fontawesome": "^1.1.0",
     "react-lazy-load": "^3.0.10",
-    "react-router": "^2.7.0"
+    "react-router": "^2.7.0",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.17.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

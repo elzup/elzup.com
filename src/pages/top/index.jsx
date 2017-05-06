@@ -4,7 +4,6 @@ import DummyItem from "../../components/item/dummy-item.jsx";
 import Contact from "../../components/contact/contact.jsx";
 import DummyContact from "../../components/contact/dummy-contact.jsx";
 import request from "superagent";
-import Rx from 'rx';
 
 export default class TopPage extends React.Component {
 	render() {

@@ -2,6 +2,8 @@ import React from 'react'
 import {Router, Route, browserHistory} from 'react-router'
 import ReactDOM from 'react-dom'
 
+import "babel-polyfill";
+
 import TopPage from './pages/top/index.jsx'
 import ProductPage from './pages/product/index.jsx'
 import ArtPage from './pages/art/index.jsx'
