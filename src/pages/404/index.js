@@ -1,12 +1,9 @@
+// @flow
+
 import React from "react"
 import HeadMenu from "../../components/head-menu"
 
 export default class NotFoundPage extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {}
-	}
-
 	render() {
 		const style = require("./404.css")
 		return (

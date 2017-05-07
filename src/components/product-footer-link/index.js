@@ -1,18 +1,23 @@
+// @flow
+
 import React from "react"
-const Type = React.PropTypes
+
+type Props = {
+	is_alive?: boolean,
+	url: string | null,
+	type: string,
+}
 
 export default class ProductFooterLink extends React.Component {
-	static getTypes() {
-		return {
-			is_alive: Type.bool,
-			url: Type.string,
-			type: Type.string,
-		}
+	props: Props
+
+	static defaultProps = {
+		is_alive: true,
 	}
 
 	render() {
 		const style = require("./product-footer-link.css")
-		if (this.props.url === undefined) {
+		if (!this.props.url) {
 			return <span />
 		}
 		if (this.props.type === "link") {

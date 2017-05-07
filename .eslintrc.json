@@ -8,7 +8,8 @@
 		"jasmine": true
 	},
 	"plugins": [
-		"react"
+		"react",
+		"flowtype"
 	],
 	"rules": {
 		"react/jsx-uses-vars": 1,

@@ -1,12 +1,9 @@
+// @flow
+
 import React from "react"
 import HeadMenu from "../../components/head-menu"
 
 export default class LogPage extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {}
-	}
-
 	render() {
 		const style = require("./log-page.css")
 		return (

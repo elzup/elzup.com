@@ -1,7 +1,15 @@
-import React from "react"
-const Type = React.PropTypes
+// @flow
 
-const FilterButton = props => {
+import React from "react"
+
+type Props = {
+	type: string,
+	label: string,
+	onFilterToggle: Function,
+	toggle: boolean,
+}
+
+const FilterButton = (props: Props) => {
 	const style = require("./filter-button.css")
 	return (
 		<input
@@ -14,13 +22,6 @@ const FilterButton = props => {
 			value={props.label}
 		/>
 	)
-}
-
-FilterButton.propType = {
-	type: Type.string.isRequired,
-	label: Type.string.isRequired,
-	onFilterToggle: Type.func.isRequired,
-	toggle: Type.bool.isRequired,
 }
 
 export default FilterButton

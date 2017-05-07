@@ -1,14 +1,15 @@
+// @flow
+
 import React from "react"
-const Type = React.PropTypes
+
+type Props = {
+	is_active: boolean,
+	label: string,
+	path: string,
+}
 
 export default class HeadMenuItem extends React.Component {
-	static getTypes() {
-		return {
-			is_active: Type.bool,
-			label: Type.string,
-			path: Type.string,
-		}
-	}
+	props: Props
 
 	render() {
 		const style = require("./head-menu-item.css")

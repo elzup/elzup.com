@@ -1,3 +1,5 @@
+// @flow
+
 import React from "react"
 import Item from "../../components/item"
 import DummyItem from "../../components/item/dummy-item.js"
@@ -70,7 +72,9 @@ export default class TopPage extends React.Component {
 		const body = document.getElementsByTagName("body")[0]
 		body.style.height = "100%"
 		body.style.padding = "0"
-		document.getElementById("container").style.height = "100%"
+		const container = document.getElementById("container")
+		container.style.height = "100%"
+		container.children[0].style.height = "100%"
 		const canvas = document.createElement("canvas")
 		canvas.style.position = "fixed"
 		canvas.style.top = "0px"

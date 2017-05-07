@@ -15,15 +15,13 @@ import "./pages/index.css"
 // Render the main component into the dom
 ReactDOM.render(
 	<BrowserRouter>
-		<div>
-			<Switch>
-				<Route exact path="/" component={TopPage} />
-				<Route path="/product" component={ProductPage} />
-				<Route path="/art" component={ArtPage} />
-				<Route path="/log" component={LogPage} />
-				<Route component={NotFoundPage} />
-			</Switch>
-		</div>
+		<Switch>
+			<Route exact path="/" component={TopPage} />
+			<Route path="/product" component={ProductPage} />
+			<Route path="/art" component={ArtPage} />
+			<Route path="/log" component={LogPage} />
+			<Route component={NotFoundPage} />
+		</Switch>
 	</BrowserRouter>,
 	document.getElementById("container")
 )

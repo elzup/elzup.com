@@ -1,3 +1,5 @@
+// @flow
+
 import React from "react"
 import _ from "lodash"
 
@@ -8,19 +10,21 @@ import HeadMenu from "../../components/head-menu"
 import RankFilter from "../../components/rank-filter"
 import CategoryFilter from "../../components/category-filter"
 
+type State = {
+	tags: Array<string>,
+	products: Array<any>,
+	categories: Array<string>,
+	categorySelect: string,
+	rankSelect: number,
+}
+
 export default class ProductPage extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			types: [],
-			tags: [],
-			products: [],
-			categories: [],
-			categorySelect: "ALL",
-			rankSelect: 0,
-		}
-		this._onRankChange = this._onRankChange.bind(this)
-		this._onCategoryChange = this._onCategoryChange.bind(this)
+	state: State = {
+		tags: [],
+		products: [],
+		categories: [],
+		categorySelect: "ALL",
+		rankSelect: 0,
 	}
 
 	componentDidMount() {
@@ -74,12 +78,12 @@ export default class ProductPage extends React.Component {
 					<div className={style.filters}>
 						<RankFilter
 							select={this.state.rankSelect}
-							onFilterToggle={this._onRankChange}
+							onFilterToggle={this._onRankChange.bind(this)}
 						/>
 						<CategoryFilter
 							select={this.state.categorySelect}
 							categories={this.state.categories}
-							onFilterToggle={this._onCategoryChange}
+							onFilterToggle={this._onCategoryChange.bind(this)}
 						/>
 					</div>
 				</header>

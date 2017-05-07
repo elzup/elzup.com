@@ -1,33 +1,35 @@
+// @flow
+
 import React from "react"
-const Type = React.PropTypes
 import ProductFooter from "../product-footer"
 import LazyLoad from "react-lazy-load"
 
-export default class Product extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			img_url: "/images/product/sc_" + props.sid + ".png",
-			no_img: false,
-		}
-	}
+type Props = {
+	sid: string,
+	level: number,
+	category: string,
+	title: string,
+	subtitle: string,
+	description: string,
+	term: string,
+	tags: Array<string>,
+	is_alive: boolean,
+	link?: string,
+	github?: string,
+	trello?: string,
+	members?: Array<any>,
+}
 
-	static getTypes() {
-		return {
-			sid: Type.string.isRequired,
-			level: Type.number.isRequired,
-			category: Type.string.isRequired,
-			title: Type.string.isRequired,
-			subtitle: Type.string.isRequired,
-			description: Type.string.isRequired,
-			term: Type.string.isRequired,
-			tags: Type.array.isRequired,
-			is_alive: Type.bool.isRequired,
-			link: Type.string,
-			github: Type.string,
-			trello: Type.string,
-			members: Type.array,
-		}
+type State = {
+	img_url: string,
+	no_img: boolean,
+}
+
+export default class Product extends React.Component {
+	props: Props
+	state: State = {
+		img_url: "/images/product/sc_" + this.props.sid + ".png",
+		no_img: false,
 	}
 
 	render() {

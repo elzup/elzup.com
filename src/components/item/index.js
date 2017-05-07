@@ -1,6 +1,15 @@
+// @flow
+
 import React from "react"
 
+type Props = {
+	name: string,
+	label: string,
+}
+
 export default class Item extends React.Component {
+	props: Props
+
 	render() {
 		const style = require("./item.css")
 		const href = "/" + this.props.name
