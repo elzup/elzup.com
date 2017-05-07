@@ -1,16 +1,21 @@
+// @flow
+
 import React from "react"
 import HeadMenu from "../../components/head-menu"
 import ArtWork from "../../components/art-work"
 import axios from "axios"
 
+type State = {
+	icons: Array<any>,
+	logos: Array<any>,
+	assets: Array<any>,
+}
+
 export default class ArtPage extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			icons: [],
-			logos: [],
-			assets: [],
-		}
+	state: State = {
+		icons: [],
+		logos: [],
+		assets: [],
 	}
 
 	componentDidMount() {

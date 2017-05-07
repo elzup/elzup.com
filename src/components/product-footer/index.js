@@ -1,16 +1,22 @@
+// @flow
+
 import React from "react"
-const Type = React.PropTypes
 import ReactTooltip from "react-tooltip"
 import ProductFooterLink from "../product-footer-link"
 
+type Props = {
+	is_alive: boolean,
+	link?: string,
+	github?: string,
+	trello?: string,
+}
+
 export default class ProductFooter extends React.Component {
-	static getTypes() {
-		return {
-			is_alive: Type.bool.isRequired,
-			link: Type.string,
-			github: Type.string,
-			trello: Type.string,
-		}
+	props: Props
+	static defaultProps = {
+		link: null,
+		github: null,
+		trello: null,
 	}
 
 	render() {

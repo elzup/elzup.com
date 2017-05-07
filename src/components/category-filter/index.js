@@ -1,8 +1,15 @@
+// @flow
+
 import React from "react"
-const Type = React.PropTypes
 import FilterButton from "../filter-button"
 
-const CategoryFilter = props => {
+type Props = {
+	categories: Array<string>,
+	select: number,
+	onFilterToggle: Function,
+}
+
+const CategoryFilter = (props: Props) => {
 	const btns = props.categories.map(x => (
 		<FilterButton
 			key={x}
@@ -20,12 +27,6 @@ const CategoryFilter = props => {
 			</div>
 		</div>
 	)
-}
-
-CategoryFilter.propType = {
-	categories: Type.arrayOf(Type.string).isRequired,
-	select: Type.number.isRequired,
-	onFilterToggle: Type.func.isRequired,
 }
 
 export default CategoryFilter

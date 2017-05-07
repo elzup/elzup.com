@@ -1,8 +1,14 @@
+// @flow
+
 import React from "react"
-const Type = React.PropTypes
 import FilterButton from "../filter-button"
 
-const RankFilter = props => (
+type Props = {
+	select: number,
+	onFilterToggle: Function,
+}
+
+const RankFilter = (props: Props) => (
 	<div>
 		<p>Quality Select</p>
 		<div>
@@ -33,10 +39,5 @@ const RankFilter = props => (
 		</div>
 	</div>
 )
-
-RankFilter.propType = {
-	select: Type.number.isRequired,
-	onFilterToggle: Type.func.isRequired,
-}
 
 export default RankFilter

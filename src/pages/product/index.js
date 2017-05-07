@@ -1,26 +1,30 @@
+// @flow
+
 import React from "react"
 import _ from "lodash"
 
 import axios from "axios"
 
-import Product from "../../components/product"
+import ProductBox from "../../components/product-box"
 import HeadMenu from "../../components/head-menu"
 import RankFilter from "../../components/rank-filter"
 import CategoryFilter from "../../components/category-filter"
 
+type State = {
+	tags: Array<string>,
+	products: Array<any>,
+	categories: Array<string>,
+	categorySelect: string,
+	rankSelect: number,
+}
+
 export default class ProductPage extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			types: [],
-			tags: [],
-			products: [],
-			categories: [],
-			categorySelect: "ALL",
-			rankSelect: 0,
-		}
-		this._onRankChange = this._onRankChange.bind(this)
-		this._onCategoryChange = this._onCategoryChange.bind(this)
+	state: State = {
+		tags: [],
+		products: [],
+		categories: [],
+		categorySelect: "ALL",
+		rankSelect: 0,
 	}
 
 	componentDidMount() {
@@ -38,10 +42,13 @@ export default class ProductPage extends React.Component {
 			const link = product.link || null
 			const github = product.github || null
 			const trello = product.trello || null
-			const members = product.members.split("-").map(member => {
-				const [name, description] = member.split(":")
-				return { name, description }
-			})
+			let members = []
+			if (product.members) {
+				members = product.members.split("-").map(member => {
+					const [name, description] = member.split(":")
+					return { name, description }
+				})
+			}
 			allTags.push(...tags)
 			categories.push(product.category)
 			return { ...product, tags, members, link, github, trello }
@@ -64,7 +71,7 @@ export default class ProductPage extends React.Component {
 						this.state.categorySelect == x.category)
 				)
 			})
-			.map(x => <Product key={x.sid} {...x} />)
+			.map(p => <ProductBox key={p.sid} product={p} />)
 		return (
 			<main className={style.page}>
 				<header>
@@ -74,12 +81,12 @@ export default class ProductPage extends React.Component {
 					<div className={style.filters}>
 						<RankFilter
 							select={this.state.rankSelect}
-							onFilterToggle={this._onRankChange}
+							onFilterToggle={this._onRankChange.bind(this)}
 						/>
 						<CategoryFilter
 							select={this.state.categorySelect}
 							categories={this.state.categories}
-							onFilterToggle={this._onCategoryChange}
+							onFilterToggle={this._onCategoryChange.bind(this)}
 						/>
 					</div>
 				</header>

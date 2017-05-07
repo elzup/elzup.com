@@ -1,24 +1,26 @@
+// @flow
+
 import React from "react"
-const Type = React.PropTypes
 import LazyLoad from "react-lazy-load"
 
-export default class ArtWork extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			img_url: `/images/art/${props.type}_${props.sid}.${props.ext}`,
-			no_img: false,
-		}
-	}
+type Props = {
+	sid: string,
+	level: number,
+	ext: string,
+	link?: string,
+	type: "icon" | "logo" | "asset",
+}
 
-	static getTypes() {
-		return {
-			sid: Type.string.isRequired,
-			level: Type.number.isRequired,
-			ext: Type.string.isRequired,
-			link: Type.string,
-			type: Type.oneOf(["icon", "logo", "asset"]).isRequired,
-		}
+type State = {
+	img_url: string,
+	no_img: boolean,
+}
+
+export default class ArtWork extends React.Component {
+	props: Props
+	state: State = {
+		img_url: `/images/art/${this.props.type}_${this.props.sid}.${this.props.ext}`,
+		no_img: false,
 	}
 
 	render() {
