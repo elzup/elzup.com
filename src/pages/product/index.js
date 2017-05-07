@@ -5,7 +5,7 @@ import _ from "lodash"
 
 import axios from "axios"
 
-import Product from "../../components/product"
+import ProductBox from "../../components/product-box"
 import HeadMenu from "../../components/head-menu"
 import RankFilter from "../../components/rank-filter"
 import CategoryFilter from "../../components/category-filter"
@@ -42,10 +42,13 @@ export default class ProductPage extends React.Component {
 			const link = product.link || null
 			const github = product.github || null
 			const trello = product.trello || null
-			const members = product.members.split("-").map(member => {
-				const [name, description] = member.split(":")
-				return { name, description }
-			})
+			let members = []
+			if (product.members) {
+				members = product.members.split("-").map(member => {
+					const [name, description] = member.split(":")
+					return { name, description }
+				})
+			}
 			allTags.push(...tags)
 			categories.push(product.category)
 			return { ...product, tags, members, link, github, trello }
@@ -68,7 +71,7 @@ export default class ProductPage extends React.Component {
 						this.state.categorySelect == x.category)
 				)
 			})
-			.map(x => <Product key={x.sid} {...x} />)
+			.map(p => <ProductBox key={p.sid} product={p} />)
 		return (
 			<main className={style.page}>
 				<header>

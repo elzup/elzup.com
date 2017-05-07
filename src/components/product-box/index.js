@@ -3,21 +3,10 @@
 import React from "react"
 import ProductFooter from "../product-footer"
 import LazyLoad from "react-lazy-load"
+import { Product } from "../../types"
 
 type Props = {
-	sid: string,
-	level: number,
-	category: string,
-	title: string,
-	subtitle: string,
-	description: string,
-	term: string,
-	tags: Array<string>,
-	is_alive: boolean,
-	link?: string,
-	github?: string,
-	trello?: string,
-	members?: Array<any>,
+	product: Product,
 }
 
 type State = {
@@ -25,31 +14,33 @@ type State = {
 	no_img: boolean,
 }
 
-export default class Product extends React.Component {
+export default class ProductBox extends React.Component {
 	props: Props
 	state: State = {
-		img_url: "/images/product/sc_" + this.props.sid + ".png",
+		img_url: "/images/product/sc_" + this.props.product.sid + ".png",
 		no_img: false,
 	}
 
 	render() {
+		const { product } = this.props
+
 		const style = require("./product.css")
-		const base_title = <h2>{this.props.title}</h2>
-		const title = this.props.is_alive
-			? <a href={this.props.link} className={style.title_link} target="_blank">
+		const base_title = <h2>{product.title}</h2>
+		const title = product.is_alive
+			? <a href={product.link} className={style.title_link} target="_blank">
 					{base_title}
 				</a>
 			: base_title
-		const members = this.props.members.map(x => {
+		const members = product.members.map(x => {
 			const link = "//twitter.com/" + x.name
 			return (
-				<li key={this.props.sid + ":" + x.name}>
+				<li key={product.sid + ":" + x.name}>
 					<a href={link}>@{x.name}</a>: {x.description}
 				</li>
 			)
 		})
-		const tags = this.props.tags.map(x => (
-			<div key={this.props.sid + ":" + x}>{x}</div>
+		const tags = product.tags.map(x => (
+			<div key={product.sid + ":" + x}>{x}</div>
 		))
 		const img_style = this.state.no_img ? style.no_img : style.img
 		const on_error = () => {
@@ -70,8 +61,8 @@ export default class Product extends React.Component {
 					</LazyLoad>
 				</div>
 				{title}
-				<p>{this.props.subtitle}</p>
-				<p className={style.description}>{this.props.description}</p>
+				<p>{product.subtitle}</p>
+				<p className={style.description}>{product.description}</p>
 				<ul className={style.members}>
 					{members}
 				</ul>
@@ -79,11 +70,11 @@ export default class Product extends React.Component {
 					{tags}
 				</div>
 				<ProductFooter
-					key={this.props.sid}
-					is_alive={this.props.is_alive}
-					link={this.props.link}
-					github={this.props.github}
-					trello={this.props.trello}
+					key={product.sid}
+					is_alive={product.is_alive}
+					link={product.link}
+					github={product.github}
+					trello={product.trello}
 				/>
 			</li>
 		)

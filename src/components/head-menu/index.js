@@ -14,7 +14,7 @@ export default class HeadMenu extends React.Component {
 		const style = require("./head-menu.css")
 		const pages = [
 			{ label: "Top", path: "/" },
-			{ label: "Product", path: "/product" },
+			{ label: "Product", path: "/product-box" },
 			{ label: "Art", path: "/art" },
 			{ label: "Log", path: "/log" },
 		]
