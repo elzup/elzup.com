@@ -1,7 +1,7 @@
 // @flow
 
-import React from "react"
-import FilterButton from "../filter-button"
+import React from 'react'
+import FilterButton from '../filter-button'
 
 type Props = {
 	categories: Array<string>,
@@ -22,9 +22,7 @@ const CategoryFilter = (props: Props) => {
 	return (
 		<div>
 			<p>Category Select</p>
-			<div>
-				{btns}
-			</div>
+			<div>{btns}</div>
 		</div>
 	)
 }

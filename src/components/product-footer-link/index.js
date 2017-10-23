@@ -1,6 +1,6 @@
 // @flow
 
-import React from "react"
+import React from 'react'
 
 type Props = {
 	is_alive?: boolean,
@@ -16,11 +16,11 @@ export default class ProductFooterLink extends React.Component {
 	}
 
 	render() {
-		const style = require("./product-footer-link.css")
+		const style = require('./product-footer-link.css')
 		if (!this.props.url) {
 			return <span />
 		}
-		if (this.props.type === "link") {
+		if (this.props.type === 'link') {
 			if (this.props.is_alive) {
 				return (
 					<a href={this.props.url} className={style.link} target="_blank">
@@ -41,7 +41,7 @@ export default class ProductFooterLink extends React.Component {
 		}[this.props.type]
 		return (
 			<a href={this.props.url} className={link_style} target="_blank">
-				<img src={"/images/icon/mk-" + this.props.type + ".png"} alt="" />
+				<img src={'/images/icon/mk-' + this.props.type + '.png'} alt="" />
 			</a>
 		)
 	}

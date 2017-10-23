@@ -1,6 +1,6 @@
 // @flow
 
-import React from "react"
+import React from 'react'
 
 type Props = {
 	type: string,
@@ -10,7 +10,7 @@ type Props = {
 }
 
 const FilterButton = (props: Props) => {
-	const style = require("./filter-button.css")
+	const style = require('./filter-button.css')
 	return (
 		<input
 			className={style.btn}

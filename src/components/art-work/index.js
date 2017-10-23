@@ -1,14 +1,14 @@
 // @flow
 
-import React from "react"
-import LazyLoad from "react-lazy-load"
+import React from 'react'
+import LazyLoad from 'react-lazy-load'
 
 type Props = {
 	sid: string,
 	level: number,
 	ext: string,
 	link?: string,
-	type: "icon" | "logo" | "asset",
+	type: 'icon' | 'logo' | 'asset',
 }
 
 type State = {
@@ -19,15 +19,16 @@ type State = {
 export default class ArtWork extends React.Component {
 	props: Props
 	state: State = {
-		img_url: `/images/art/${this.props.type}_${this.props.sid}.${this.props.ext}`,
+		img_url: `/images/art/${this.props.type}_${this.props.sid}.${this.props
+			.ext}`,
 		no_img: false,
 	}
 
 	render() {
-		const style = require("./art-work.css")
+		const style = require('./art-work.css')
 		const on_error = () => {
 			this.setState({
-				img_url: "/images/404.png",
+				img_url: '/images/404.png',
 				no_img: true,
 			})
 		}

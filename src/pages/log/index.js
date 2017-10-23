@@ -1,11 +1,11 @@
 // @flow
 
-import React from "react"
-import HeadMenu from "../../components/head-menu"
+import React from 'react'
+import HeadMenu from '../../components/head-menu'
 
 export default class LogPage extends React.Component {
 	render() {
-		const style = require("./log-page.css")
+		const style = require('./log-page.css')
 		return (
 			<main className={style.page}>
 				<header>
@@ -13,9 +13,7 @@ export default class LogPage extends React.Component {
 					<h1>Log</h1>
 					<p>えるざっぷのログ</p>
 				</header>
-				<div className={style.stop}>
-					Under Construction
-				</div>
+				<div className={style.stop}>Under Construction</div>
 			</main>
 		)
 	}

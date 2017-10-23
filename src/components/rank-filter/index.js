@@ -1,7 +1,7 @@
 // @flow
 
-import React from "react"
-import FilterButton from "../filter-button"
+import React from 'react'
+import FilterButton from '../filter-button'
 
 type Props = {
 	select: number,
