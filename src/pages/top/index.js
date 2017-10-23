@@ -3,8 +3,7 @@
 import React from 'react'
 import axios from 'axios'
 
-import Item from '../../components/item'
-import DummyItem from '../../components/item/dummy-item.js'
+import Item, { DummyItem } from '../../components/item'
 import Contact from '../../components/contact'
 import DummyContact from '../../components/contact/dummy-contact.js'
 
