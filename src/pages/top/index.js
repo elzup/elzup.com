@@ -1,34 +1,68 @@
 // @flow
 
-import React from "react"
-import Item from "../../components/item"
-import DummyItem from "../../components/item/dummy-item.js"
-import Contact from "../../components/contact"
-import DummyContact from "../../components/contact/dummy-contact.js"
-import axios from "axios"
+import React from 'react'
+import axios from 'axios'
 
-const aa1_path = "/data/welcome_aa.txt"
-const aa2_path = "/data/elzup_aa.txt"
+import Item from '../../components/item'
+import DummyItem from '../../components/item/dummy-item.js'
+import Contact from '../../components/contact'
+import DummyContact from '../../components/contact/dummy-contact.js'
 
-export default class TopPage extends React.Component {
+import {
+	Main,
+	Page,
+	EyeCatch,
+	Title,
+	Layer2,
+	Layer3,
+	Layer4,
+	Menu,
+	Contacts,
+} from './Wrapper'
+
+const aa1_path = '/data/welcome_aa.txt'
+const aa2_path = '/data/elzup_aa.txt'
+
+type Point = {
+	x: number,
+	y: number,
+}
+
+type Direction = {
+	vx: number,
+	vy: number,
+}
+
+type FootStamp = Point & {
+	dire: Direction,
+	life: number,
+	seqAge: number,
+}
+
+const distance = (pos1: Point, pos2: Point) => {
+	const dx = pos1.x - pos2.x
+	const dy = pos1.y - pos2.y
+	return Math.sqrt(dx * dx + dy * dy)
+}
+
+export default class TopPage extends React.Component<{}> {
 	render() {
-		const style = require("./top-page.css")
 		return (
-			<main className={style.wrap_main}>
-				<div className={style.page} id="face">
-					<div className={style.eyecatch}>
-						<h1>elzup.com</h1>
-					</div>
-					<div className={style.layer2}>
-						<ul className={style.menu}>
+			<Main>
+				<Page>
+					<EyeCatch>
+						<Title>elzup.com</Title>
+					</EyeCatch>
+					<Layer2>
+						<Menu>
 							<Item label="Product" name="product" />
 							<Item label="Art" name="art" />
 							<DummyItem />
 							<Item label="Log" name="log" />
-						</ul>
-						<div className={style.layer3}>
-							<div className={style.layer4} />
-							<ul className={style.contacts}>
+						</Menu>
+						<Layer3>
+							<Layer4 />
+							<Contacts>
 								<DummyContact />
 								<DummyContact />
 								<Contact
@@ -58,46 +92,50 @@ export default class TopPage extends React.Component {
 									link="//elzup.tumblr.com"
 									type="tumblr"
 								/>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</main>
+							</Contacts>
+						</Layer3>
+					</Layer2>
+				</Page>
+			</Main>
 		)
 	}
 
 	componentDidMount() {
 		// HACK: extract text plugins side effect
-		document.getElementsByTagName("html")[0].style.height = "100%"
-		const body = document.getElementsByTagName("body")[0]
-		body.style.height = "100%"
-		body.style.padding = "0"
-		const container = document.getElementById("container")
-		container.style.height = "100%"
-		container.children[0].style.height = "100%"
-		const canvas = document.createElement("canvas")
-		canvas.style.position = "fixed"
-		canvas.style.top = "0px"
-		canvas.style.left = "0px"
-		const w = (canvas.width = body.clientWidth)
-		const h = (canvas.height = body.clientHeight)
-		canvas.setAttribute("width", w)
-		canvas.setAttribute("height", h)
-		canvas.style.width = w + "px"
-		canvas.style.height = h + "px"
+		document.getElementsByTagName('html')[0].style.height = '100%'
+		const body = document.getElementsByTagName('body')[0]
+		body.style.height = '100%'
+		body.style.padding = '0'
+		const container = document.getElementById('root')
+		if (container !== null) {
+			container.style.height = '100%'
+			container.children[0].style.height = '100%'
+		}
+		const canvas = document.createElement('canvas')
+		canvas.style.position = 'fixed'
+		canvas.style.top = '0px'
+		canvas.style.left = '0px'
+		const w = body.clientWidth
+		canvas.width = w
+		const h = body.clientHeight
+		canvas.height = h
+		canvas.setAttribute('width', w.toString())
+		canvas.setAttribute('height', h.toString())
+		canvas.style.width = w + 'px'
+		canvas.style.height = h + 'px'
 		body.insertBefore(canvas, body.firstChild)
-		const ctx = canvas.getContext("2d")
+		const ctx = canvas.getContext('2d')
 		ctx.lineWidth = 5
-		ctx.strokeStyle = "black"
+		ctx.strokeStyle = 'black'
 
 		this.loadAA()
 
 		// draw Logics
-		const points = []
-		let footstamps = []
+		const points: FootStamp[] = []
+		let footstamps: FootStamp[] = []
 
 		const v = 1
-		const directions = [
+		const directions: Direction[] = [
 			{ vx: v, vy: 0 },
 			{ vx: 0, vy: v },
 			{ vx: -v, vy: 0 },
@@ -107,19 +145,13 @@ export default class TopPage extends React.Component {
 		const seqAgeMin = 10
 		const mouse = { x: -100, y: -100 }
 		for (let i = 0; i < 20; i++) {
-			const p = {
+			points.push({
 				x: Math.random() * w,
 				y: Math.random() * h,
-				dire: {},
+				life: 0,
+				dire: { ...directions[Math.floor(Math.random() * 4)] },
 				seqAge: Math.floor(Math.random() * (seqAgeMax - seqAgeMin) + seqAgeMin),
-			}
-			Object.assign(p.dire, directions[Math.floor(Math.random() * 4)])
-			points.push(p)
-		}
-		const distance = (pos1, pos2) => {
-			const dx = pos1.x - pos2.x
-			const dy = pos1.y - pos2.y
-			return Math.sqrt(dx * dx + dy * dy)
+			})
 		}
 		setInterval(() => {
 			ctx.clearRect(0, 0, w, h)
@@ -130,9 +162,6 @@ export default class TopPage extends React.Component {
 				if (x < 0 || x >= w || y < 0 || y >= h) {
 					p.dire.vx *= -1
 					p.dire.vy *= -1
-				}
-				const footstamp = {
-					life: 6,
 				}
 				p.x += p.dire.vx * p.seqAge
 				p.y += p.dire.vy * p.seqAge
@@ -145,8 +174,7 @@ export default class TopPage extends React.Component {
 					p.dire.vy = p.dire.vx
 					p.dire.vx = t
 				}
-				Object.assign(footstamp, p)
-				footstamps.push(footstamp)
+				footstamps.push({ ...p, life: 6 })
 			}
 			let dieIndex = 0
 			for (let i = 0; i < footstamps.length; i++) {
@@ -165,7 +193,8 @@ export default class TopPage extends React.Component {
 			}
 			footstamps = footstamps.slice(dieIndex + 1)
 		}, 50)
-		canvas.addEventListener("mousemove", e => {
+
+		canvas.addEventListener('mousemove', (e: any) => {
 			mouse.x = e.clientX
 			mouse.y = e.clientY
 		})
@@ -174,6 +203,6 @@ export default class TopPage extends React.Component {
 	async loadAA() {
 		const [aa1, aa2] = await Promise.all([aa1_path, aa2_path].map(axios.get))
 		console.log(aa1.data)
-		console.log(`%c${aa2.data}`, "font-size: 10px;")
+		console.log(`%c${aa2.data}`, 'font-size: 10px;')
 	}
 }
