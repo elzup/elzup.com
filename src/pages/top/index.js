@@ -148,7 +148,8 @@ export default class TopPage extends React.Component<{}> {
 			points.push({
 				x: Math.random() * w,
 				y: Math.random() * h,
-				dire: directions[Math.floor(Math.random() * 4)],
+				life: 0,
+				dire: { ...directions[Math.floor(Math.random() * 4)] },
 				seqAge: Math.floor(Math.random() * (seqAgeMax - seqAgeMin) + seqAgeMin),
 			})
 		}
@@ -173,7 +174,7 @@ export default class TopPage extends React.Component<{}> {
 					p.dire.vy = p.dire.vx
 					p.dire.vx = t
 				}
-				footstamps.push({ life: 6, ...p })
+				footstamps.push({ ...p, life: 6 })
 			}
 			let dieIndex = 0
 			for (let i = 0; i < footstamps.length; i++) {
