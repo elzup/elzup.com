@@ -72,7 +72,7 @@ export default class TopPage extends React.Component {
 		const body = document.getElementsByTagName('body')[0]
 		body.style.height = '100%'
 		body.style.padding = '0'
-		const container = document.getElementById('container')
+		const container = document.getElementById('root')
 		container.style.height = '100%'
 		container.children[0].style.height = '100%'
 		const canvas = document.createElement('canvas')
