@@ -4,8 +4,7 @@ import React from 'react'
 import axios from 'axios'
 
 import Item, { DummyItem } from '../../components/item'
-import Contact from '../../components/contact'
-import DummyContact from '../../components/contact/dummy-contact.js'
+import Contact, { DummyContact } from '../../components/contact'
 
 import {
 	Main,
