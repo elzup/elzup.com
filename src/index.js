@@ -1,14 +1,14 @@
-import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ReactDOM from "react-dom";
+import React from "react"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
+import ReactDOM from "react-dom"
 
-import TopPage from "./pages/top";
-import ProductPage from "./pages/product/index";
-import ArtPage from "./pages/art/index";
-import LogPage from "./pages/log/index";
-import NotFoundPage from "./pages/404/index";
+import TopPage from "./pages/top"
+import ProductPage from "./pages/product/index"
+import ArtPage from "./pages/art/index"
+import LogPage from "./pages/log/index"
+import NotFoundPage from "./pages/404/index"
 
-import "./pages/index.css";
+import "./pages/index.css"
 
 // Render the main component into the dom
 ReactDOM.render(
@@ -22,4 +22,4 @@ ReactDOM.render(
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
-);
+)
