@@ -1,9 +1,11 @@
 // @flow
 
 import React from 'react'
+import axios from 'axios'
+
 import HeadMenu from '../../components/head-menu'
 import ArtWork from '../../components/art-work'
-import axios from 'axios'
+import { Subtitle, WorkBox } from './Wrapper'
 
 type State = {
 	icons: Array<any>,
@@ -11,7 +13,7 @@ type State = {
 	assets: Array<any>,
 }
 
-export default class ArtPage extends React.Component {
+export default class ArtPage extends React.Component<{}, State> {
 	state: State = {
 		icons: [],
 		logos: [],
@@ -26,33 +28,32 @@ export default class ArtPage extends React.Component {
 		const res = await axios.get('/data/arts.json', {
 			Accept: 'application/json',
 		})
-		this.setState(Object.assign(this.state, res.data))
+		this.setState({ ...res.data })
 	}
 
 	render() {
-		const style = require('./art-page.css')
 		const icons = this.state.icons.map(x => (
-			<ArtWork key={x.sid} type="icon" {...x} />
+			<ArtWork key={x.sid} category="icon" {...x} />
 		))
 		const logos = this.state.logos.map(x => (
-			<ArtWork key={x.sid} type="logo" {...x} />
+			<ArtWork key={x.sid} category="logo" {...x} />
 		))
 		const assets = this.state.assets.map(x => (
-			<ArtWork key={x.sid} type="asset" {...x} />
+			<ArtWork key={x.sid} category="asset" {...x} />
 		))
 		return (
-			<main className={style.page}>
+			<main>
 				<header>
 					<HeadMenu current="Art" />
 					<h1>Art</h1>
 					<p>えるざっぷの芸術作品</p>
 				</header>
-				<h2 className={style.subtitle}>AppIcon</h2>
-				<ul className={style.work_box}>{icons}</ul>
-				<h2 className={style.subtitle}>Logo</h2>
-				<ul className={style.work_box}>{logos}</ul>
-				<h2 className={style.subtitle}>Parts Asset</h2>
-				<ul className={style.work_box}>{assets}</ul>
+				<Subtitle>AppIcon</Subtitle>
+				<WorkBox>{icons}</WorkBox>
+				<Subtitle>Logo</Subtitle>
+				<WorkBox>{logos}</WorkBox>
+				<Subtitle>Parts Asset</Subtitle>
+				<WorkBox>{assets}</WorkBox>
 			</main>
 		)
 	}
