@@ -2,6 +2,8 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import ReactDOM from 'react-dom'
 
+import registerServiceWorker from './registerServiceWorker'
+
 import TopPage from './pages/top'
 import ProductPage from './pages/product/index'
 import ArtPage from './pages/art/index'
