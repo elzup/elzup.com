@@ -2,6 +2,8 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import ReactDOM from 'react-dom'
 
+import './initialize'
+
 import registerServiceWorker from './registerServiceWorker'
 
 import TopPage from './pages/top'
@@ -10,9 +12,6 @@ import ArtPage from './pages/art/index'
 import LogPage from './pages/log/index'
 import NotFoundPage from './pages/404/index'
 
-import './pages/index.css'
-
-// Render the main component into the dom
 ReactDOM.render(
 	<BrowserRouter>
 		<Switch>
