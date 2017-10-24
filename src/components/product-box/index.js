@@ -68,18 +68,20 @@ export default class ProductBox extends React.Component<Props, State> {
 				</ImageWrap>
 				{title}
 				<p>{product.subtitle}</p>
-				<Description>{product.description}</Description>
-				<Members>{members}</Members>
-				<div>
-					{product.tags.map(x => <Tag key={product.sid + ':' + x}>{x}</Tag>)}
+				<div style={{ display: 'flex', flexDirection: 'column' }}>
+					<Description>{product.description}</Description>
+					<Members>{members}</Members>
+					<div>
+						{product.tags.map(x => <Tag key={product.sid + ':' + x}>{x}</Tag>)}
+					</div>
+					<ProductFooter
+						key={product.sid}
+						isAlive={product.is_alive}
+						link={product.link}
+						github={product.github}
+						trello={product.trello}
+					/>
 				</div>
-				<ProductFooter
-					key={product.sid}
-					is_alive={product.is_alive}
-					link={product.link}
-					github={product.github}
-					trello={product.trello}
-				/>
 			</Wrapper>
 		)
 	}

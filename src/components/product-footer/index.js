@@ -2,7 +2,7 @@
 
 import React from 'react'
 import ReactTooltip from 'react-tooltip'
-import ProductFooterLink from '../product-footer-link'
+import ProductFooterLink, { FooterLinkBase } from '../product-footer-link'
 
 import styled from 'styled-components'
 
@@ -16,22 +16,18 @@ const Wrapper = styled.div`
 `
 
 type Props = {
-	is_alive: boolean,
+	isAlive: boolean,
 	link?: string,
 	github: ?string,
 	trello?: string,
 }
 
-const Component = ({ is_alive, link, github, trello }: Props) => (
+const Component = ({ isAlive, link, github, trello }: Props) => (
 	<Wrapper>
-		{link ? (
-			<ProductFooterLink isAlive={is_alive} category={'link'} url={link} />
-		) : (
-			<span />
-		)}
+		{link ? <FooterLinkBase isAlive={isAlive} url={link} /> : <span />}
 		{github ? <ProductFooterLink category={'github'} url={github} /> : <span />}
 		{trello ? <ProductFooterLink category={'trello'} url={trello} /> : <span />}
-		{is_alive ? null : <ReactTooltip />}
+		{isAlive ? null : <ReactTooltip />}
 	</Wrapper>
 )
 export default Component
