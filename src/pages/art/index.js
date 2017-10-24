@@ -25,7 +25,7 @@ export default class ArtPage extends React.Component<{}, State> {
 	}
 
 	async loadArt() {
-		const data = await getArts
+		const data = await getArts()
 		this.setState({ ...data })
 	}
 

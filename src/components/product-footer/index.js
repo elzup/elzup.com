@@ -25,10 +25,12 @@ type Props = {
 const Component = ({ is_alive, link, github, trello }: Props) => (
 	<Wrapper>
 		{link ? (
-			<ProductFooterLink is_alive={is_alive} category={'link'} url={link} />
-		) : null}
-		{github ? <ProductFooterLink category={'github'} url={github} /> : null}
-		{trello ? <ProductFooterLink category={'trello'} url={trello} /> : null}
+			<ProductFooterLink isAlive={is_alive} category={'link'} url={link} />
+		) : (
+			<span />
+		)}
+		{github ? <ProductFooterLink category={'github'} url={github} /> : <span />}
+		{trello ? <ProductFooterLink category={'trello'} url={trello} /> : <span />}
 		{is_alive ? null : <ReactTooltip />}
 	</Wrapper>
 )

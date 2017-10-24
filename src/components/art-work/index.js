@@ -4,7 +4,6 @@ import React from 'react'
 import LazyLoad from 'react-lazy-load'
 
 import styled from 'styled-components'
-import { media } from '../../utils'
 
 export const DummyContact = styled.li``
 const Icon = styled.li`

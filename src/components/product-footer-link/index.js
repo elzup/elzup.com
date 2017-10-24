@@ -29,7 +29,7 @@ const NoLink = styled.span`
 	padding: 5px 5px 1px 5px;
 `
 
-const LinkDevImg = styled.a`
+const LinkDevImg = styled.img`
 	width: 1.5em;
 `
 

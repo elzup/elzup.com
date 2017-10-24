@@ -32,9 +32,10 @@ export async function getProducts(): Promise<GetProductsResponse> {
 }
 
 export async function getArts(): Promise<any> {
-	return await axios.get('/data/arts.json', {
+	const data = await axios.get('/data/arts.json', {
 		Accept: 'application/json',
 	})
+	return data.data
 }
 
 type GetAAResponse = { aa1: string, aa2: string }

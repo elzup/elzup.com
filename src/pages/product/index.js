@@ -1,16 +1,13 @@
 // @flow
 
 import React from 'react'
-import _ from 'lodash'
 
 import styled from 'styled-components'
 
-import { media } from '../../utils'
-
-import ProductBox from '../../components/product-box'
 import HeadMenu from '../../components/head-menu'
 import RankFilter from '../../components/rank-filter'
 import CategoryFilter from '../../components/category-filter'
+import ProductBox from '../../components/product-box'
 
 import { getProducts } from '../../api'
 
@@ -61,9 +58,9 @@ export default class ProductPage extends React.Component<{}, State> {
 		const { products } = this.state
 		const displayProducts = products.filter(x => {
 			return (
-				(this.state.rankSelect == 0 || this.state.rankSelect == x.rank) &&
-				(this.state.categorySelect == 'ALL' ||
-					this.state.categorySelect == x.category)
+				(this.state.rankSelect === 0 || this.state.rankSelect === x.rank) &&
+				(this.state.categorySelect === 'ALL' ||
+					this.state.categorySelect === x.category)
 			)
 		})
 		return (
