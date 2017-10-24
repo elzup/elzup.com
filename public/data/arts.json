@@ -1,92 +1,98 @@
 {
-  "icons": [
-	{
-	  "sid": "planckunits",
-	  "label": "Planck Units Inc.",
-	  "ext": "svg",
-	  "link": ""
-	},
-	{
-	  "sid": "ssconnect",
-	  "label": "SSConnectApp",
-	  "ext": "svg",
-	  "link": ""
-	},
-	{
-	  "sid": "annicteye",
-	  "label": "Annict Eye",
-	  "ext": "svg",
-	  "link": ""
-	},
-	{
-	  "sid": "com-color",
-	  "label": "Com Color",
-	  "ext": "svg",
-	  "link": ""
-	},
-	{
-	  "sid": "merry-blue",
-	  "label": "Merry Blue",
-	  "ext": "svg",
-	  "link": ""
-	},
-	{
-	  "sid": "narou",
-	  "label": "なろう Time",
-	  "ext": "svg",
-	  "link": ""
-	},
-	{
-	  "sid": "pictter",
-	  "label": "Pictter",
-	  "ext": "svg",
-	  "link": ""
-	},
-	{
-	  "sid": "disaster",
-	  "label": "Disaster Mesh Visualiser",
-	  "ext": "png",
-	  "link": ""
-	}
-  ],
-  "logos": [
-	{
-	  "sid": "esckey",
-	  "label": "巨大 Esc キーのラベル",
-	  "ext": "png",
-	  "link": ""
-	},
-	{
-	  "sid": "planckunits",
-	  "label": "Planck Units Inc.",
-	  "ext": "png",
-	  "link": ""
-	},
-	{
-	  "sid": "cpslab",
-	  "label": "CPS Lab.",
-	  "ext": "svg",
-	  "link": ""
-	},
-	{
-	  "sid": "iwi-nameplate",
-	  "label": "岩井研表札",
-	  "ext": "png",
-	  "link": ""
-	},
-	{
-	  "sid": "narou",
-	  "label": "なろう Time ヘッダー",
-	  "ext": "svg",
-	  "link": ""
-	}
-  ],
-  "assets": [
-	{
-	  "sid": "loading-image",
-	  "label": "Preloader",
-	  "ext": "svg",
-	  "link": ""
-	}
-  ]
+	"icons": [
+		{
+			"sid": "asiatoro",
+			"label": "Asiatoro",
+			"ext": "svg",
+			"link": ""
+		},
+		{
+			"sid": "planckunits",
+			"label": "Planck Units Inc.",
+			"ext": "svg",
+			"link": ""
+		},
+		{
+			"sid": "ssconnect",
+			"label": "SSConnectApp",
+			"ext": "svg",
+			"link": ""
+		},
+		{
+			"sid": "annicteye",
+			"label": "Annict Eye",
+			"ext": "svg",
+			"link": ""
+		},
+		{
+			"sid": "com-color",
+			"label": "Com Color",
+			"ext": "svg",
+			"link": ""
+		},
+		{
+			"sid": "merry-blue",
+			"label": "Merry Blue",
+			"ext": "svg",
+			"link": ""
+		},
+		{
+			"sid": "narou",
+			"label": "なろう Time",
+			"ext": "svg",
+			"link": ""
+		},
+		{
+			"sid": "pictter",
+			"label": "Pictter",
+			"ext": "svg",
+			"link": ""
+		},
+		{
+			"sid": "disaster",
+			"label": "Disaster Mesh Visualiser",
+			"ext": "png",
+			"link": ""
+		}
+	],
+	"logos": [
+		{
+			"sid": "esckey",
+			"label": "巨大 Esc キーのラベル",
+			"ext": "png",
+			"link": ""
+		},
+		{
+			"sid": "planckunits",
+			"label": "Planck Units Inc.",
+			"ext": "png",
+			"link": ""
+		},
+		{
+			"sid": "cpslab",
+			"label": "CPS Lab.",
+			"ext": "svg",
+			"link": ""
+		},
+		{
+			"sid": "iwi-nameplate",
+			"label": "岩井研表札",
+			"ext": "png",
+			"link": ""
+		},
+		{
+			"sid": "narou",
+			"label": "なろう Time ヘッダー",
+			"ext": "svg",
+			"link": ""
+		}
+	],
+	"assets": [
+		{
+			"sid": "loading-image",
+			"label": "Preloader",
+			"ext": "svg",
+			"link": ""
+		}
+	]
 }
