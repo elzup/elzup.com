@@ -13,7 +13,7 @@ const CategoryFilter = (props: Props) => {
 	const btns = props.categories.map(x => (
 		<FilterButton
 			key={x}
-			type={x}
+			category={x}
 			label={x}
 			toggle={props.select === x}
 			onFilterToggle={props.onFilterToggle}

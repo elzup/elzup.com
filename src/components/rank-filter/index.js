@@ -8,33 +8,33 @@ type Props = {
 	onFilterToggle: Function,
 }
 
-const RankFilter = (props: Props) => (
+const RankFilter = ({ select, onFilterToggle }: Props) => (
 	<div>
 		<p>Quality Select</p>
 		<div>
 			<FilterButton
-				type={0}
+				category={0}
 				label="ALL"
-				toggle={props.select === 0}
-				onFilterToggle={props.onFilterToggle}
+				toggle={select === 0}
+				onFilterToggle={onFilterToggle}
 			/>
 			<FilterButton
-				type={1}
+				category={1}
 				label="★"
-				toggle={props.select === 1}
-				onFilterToggle={props.onFilterToggle}
+				toggle={select === 1}
+				onFilterToggle={onFilterToggle}
 			/>
 			<FilterButton
-				type={2}
+				category={2}
 				label="★★"
-				toggle={props.select === 2}
-				onFilterToggle={props.onFilterToggle}
+				toggle={select === 2}
+				onFilterToggle={onFilterToggle}
 			/>
 			<FilterButton
-				type={3}
+				category={3}
 				label="★★★"
-				toggle={props.select === 3}
-				onFilterToggle={props.onFilterToggle}
+				toggle={select === 3}
+				onFilterToggle={onFilterToggle}
 			/>
 		</div>
 	</div>
