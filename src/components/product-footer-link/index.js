@@ -4,7 +4,7 @@ import React from 'react'
 
 import styled from 'styled-components'
 
-const Link = styled.span`
+const Link = styled.a`
 	display: block;
 	margin-left: 5px;
 	background-color: black;
