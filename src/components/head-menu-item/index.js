@@ -2,23 +2,28 @@
 
 import React from 'react'
 
+import styled from 'styled-components'
+import { media } from '../../utils'
+
+const Item = styled.li`
+	&:not(:first-child) {
+		margin-left: 2em;
+	}
+	${media.handheld(`
+	&:not(:first-child) {
+		margin-left: 0;
+	}
+	`)};
+`
+
 type Props = {
-	is_active: boolean,
+	isActive: boolean,
 	label: string,
 	path: string,
 }
 
-export default class HeadMenuItem extends React.Component {
-	props: Props
+const Component = ({ isActive, label, path }: Props) => (
+	<Item>{isActive ? label : <a href={path}>{label}</a>}</Item>
+)
 
-	render() {
-		const style = require('./head-menu-item.css')
-		let inner = ''
-		if (!this.props.is_active) {
-			inner = <a href={this.props.path}>{this.props.label}</a>
-		} else {
-			inner = this.props.label
-		}
-		return <li className={style.item}>{inner}</li>
-	}
-}
+export default Component

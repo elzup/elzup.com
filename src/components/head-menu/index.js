@@ -3,28 +3,38 @@
 import React from 'react'
 import HeadMenuItem from '../head-menu-item'
 
+import styled from 'styled-components'
+import { media } from '../../utils'
+
+const Menu = styled.ul`
+	display: flex;
+	${media.handheld`
+		justify-content: space-around;
+	`};
+`
+
+type Page = {
+	label: string,
+	path: string,
+}
+
+const pages: Page[] = [
+	{ label: 'Top', path: '/' },
+	{ label: 'Product', path: '/product' },
+	{ label: 'Art', path: '/art' },
+	{ label: 'Log', path: '/log' },
+]
+
 type Props = {
 	current: 'Top' | 'Product' | 'Art' | 'Log',
 }
 
-export default class HeadMenu extends React.Component {
-	props: Props
+const Component = ({ current }: Props) => (
+	<Menu>
+		{pages.map(x => (
+			<HeadMenuItem key={x.label} isActive={current === x.label} {...x} />
+		))}
+	</Menu>
+)
 
-	render() {
-		const style = require('./head-menu.css')
-		const pages = [
-			{ label: 'Top', path: '/' },
-			{ label: 'Product', path: '/product-box' },
-			{ label: 'Art', path: '/art' },
-			{ label: 'Log', path: '/log' },
-		]
-		const lis = pages.map(x => (
-			<HeadMenuItem
-				key={x.label}
-				is_active={this.props.current == x.label}
-				{...x}
-			/>
-		))
-		return <ul className={style.menu}>{lis}</ul>
-	}
-}
+export default Component
