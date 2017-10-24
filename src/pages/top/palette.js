@@ -57,22 +57,29 @@ export default async function palette() {
 	ctx.lineWidth = 5
 	ctx.strokeStyle = 'black'
 
-	const emoW = W / 8
+	const emoW = W / 4
 	const baseSpeed = W / 3 / 60
-	const emoPase = 3
+	const emoPase = 3 // != 0
+	const clearRate = 30 // <0, 100>
 
 	const randH = () => Math.random() * H - emoW / 2
 	const randSpeed = () => (Math.random() / 2 + 0.75) * baseSpeed
+	const randHWC = () => {
+		const color = _.random(100) < clearRate ? null : ''
+		const d = _.random() * 0.7
+		const v1 = emoW * d
+		const v2 = emoW * d * 1.6180339887
+		const [h, w] = _.shuffle([v1, v2])
+		return { h, w, color }
+	}
 	function newEmo(): Emotion {
 		return {
 			x: -emoW,
 			vx: randSpeed(),
 			y: randH(),
 			vy: 0,
-			w: 10,
-			h: 10,
+			...randHWC(),
 			seed: _.random(99),
-			color: null,
 		}
 	}
 
@@ -81,7 +88,7 @@ export default async function palette() {
 		let s = 100
 		let l = 90
 		let a = 0.5
-		if (emo.seed < 50) {
+		if (emo.color === null) {
 			return null
 		}
 		return `hsla(${h}, ${s}%, ${l}%, ${a})`
@@ -98,10 +105,10 @@ export default async function palette() {
 		ctx.beginPath()
 		state.emos.forEach(emo => {
 			if (emo.color === null) {
-				ctx.clearRect(emo.x, emo.y, emoW, emoW)
+				ctx.clearRect(emo.x, emo.y, emo.w, emo.h)
 			} else {
 				ctx.fillStyle = emo.color
-				ctx.fillRect(emo.x, emo.y, emoW, emoW)
+				ctx.fillRect(emo.x, emo.y, emo.w, emo.h)
 			}
 		})
 		ctx.fill()
