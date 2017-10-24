@@ -7,7 +7,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "deploy":
+      "(cd ~/.ghq/github.com/elzup/elzup.com-v5/ && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/)"
   },
   "main": "index.js",
   "repository": {
