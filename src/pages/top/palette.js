@@ -25,48 +25,57 @@ function init() {
 	canvas.style.position = 'fixed'
 	canvas.style.top = '0px'
 	canvas.style.left = '0px'
-	const w = body.clientWidth
-	canvas.width = w
-	const h = body.clientHeight
-	canvas.height = h
-	canvas.setAttribute('width', w.toString())
-	canvas.setAttribute('height', h.toString())
-	canvas.style.width = w + 'px'
-	canvas.style.height = h + 'px'
+	const W = body.clientWidth
+	canvas.width = W
+	const H = body.clientHeight
+	canvas.height = H
+	canvas.setAttribute('width', W.toString())
+	canvas.setAttribute('height', H.toString())
+	canvas.style.width = W + 'px'
+	canvas.style.height = H + 'px'
 	body.insertBefore(canvas, body.firstChild)
-	return { body, canvas, container, w, h }
+	return { body, canvas, container, W, H }
+}
+
+type State = {
+	emos: Emotion[],
 }
 
 export default async function palette() {
-	const { body, canvas, container, w, h } = init()
+	const { body, canvas, container, W, H } = init()
 	const mouse = { x: 0, y: 0 }
 	canvas.addEventListener('mousemove', (e: any) => {
 		mouse.x = e.clientX
 		mouse.y = e.clientY
 	})
 	const ctx = canvas.getContext('2d')
+
+	// configs
 	ctx.lineWidth = 5
 	ctx.strokeStyle = 'black'
 
-	const emoW = w / 8
-	const baseSpeed = w / 3 / 60
+	const emoW = W / 8
+	const baseSpeed = W / 3 / 60
 
-	const randH = () => Math.random() * h - emoW / 2
+	const randH = () => Math.random() * H - emoW / 2
 	const randSpeed = () => (Math.random() / 2 + 0.75) * baseSpeed
 
-	const emos: Emotion[] = _.map(Array(10), () => ({
-		x: 0,
-		vx: randSpeed(),
-		y: randH(),
-		vy: 0,
-		w: 10,
-		h: 10,
-	}))
+	// initialize
+	const state: State = {
+		emos: _.map(Array(10), () => ({
+			x: 0,
+			vx: randSpeed(),
+			y: randH(),
+			vy: 0,
+			w: 10,
+			h: 10,
+		})),
+	}
 
 	function draw() {
-		ctx.clearRect(0, 0, w, h)
+		ctx.clearRect(0, 0, W, H)
 		ctx.beginPath()
-		emos.forEach(emo => {
+		state.emos.forEach(emo => {
 			ctx.fillRect(emo.x, emo.y, emoW, emoW)
 		})
 		ctx.fill()
@@ -74,10 +83,17 @@ export default async function palette() {
 	}
 
 	function update() {
-		emos.forEach(emo => {
-			emo.x += emo.vx
-			emo.y += emo.vy
-		})
+		const emos = _.compact(
+			state.emos.map(emo => {
+				const x = emo.x + emo.vx
+				const y = emo.y + emo.vy
+				if (x > W - 100) {
+					return null
+				}
+				return { ...emo, x, y }
+			})
+		)
+		state.emos = emos
 	}
 
 	setInterval(() => {
