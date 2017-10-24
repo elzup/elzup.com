@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import axios from 'axios'
+import { getArts } from '../../api'
 
 import HeadMenu from '../../components/head-menu'
 import ArtWork from '../../components/art-work'
@@ -25,10 +25,8 @@ export default class ArtPage extends React.Component<{}, State> {
 	}
 
 	async loadArt() {
-		const res = await axios.get('/data/arts.json', {
-			Accept: 'application/json',
-		})
-		this.setState({ ...res.data })
+		const data = await getArts
+		this.setState({ ...data })
 	}
 
 	render() {

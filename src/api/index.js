@@ -30,3 +30,20 @@ export async function getProducts(): Promise<GetProductsResponse> {
 	categories.unshift('ALL')
 	return { products, categories: _.uniq(categories), tags: _.uniq(tags) }
 }
+
+export async function getArts(): Promise<any> {
+	return await axios.get('/data/arts.json', {
+		Accept: 'application/json',
+	})
+}
+
+type GetAAResponse = { aa1: string, aa2: string }
+
+export async function getAA(): Promise<GetAAResponse> {
+	const aa1Path = '/data/welcome_aa.txt'
+	const aa2Path = '/data/elzup_aa.txt'
+	const [aa1, aa2] = (await Promise.all([aa1Path, aa2Path].map(axios.get))).map(
+		res => res.data
+	)
+	return { aa1, aa2 }
+}
