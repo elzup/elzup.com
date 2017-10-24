@@ -1,8 +1,18 @@
 // @flow
 
 import React from 'react'
-import ProductFooter from '../product-footer'
 import LazyLoad from 'react-lazy-load'
+import ProductFooter from '../product-footer'
+import {
+	Wrapper,
+	TitleLink,
+	ImgWrap,
+	NoImgWrap,
+	Description,
+	Tag,
+	Members,
+	Image,
+} from './Wrapper'
 import type { Product } from '../../types'
 
 type Props = {
@@ -26,12 +36,11 @@ export default class ProductBox extends React.Component<Props, State> {
 	render() {
 		const { product } = this.props
 
-		const style = require('./product.css')
 		const base_title = <h2>{product.title}</h2>
 		const title = product.is_alive ? (
-			<a href={product.link} className={style.title_link} target="_blank">
+			<TitleLink href={product.link} target="_blank">
 				{base_title}
-			</a>
+			</TitleLink>
 		) : (
 			base_title
 		)
@@ -43,10 +52,7 @@ export default class ProductBox extends React.Component<Props, State> {
 				</li>
 			)
 		})
-		const tags = product.tags.map(x => (
-			<div key={product.sid + ':' + x}>{x}</div>
-		))
-		const img_style = this.state.loadFailed ? style.no_img : style.img
+		const ImageWrap = this.state.loadFailed ? NoImgWrap : ImgWrap
 		const onError = () => {
 			this.setState({
 				url: '/images/404.png',
@@ -54,17 +60,19 @@ export default class ProductBox extends React.Component<Props, State> {
 			})
 		}
 		return (
-			<li className={style.product}>
-				<div className={style.img_wrap}>
+			<Wrapper>
+				<ImageWrap>
 					<LazyLoad height={219}>
-						<img className={img_style} src={this.state.url} onError={onError} />
+						<Image src={this.state.url} onError={onError} />
 					</LazyLoad>
-				</div>
+				</ImageWrap>
 				{title}
 				<p>{product.subtitle}</p>
-				<p className={style.description}>{product.description}</p>
-				<ul className={style.members}>{members}</ul>
-				<div className={style.tags}>{tags}</div>
+				<Description>{product.description}</Description>
+				<Members>{members}</Members>
+				<div>
+					{product.tags.map(x => <Tag key={product.sid + ':' + x}>{x}</Tag>)}
+				</div>
 				<ProductFooter
 					key={product.sid}
 					is_alive={product.is_alive}
@@ -72,7 +80,7 @@ export default class ProductBox extends React.Component<Props, State> {
 					github={product.github}
 					trello={product.trello}
 				/>
-			</li>
+			</Wrapper>
 		)
 	}
 }
