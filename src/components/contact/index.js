@@ -21,7 +21,6 @@ const Wrapper = styled.li`
 	border-radius: 5px;
 
 	${media.handheld`
-		width: 46%;
 		margin: 2%;
 	`};
 `
