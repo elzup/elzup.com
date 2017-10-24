@@ -5,7 +5,7 @@ injectGlobal`
 html {
 	font-family: 'Abel', 'Hiragino Kaku Gothic Pro W3', 'ヒラギノ角ゴ Pro W3', 'Meiryo',
 		'メイリオ', 'Noto Sans Japanese Regular', sans-serif;
-	background: ghostwhite;
+	background: white;
 }
 
 body {

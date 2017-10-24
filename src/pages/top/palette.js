@@ -9,6 +9,8 @@ type Emotion = {
 	vy: number,
 	w: number,
 	h: number,
+	seed: number,
+	color: string | null,
 }
 
 function init() {
@@ -69,7 +71,20 @@ export default async function palette() {
 			vy: 0,
 			w: 10,
 			h: 10,
+			seed: _.random(99),
+			color: null,
 		}
+	}
+
+	function emoColor(emo: Emotion) {
+		let h = 100
+		let s = 100
+		let l = 90
+		let a = 0.5
+		if (emo.seed < 50) {
+			return null
+		}
+		return `hsla(${h}, ${s}%, ${l}%, ${a})`
 	}
 
 	// initialize
@@ -82,7 +97,12 @@ export default async function palette() {
 		ctx.clearRect(0, 0, W, H)
 		ctx.beginPath()
 		state.emos.forEach(emo => {
-			ctx.fillRect(emo.x, emo.y, emoW, emoW)
+			if (emo.color === null) {
+				ctx.clearRect(emo.x, emo.y, emoW, emoW)
+			} else {
+				ctx.fillStyle = emo.color
+				ctx.fillRect(emo.x, emo.y, emoW, emoW)
+			}
 		})
 		ctx.fill()
 		ctx.closePath()
@@ -93,10 +113,15 @@ export default async function palette() {
 			state.emos.map(emo => {
 				const x = emo.x + emo.vx
 				const y = emo.y + emo.vy
+
+				// TODO: remove debu
+				// if (x > W + 100) {
 				if (x > W - 100) {
+					// die
 					return null
 				}
-				return { ...emo, x, y }
+				const color = emoColor(emo)
+				return { ...emo, x, y, color }
 			})
 		)
 		if (Math.random() * emoPase < 1) {
