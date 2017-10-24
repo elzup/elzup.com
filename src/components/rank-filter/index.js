@@ -3,13 +3,19 @@
 import React from 'react'
 import FilterButton from '../filter-button'
 
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+	margin-bottom: 10px;
+`
+
 type Props = {
 	select: number,
 	onFilterToggle: Function,
 }
 
 const RankFilter = ({ select, onFilterToggle }: Props) => (
-	<div>
+	<Wrapper>
 		<p>Quality Select</p>
 		<div>
 			<FilterButton
@@ -37,7 +43,7 @@ const RankFilter = ({ select, onFilterToggle }: Props) => (
 				onFilterToggle={onFilterToggle}
 			/>
 		</div>
-	</div>
+	</Wrapper>
 )
 
 export default RankFilter

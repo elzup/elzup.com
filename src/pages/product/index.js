@@ -4,6 +4,9 @@ import React from 'react'
 import _ from 'lodash'
 
 import axios from 'axios'
+import styled from 'styled-components'
+
+import { media } from '../../utils'
 
 import ProductBox from '../../components/product-box'
 import HeadMenu from '../../components/head-menu'
@@ -18,13 +21,26 @@ type State = {
 	rankSelect: number,
 }
 
-export default class ProductPage extends React.Component {
-	state: State = {
-		tags: [],
-		products: [],
-		categories: [],
-		categorySelect: 'ALL',
-		rankSelect: 0,
+const ProductFilters = styled.ul`
+	display: flex;
+`
+
+const Products = styled.ul`
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+`
+
+export default class ProductPage extends React.Component<{}, State> {
+	constructor(props: {}, context: any) {
+		super(props, context)
+		this.state = {
+			tags: [],
+			products: [],
+			categories: [],
+			categorySelect: 'ALL',
+			rankSelect: 0,
+		}
 	}
 
 	componentDidMount() {
@@ -62,23 +78,21 @@ export default class ProductPage extends React.Component {
 	}
 
 	render() {
-		const style = require('./product-page.css')
-		const productsNodes = this.state.products
-			.filter(x => {
-				return (
-					(this.state.rankSelect == 0 || this.state.rankSelect == x.rank) &&
-					(this.state.categorySelect == 'ALL' ||
-						this.state.categorySelect == x.category)
-				)
-			})
-			.map(p => <ProductBox key={p.sid} product={p} />)
+		const { products } = this.state
+		const displayProducts = products.filter(x => {
+			return (
+				(this.state.rankSelect == 0 || this.state.rankSelect == x.rank) &&
+				(this.state.categorySelect == 'ALL' ||
+					this.state.categorySelect == x.category)
+			)
+		})
 		return (
-			<main className={style.page}>
+			<main>
 				<header>
 					<HeadMenu current="Product" />
 					<h1>Product</h1>
 					<p>えるざっぷの制作物一覧</p>
-					<div className={style.filters}>
+					<ProductFilters>
 						<RankFilter
 							select={this.state.rankSelect}
 							onFilterToggle={this._onRankChange.bind(this)}
@@ -88,18 +102,20 @@ export default class ProductPage extends React.Component {
 							categories={this.state.categories}
 							onFilterToggle={this._onCategoryChange.bind(this)}
 						/>
-					</div>
+					</ProductFilters>
 				</header>
-				<ul className={style.products}>{productsNodes}</ul>
+				<Products>
+					{displayProducts.map(p => <ProductBox key={p.sid} product={p} />)}
+				</Products>
 			</main>
 		)
 	}
 
-	_onRankChange(select) {
+	_onRankChange(select: number) {
 		this.setState({ rankSelect: select })
 	}
 
-	_onCategoryChange(state) {
+	_onCategoryChange(state: string) {
 		this.setState({ categorySelect: state })
 	}
 }
