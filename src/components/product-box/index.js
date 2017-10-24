@@ -3,22 +3,24 @@
 import React from 'react'
 import ProductFooter from '../product-footer'
 import LazyLoad from 'react-lazy-load'
-import { Product } from '../../types'
+import type { Product } from '../../types'
 
 type Props = {
 	product: Product,
 }
 
 type State = {
-	img_url: string,
-	no_img: boolean,
+	url: string,
+	loadFailed: boolean,
 }
 
-export default class ProductBox extends React.Component {
-	props: Props
-	state: State = {
-		img_url: '/images/product/sc_' + this.props.product.sid + '.png',
-		no_img: false,
+export default class ProductBox extends React.Component<Props, State> {
+	constructor(props: Props, context: any) {
+		super(props, context)
+		this.state = {
+			url: '/images/product/sc_' + props.product.sid + '.png',
+			loadFailed: false,
+		}
 	}
 
 	render() {
@@ -44,22 +46,18 @@ export default class ProductBox extends React.Component {
 		const tags = product.tags.map(x => (
 			<div key={product.sid + ':' + x}>{x}</div>
 		))
-		const img_style = this.state.no_img ? style.no_img : style.img
-		const on_error = () => {
+		const img_style = this.state.loadFailed ? style.no_img : style.img
+		const onError = () => {
 			this.setState({
-				img_url: '/images/404.png',
-				no_img: true,
+				url: '/images/404.png',
+				loadFailed: true,
 			})
 		}
 		return (
 			<li className={style.product}>
 				<div className={style.img_wrap}>
 					<LazyLoad height={219}>
-						<img
-							className={img_style}
-							src={this.state.img_url}
-							onError={on_error}
-						/>
+						<img className={img_style} src={this.state.url} onError={onError} />
 					</LazyLoad>
 				</div>
 				{title}

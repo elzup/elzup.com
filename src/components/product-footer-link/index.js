@@ -2,47 +2,78 @@
 
 import React from 'react'
 
+import styled from 'styled-components'
+
+const Link = styled.a`
+	color: white;
+	text-decoration: none;
+	font-size: 23px;
+	padding: 6px 6px 2px 5px;
+
+	display: block;
+	margin-left: 5px;
+	background-color: black;
+	padding: 5px 5px 1px 5px;
+`
+
+const NoLink = styled.span`
+	background-color: gray;
+	color: white;
+	text-decoration: none;
+	font-size: 23px;
+	padding: 6px 6px 2px 5px;
+
+	display: block;
+	margin-left: 5px;
+	background-color: black;
+	padding: 5px 5px 1px 5px;
+`
+
+const LinkDevImg = styled.a`
+	width: 1.5em;
+`
+
+const LinkBase = styled.div`
+	display: block;
+	margin-left: 5px;
+	background-color: black;
+	padding: 5px 5px 1px 5px;
+`
+
 type Props = {
-	is_alive?: boolean,
-	url: string | null,
-	type: string,
+	isAlive?: boolean,
+	url: string,
+	category: string,
 }
 
-export default class ProductFooterLink extends React.Component {
-	props: Props
-
-	static defaultProps = {
-		is_alive: true,
+const Component = (props: Props) => {
+	if (props.url === null) {
+		return <span />
+	}
+	if (props.category === 'link') {
+		if (props.isAlive) {
+			return (
+				<Link href={props.url} target="_blank">
+					<span>↗</span>
+				</Link>
+			)
+		} else {
+			return (
+				<NoLink>
+					<span data-tip="SITE CLOSED">↗</span>
+				</NoLink>
+			)
+		}
 	}
 
-	render() {
-		const style = require('./product-footer-link.css')
-		if (!this.props.url) {
-			return <span />
-		}
-		if (this.props.type === 'link') {
-			if (this.props.is_alive) {
-				return (
-					<a href={this.props.url} className={style.link} target="_blank">
-						<span>↗</span>
-					</a>
-				)
-			} else {
-				return (
-					<span className={style.broken_link} target="_blank">
-						<span data-tip="SITE CLOSED">↗</span>
-					</span>
-				)
-			}
-		}
-		const link_style = {
-			github: style.link_github,
-			trello: style.link_trello,
-		}[this.props.type]
-		return (
-			<a href={this.props.url} className={link_style} target="_blank">
-				<img src={'/images/icon/mk-' + this.props.type + '.png'} alt="" />
-			</a>
-		)
-	}
+	return (
+		<LinkBase href={props.url} target="_blank">
+			<LinkDevImg src={'/images/icon/mk-' + props.category + '.png'} alt="" />
+		</LinkBase>
+	)
 }
+Component.defaultProps = {
+	isAlive: true,
+}
+
+export default Component
