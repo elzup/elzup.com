@@ -46,7 +46,7 @@ function init() {
 }
 
 export default async function palette() {
-	const { body, canvas, container, W, H } = init()
+	const { canvas, W, H } = init()
 	const ctx = canvas.getContext('2d')
 
 	// configs
@@ -79,8 +79,13 @@ export default async function palette() {
 		}
 	}
 
-	function emoColor(emo: Emotion) {
-		let h = 100
+	function emoH(emo: Emotion, state: State) {
+		const v = ((emo.x + emo.y + state.mouse.x + state.mouse.y) / (H + W)) % 1
+		return v * 360
+	}
+
+	function emoColor(emo: Emotion, state: State) {
+		let h = emoH(emo, state)
 		let s = 100
 		let l = 90
 		let a = 0.5
@@ -119,12 +124,11 @@ export default async function palette() {
 				const y = emo.y + emo.vy
 
 				// TODO: remove debu
-				// if (x > W + 100) {
-				if (x > W - 100) {
+				if (x > W + 50) {
 					// die
 					return null
 				}
-				const color = emoColor(emo)
+				const color = emoColor(emo, state)
 				return { ...emo, x, y, color }
 			})
 		)
