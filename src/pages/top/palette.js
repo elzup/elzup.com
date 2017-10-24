@@ -39,6 +39,7 @@ function init() {
 
 type State = {
 	emos: Emotion[],
+	g: number, // generation
 }
 
 export default async function palette() {
@@ -56,20 +57,25 @@ export default async function palette() {
 
 	const emoW = W / 8
 	const baseSpeed = W / 3 / 60
+	const emoPase = 3
 
 	const randH = () => Math.random() * H - emoW / 2
 	const randSpeed = () => (Math.random() / 2 + 0.75) * baseSpeed
-
-	// initialize
-	const state: State = {
-		emos: _.map(Array(10), () => ({
-			x: 0,
+	function newEmo(): Emotion {
+		return {
+			x: -emoW,
 			vx: randSpeed(),
 			y: randH(),
 			vy: 0,
 			w: 10,
 			h: 10,
-		})),
+		}
+	}
+
+	// initialize
+	const state: State = {
+		emos: [],
+		g: 0,
 	}
 
 	function draw() {
@@ -93,7 +99,12 @@ export default async function palette() {
 				return { ...emo, x, y }
 			})
 		)
+		if (Math.random() * emoPase < 1) {
+			// if (state.g % emoPase === 0) {
+			emos.push(newEmo())
+		}
 		state.emos = emos
+		state.g++
 	}
 
 	setInterval(() => {
