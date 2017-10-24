@@ -1,28 +1,17 @@
 // @flow
 
-type Point = {
+import _ from 'lodash'
+
+type Emotion = {
 	x: number,
-	y: number,
-}
-
-type Direction = {
 	vx: number,
+	y: number,
 	vy: number,
+	w: number,
+	h: number,
 }
 
-type FootStamp = Point & {
-	dire: Direction,
-	life: number,
-	seqAge: number,
-}
-
-const distance = (pos1: Point, pos2: Point) => {
-	const dx = pos1.x - pos2.x
-	const dy = pos1.y - pos2.y
-	return Math.sqrt(dx * dx + dy * dy)
-}
-
-export default async function palette() {
+function init() {
 	document.getElementsByTagName('html')[0].style.height = '100%'
 	const body = document.getElementsByTagName('body')[0]
 	body.style.height = '100%'
@@ -45,76 +34,54 @@ export default async function palette() {
 	canvas.style.width = w + 'px'
 	canvas.style.height = h + 'px'
 	body.insertBefore(canvas, body.firstChild)
-	const ctx = canvas.getContext('2d')
-	ctx.lineWidth = 5
-	ctx.strokeStyle = 'black'
+	return { body, canvas, container, w, h }
+}
 
-	// draw Logics
-	const points: FootStamp[] = []
-	let footstamps: FootStamp[] = []
-
-	const v = 1
-	const directions: Direction[] = [
-		{ vx: v, vy: 0 },
-		{ vx: 0, vy: v },
-		{ vx: -v, vy: 0 },
-		{ vx: 0, vy: -v },
-	]
-	const seqAgeMax = 50
-	const seqAgeMin = 10
-	const mouse = { x: -100, y: -100 }
-	for (let i = 0; i < 20; i++) {
-		points.push({
-			x: Math.random() * w,
-			y: Math.random() * h,
-			life: 0,
-			dire: { ...directions[Math.floor(Math.random() * 4)] },
-			seqAge: Math.floor(Math.random() * (seqAgeMax - seqAgeMin) + seqAgeMin),
-		})
-	}
-	setInterval(() => {
-		ctx.clearRect(0, 0, w, h)
-		for (let i = 0; i < points.length; i++) {
-			const p = points[i]
-			const x = p.x + p.dire.vx
-			const y = p.y + p.dire.vy
-			if (x < 0 || x >= w || y < 0 || y >= h) {
-				p.dire.vx *= -1
-				p.dire.vy *= -1
-			}
-			p.x += p.dire.vx * p.seqAge
-			p.y += p.dire.vy * p.seqAge
-			p.seqAge--
-			if (p.seqAge < 5) {
-				p.seqAge = Math.floor(
-					Math.random() * (seqAgeMax - seqAgeMin) + seqAgeMin
-				)
-				const t = p.dire.vy
-				p.dire.vy = p.dire.vx
-				p.dire.vx = t
-			}
-			footstamps.push({ ...p, life: 6 })
-		}
-		let dieIndex = 0
-		for (let i = 0; i < footstamps.length; i++) {
-			const fsp = footstamps[i]
-			if (fsp.life < 1) {
-				dieIndex = i
-				continue
-			}
-			const rate = distance(fsp, mouse) / w
-			const r = fsp.life * rate
-			ctx.beginPath()
-			ctx.arc(fsp.x, fsp.y, r, 0, Math.PI * 2, false)
-			fsp.life--
-			ctx.fill()
-			ctx.closePath()
-		}
-		footstamps = footstamps.slice(dieIndex + 1)
-	}, 50)
-
+export default async function palette() {
+	const { body, canvas, container, w, h } = init()
+	const mouse = { x: 0, y: 0 }
 	canvas.addEventListener('mousemove', (e: any) => {
 		mouse.x = e.clientX
 		mouse.y = e.clientY
 	})
+	const ctx = canvas.getContext('2d')
+	ctx.lineWidth = 5
+	ctx.strokeStyle = 'black'
+
+	const emoW = w / 8
+	const baseSpeed = w / 3 / 60
+
+	const randH = () => Math.random() * h - emoW / 2
+	const randSpeed = () => (Math.random() / 2 + 0.75) * baseSpeed
+
+	const emos: Emotion[] = _.map(Array(10), () => ({
+		x: 0,
+		vx: randSpeed(),
+		y: randH(),
+		vy: 0,
+		w: 10,
+		h: 10,
+	}))
+
+	function draw() {
+		ctx.clearRect(0, 0, w, h)
+		ctx.beginPath()
+		emos.forEach(emo => {
+			ctx.fillRect(emo.x, emo.y, emoW, emoW)
+		})
+		ctx.fill()
+		ctx.closePath()
+	}
+
+	function update() {
+		emos.forEach(emo => {
+			emo.x += emo.vx
+			emo.y += emo.vy
+		})
+	}
+
+	setInterval(() => {
+		update()
+		draw()
+	}, 50)
 }
