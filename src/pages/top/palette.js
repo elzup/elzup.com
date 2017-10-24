@@ -54,12 +54,15 @@ export default async function palette() {
 	ctx.strokeStyle = 'black'
 
 	const emoW = W / 10
-	const baseSpeed = W / 3 / 60
+	const baseSpeed = W / 60
 	const emoPase = 1 // != 0
 	const clearRate = 30 // <0, 100>
 
 	const randH = () => Math.random() * H - emoW / 2
-	const randSpeed = () => (Math.random() / 2 + 0.75) * baseSpeed
+	const randSpeeds = () => ({
+		vx: (Math.random() / 2 + 0.75) * baseSpeed,
+		vy: (Math.random() / 4 - 0.125) * baseSpeed,
+	})
 	const randHWC = () => {
 		const color = _.random(100) < clearRate ? null : ''
 		const d = _.random() / 5 + 0.9
@@ -71,27 +74,23 @@ export default async function palette() {
 	function newEmo(): Emotion {
 		return {
 			x: -emoW * 2,
-			vx: randSpeed(),
+			...randSpeeds(),
 			y: randH(),
-			vy: 0,
 			...randHWC(),
 			seed: _.random(99),
 		}
 	}
 
-	function emoH(emo: Emotion, state: State) {
-		const v = ((emo.x + emo.y + state.mouse.x + state.mouse.y) / (H + W)) % 1
-		return v * 360
-	}
-
 	function emoColor(emo: Emotion, state: State) {
-		let h = emoH(emo, state)
-		let s = 100
-		let l = 90
-		let a = 0.5
 		if (emo.color === null) {
 			return null
 		}
+		const posi = emo.x + emo.y + (state.mouse.x + state.mouse.y) / 5
+		const timePosi = posi + state.g * 10
+		const h = ((timePosi / (H + W)) % 1) * 360
+		const s = 100
+		const l = (1 - emo.x / W) * 30 + 60
+		const a = 0.5
 		return `hsla(${h}, ${s}%, ${l}%, ${a})`
 	}
 
