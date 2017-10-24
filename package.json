@@ -1,5 +1,5 @@
 {
-  "name": "elzup.com-v5",
+  "name": "elzup.com",
   "version": "1.0.1",
   "description": "elzup.com Web Site",
   "scripts": {
@@ -9,16 +9,16 @@
     "eject": "react-scripts eject",
     "precommit": "lint-staged",
     "deploy":
-      "(cd ~/.ghq/github.com/elzup/elzup.com-v5/ && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/)"
+      "(cd ~/.ghq/github.com/elzup/elzup.com/ && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/)"
   },
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elzup/elzup.com-v5"
+    "url": "https://github.com/elzup/elzup.com"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/elzup/elzup.com-v5/issues"
+    "url": "https://github.com/elzup/elzup.com/issues"
   },
   "homepage": "https://elzup.com",
   "dependencies": {
