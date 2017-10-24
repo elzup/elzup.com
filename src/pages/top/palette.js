@@ -13,6 +13,12 @@ type Emotion = {
 	color: string | null,
 }
 
+type State = {
+	emos: Emotion[],
+	g: number, // generation
+	mouse: { x: number, y: number },
+}
+
 function init() {
 	document.getElementsByTagName('html')[0].style.height = '100%'
 	const body = document.getElementsByTagName('body')[0]
@@ -39,34 +45,24 @@ function init() {
 	return { body, canvas, container, W, H }
 }
 
-type State = {
-	emos: Emotion[],
-	g: number, // generation
-}
-
 export default async function palette() {
 	const { body, canvas, container, W, H } = init()
-	const mouse = { x: 0, y: 0 }
-	canvas.addEventListener('mousemove', (e: any) => {
-		mouse.x = e.clientX
-		mouse.y = e.clientY
-	})
 	const ctx = canvas.getContext('2d')
 
 	// configs
 	ctx.lineWidth = 5
 	ctx.strokeStyle = 'black'
 
-	const emoW = W / 4
+	const emoW = W / 10
 	const baseSpeed = W / 3 / 60
-	const emoPase = 3 // != 0
+	const emoPase = 1 // != 0
 	const clearRate = 30 // <0, 100>
 
 	const randH = () => Math.random() * H - emoW / 2
 	const randSpeed = () => (Math.random() / 2 + 0.75) * baseSpeed
 	const randHWC = () => {
 		const color = _.random(100) < clearRate ? null : ''
-		const d = _.random() * 0.7
+		const d = _.random() / 5 + 0.9
 		const v1 = emoW * d
 		const v2 = emoW * d * 1.6180339887
 		const [h, w] = _.shuffle([v1, v2])
@@ -74,7 +70,7 @@ export default async function palette() {
 	}
 	function newEmo(): Emotion {
 		return {
-			x: -emoW,
+			x: -emoW * 2,
 			vx: randSpeed(),
 			y: randH(),
 			vy: 0,
@@ -98,6 +94,7 @@ export default async function palette() {
 	const state: State = {
 		emos: [],
 		g: 0,
+		mouse: { x: 0, y: 0 },
 	}
 
 	function draw() {
@@ -143,4 +140,9 @@ export default async function palette() {
 		update()
 		draw()
 	}, 50)
+
+	canvas.addEventListener('mousemove', (e: any) => {
+		state.mouse.x = e.clientX
+		state.mouse.y = e.clientY
+	})
 }
