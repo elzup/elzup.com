@@ -1,12 +1,10 @@
 // @flow
 
 import React from 'react'
-import axios from 'axios'
 
-import Item from '../../components/item'
-import DummyItem from '../../components/item/dummy-item.js'
-import Contact from '../../components/contact'
-import DummyContact from '../../components/contact/dummy-contact.js'
+import Item, { DummyItem } from '../../components/item'
+import Contact, { DummyContact } from '../../components/contact'
+import { getAA } from '../../api'
 
 import {
 	Main,
@@ -19,9 +17,6 @@ import {
 	Menu,
 	Contacts,
 } from './Wrapper'
-
-const aa1_path = '/data/welcome_aa.txt'
-const aa2_path = '/data/elzup_aa.txt'
 
 type Point = {
 	x: number,
@@ -201,8 +196,8 @@ export default class TopPage extends React.Component<{}> {
 	}
 
 	async loadAA() {
-		const [aa1, aa2] = await Promise.all([aa1_path, aa2_path].map(axios.get))
-		console.log(aa1.data)
-		console.log(`%c${aa2.data}`, 'font-size: 10px;')
+		const { aa1, aa2 } = await getAA()
+		console.log(aa1)
+		console.log(`%c${aa2}`, 'font-size: 10px;')
 	}
 }

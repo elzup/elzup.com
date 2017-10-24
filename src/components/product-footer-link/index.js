@@ -2,47 +2,59 @@
 
 import React from 'react'
 
+import styled from 'styled-components'
+
+const Link = styled.span`
+	display: block;
+	margin-left: 5px;
+	background-color: black;
+	padding: 5px 5px 1px 5px;
+`
+
+const NoLink = styled.span`
+	display: block;
+	margin-left: 5px;
+	background-color: gray;
+	padding: 5px 5px 1px 5px;
+`
+
+const LinkDevImg = styled.img`
+	width: 1.5em;
+`
+
 type Props = {
-	is_alive?: boolean,
-	url: string | null,
-	type: string,
+	url: string,
+	category: string,
 }
 
-export default class ProductFooterLink extends React.Component {
-	props: Props
+const Component = (props: Props) => (
+	<Link href={props.url} target="_blank">
+		<LinkDevImg src={'/images/icon/mk-' + props.category + '.png'} alt="" />
+	</Link>
+)
+export default Component
 
-	static defaultProps = {
-		is_alive: true,
-	}
+type LCProps = {
+	isAlive: boolean,
+	url: string,
+}
 
-	render() {
-		const style = require('./product-footer-link.css')
-		if (!this.props.url) {
-			return <span />
-		}
-		if (this.props.type === 'link') {
-			if (this.props.is_alive) {
-				return (
-					<a href={this.props.url} className={style.link} target="_blank">
-						<span>↗</span>
-					</a>
-				)
-			} else {
-				return (
-					<span className={style.broken_link} target="_blank">
-						<span data-tip="SITE CLOSED">↗</span>
-					</span>
-				)
-			}
-		}
-		const link_style = {
-			github: style.link_github,
-			trello: style.link_trello,
-		}[this.props.type]
+export const FooterLinkBase = (props: LCProps) => {
+	if (props.isAlive) {
 		return (
-			<a href={this.props.url} className={link_style} target="_blank">
-				<img src={'/images/icon/mk-' + this.props.type + '.png'} alt="" />
-			</a>
+			<Link href={props.url} target="_blank">
+				<LinkDevImg src={'/images/icon/mk-link.png'} alt="" />
+			</Link>
+		)
+	} else {
+		return (
+			<NoLink>
+				<LinkDevImg
+					src={'/images/icon/mk-link.png'}
+					alt=""
+					data-tip="SITE CLOSED"
+				/>
+			</NoLink>
 		)
 	}
 }

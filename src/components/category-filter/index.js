@@ -2,29 +2,34 @@
 
 import React from 'react'
 import FilterButton from '../filter-button'
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+	margin-bottom: 10px;
+	margin-left: 20px;
+`
 
 type Props = {
 	categories: Array<string>,
-	select: number,
+	select: string,
 	onFilterToggle: Function,
 }
 
-const CategoryFilter = (props: Props) => {
-	const btns = props.categories.map(x => (
-		<FilterButton
-			key={x}
-			type={x}
-			label={x}
-			toggle={props.select === x}
-			onFilterToggle={props.onFilterToggle}
-		/>
-	))
-	return (
+const CategoryFilter = ({ categories, select, onFilterToggle }: Props) => (
+	<Wrapper>
+		<p>Category Select</p>
 		<div>
-			<p>Category Select</p>
-			<div>{btns}</div>
+			{categories.map(x => (
+				<FilterButton
+					key={x}
+					category={x}
+					label={x}
+					toggle={select === x}
+					onFilterToggle={onFilterToggle}
+				/>
+			))}
 		</div>
-	)
-}
+	</Wrapper>
+)
 
 export default CategoryFilter

@@ -2,37 +2,32 @@
 
 import React from 'react'
 import ReactTooltip from 'react-tooltip'
-import ProductFooterLink from '../product-footer-link'
+import ProductFooterLink, { FooterLinkBase } from '../product-footer-link'
+
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+	position: absolute;
+	bottom: 0;
+	right: 5px;
+	display: flex;
+	margin: 0;
+	padding: 0;
+`
 
 type Props = {
-	is_alive: boolean,
+	isAlive: boolean,
 	link?: string,
-	github?: string,
+	github: ?string,
 	trello?: string,
 }
 
-export default class ProductFooter extends React.Component {
-	props: Props
-	static defaultProps = {
-		link: null,
-		github: null,
-		trello: null,
-	}
-
-	render() {
-		const style = require('./product-footer.css')
-		const tooltip = this.props.is_alive ? '' : <ReactTooltip />
-		return (
-			<div className={style.footer}>
-				<ProductFooterLink
-					is_alive={this.props.is_alive}
-					type={'link'}
-					url={this.props.link}
-				/>
-				<ProductFooterLink type={'github'} url={this.props.github} />
-				<ProductFooterLink type={'trello'} url={this.props.trello} />
-				{tooltip}
-			</div>
-		)
-	}
-}
+const Component = ({ isAlive, link, github, trello }: Props) => (
+	<Wrapper>
+		{link ? <FooterLinkBase isAlive={isAlive} url={link} /> : <span />}
+		{github ? <ProductFooterLink category={'github'} url={github} /> : <span />}
+		{trello ? <ProductFooterLink category={'trello'} url={trello} /> : <span />}
+		{isAlive ? null : <ReactTooltip />}
+	</Wrapper>
+)
+export default Component
