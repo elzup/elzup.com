@@ -7,7 +7,6 @@ import {
 	Wrapper,
 	TitleLink,
 	ImgWrap,
-	NoImgWrap,
 	Description,
 	Tag,
 	Members,
@@ -52,7 +51,6 @@ export default class ProductBox extends React.Component<Props, State> {
 				</li>
 			)
 		})
-		const ImageWrap = this.state.loadFailed ? NoImgWrap : ImgWrap
 		const onError = () => {
 			this.setState({
 				url: '/images/404.png',
@@ -61,11 +59,11 @@ export default class ProductBox extends React.Component<Props, State> {
 		}
 		return (
 			<Wrapper>
-				<ImageWrap>
+				<ImgWrap>
 					<LazyLoad height={219}>
 						<Image src={this.state.url} onError={onError} />
 					</LazyLoad>
-				</ImageWrap>
+				</ImgWrap>
 				{title}
 				<p>{product.subtitle}</p>
 				<div style={{ display: 'flex', flexDirection: 'column' }}>
