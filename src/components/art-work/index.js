@@ -79,8 +79,8 @@ export default class ArtWork extends React.Component<Props, State> {
 	}
 
 	render() {
-		const { sid, label, ext, category } = this.props
-		const { url, loadFailed } = this.state
+		const { label, category } = this.props
+		const { url } = this.state
 		const on_error = () => {
 			this.setState({
 				url: '/images/404.png',
