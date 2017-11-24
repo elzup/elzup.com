@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import LazyLoad from 'react-lazy-load'
+import LazyLoad from 'react-lazyload'
 
 import { Image, ImgWrap } from './Wrapper'
 
@@ -15,18 +15,15 @@ type State = {
 }
 
 export default class ImageBox extends React.Component<Props, State> {
-	constructor(props: Props, context: any) {
-		super(props, context)
-		this.state = {
-			url: props.url,
-			loadFailed: false,
-		}
+	state = {
+		url: this.props.url,
+		loadFailed: false,
 	}
 
 	render() {
 		return (
 			<ImgWrap>
-				<LazyLoad height={219}>
+				<LazyLoad height={219} offset={1000}>
 					<Image
 						src={this.state.url}
 						onError={() => {

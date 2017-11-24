@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import LazyLoad from 'react-lazy-load'
+import LazyLoad from 'react-lazyload'
 
 import styled from 'styled-components'
 
@@ -94,7 +94,7 @@ export default class ArtWork extends React.Component<Props, State> {
 			<Wrapper>
 				<h3>{label}</h3>
 				<Mat>
-					<LazyLoad>
+					<LazyLoad offset={300}>
 						<Work src={url} onError={on_error} />
 					</LazyLoad>
 				</Mat>
