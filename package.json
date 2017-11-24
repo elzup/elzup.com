@@ -8,8 +8,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "precommit": "lint-staged",
-    "deploy":
-      "(cd ~/.ghq/github.com/elzup/elzup.com/ && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/)"
+    "deploy": "(cd ~/.ghq/github.com/elzup/elzup.com/ && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/)"
   },
   "main": "index.js",
   "repository": {
@@ -22,28 +21,26 @@
   },
   "homepage": "https://elzup.com",
   "dependencies": {
-    "axios": "^0.16.1",
+    "axios": "^0.17.1",
     "lodash": "^4.17.4",
     "normalize.css": "^7.0.0",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
     "react-fontawesome": "^1.1.0",
     "react-lazy-load": "^3.0.10",
-    "react-router-dom": "^4.1.1",
+    "react-router-dom": "^4.2.2",
     "styled-components": "^2.2.1"
   },
   "devDependencies": {
-    "flow-bin": "^0.56.0",
+    "flow-bin": "^0.59.0",
     "font-awesome": "^4.6.3",
-    "husky": "^0.13.3",
-    "lint-staged": "^3.4.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^5.0.0",
     "node-noop": "^1.0.0",
-    "postcss-import": "^8.1.2",
-    "prettier": "^1.7.4",
-    "react-router": "^4.1.1",
+    "prettier": "^1.8.2",
+    "react-router": "^4.2.0",
     "react-scripts": "^1.0.14",
-    "react-tooltip": "^3.1.6",
-    "sugarss": "^0.1.5"
+    "react-tooltip": "^3.4.0"
   },
   "lint-staged": {
     "*.js": [
