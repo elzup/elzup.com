@@ -8,7 +8,8 @@
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
 		"precommit": "lint-staged",
-		"deploy": "(cd ~/.ghq/github.com/elzup/elzup.com/ && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/)"
+		"deploy":
+			"(cd ~/.ghq/github.com/elzup/elzup.com/ && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/)"
 	},
 	"main": "index.js",
 	"repository": {
@@ -35,6 +36,9 @@
 		"styled-components": "^2.2.1"
 	},
 	"devDependencies": {
+		"@babel/cli": "^7.0.0-beta.32",
+		"@babel/preset-env": "^7.0.0-beta.32",
+		"babel-plugin-lodash": "^3.3.2",
 		"flow-bin": "^0.59.0",
 		"font-awesome": "^4.6.3",
 		"husky": "^0.14.3",
