@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import LazyLoad from 'react-lazy-load'
+import LazyLoad from 'react-lazyload'
 
 import styled from 'styled-components'
 
@@ -79,8 +79,8 @@ export default class ArtWork extends React.Component<Props, State> {
 	}
 
 	render() {
-		const { sid, label, ext, category } = this.props
-		const { url, loadFailed } = this.state
+		const { label, category } = this.props
+		const { url } = this.state
 		const on_error = () => {
 			this.setState({
 				url: '/images/404.png',
@@ -94,7 +94,7 @@ export default class ArtWork extends React.Component<Props, State> {
 			<Wrapper>
 				<h3>{label}</h3>
 				<Mat>
-					<LazyLoad>
+					<LazyLoad offset={300}>
 						<Work src={url} onError={on_error} />
 					</LazyLoad>
 				</Mat>

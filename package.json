@@ -1,54 +1,55 @@
 {
-  "name": "elzup.com",
-  "version": "1.0.1",
-  "description": "elzup.com Web Site",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "precommit": "lint-staged",
-    "deploy":
-      "(cd ~/.ghq/github.com/elzup/elzup.com/ && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/)"
-  },
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/elzup/elzup.com"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/elzup/elzup.com/issues"
-  },
-  "homepage": "https://elzup.com",
-  "dependencies": {
-    "axios": "^0.16.1",
-    "lodash": "^4.17.4",
-    "normalize.css": "^7.0.0",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
-    "react-fontawesome": "^1.1.0",
-    "react-lazy-load": "^3.0.10",
-    "react-router-dom": "^4.1.1",
-    "styled-components": "^2.2.1"
-  },
-  "devDependencies": {
-    "flow-bin": "^0.56.0",
-    "font-awesome": "^4.6.3",
-    "husky": "^0.13.3",
-    "lint-staged": "^3.4.1",
-    "node-noop": "^1.0.0",
-    "postcss-import": "^8.1.2",
-    "prettier": "^1.7.4",
-    "react-router": "^4.1.1",
-    "react-scripts": "^1.0.14",
-    "react-tooltip": "^3.1.6",
-    "sugarss": "^0.1.5"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --use-tabs --no-semi --single-quote --trailing-comma es5 --write",
-      "git add"
-    ]
-  }
+	"name": "elzup.com",
+	"version": "1.0.1",
+	"description": "elzup.com Web Site",
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject",
+		"precommit": "lint-staged",
+		"deploy":
+			"(cd ~/.ghq/github.com/elzup/elzup.com/ && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/)"
+	},
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/elzup/elzup.com"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/elzup/elzup.com/issues"
+	},
+	"homepage": "https://elzup.com",
+	"dependencies": {
+		"axios": "^0.17.1",
+		"lodash": "^4.17.4",
+		"normalize.css": "^7.0.0",
+		"react": "^16.1.1",
+		"react-dom": "^16.1.1",
+		"react-fontawesome": "^1.1.0",
+		"react-lazyload": "^2.3.0",
+		"react-router": "^4.2.0",
+		"react-router-dom": "^4.2.2",
+		"react-scripts": "^1.0.14",
+		"react-tooltip": "^3.4.0",
+		"styled-components": "^2.2.1"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.0.0-beta.32",
+		"@babel/preset-env": "^7.0.0-beta.32",
+		"babel-plugin-lodash": "^3.3.2",
+		"flow-bin": "^0.59.0",
+		"font-awesome": "^4.6.3",
+		"husky": "^0.14.3",
+		"lint-staged": "^5.0.0",
+		"node-noop": "^1.0.0",
+		"prettier": "^1.8.2"
+	},
+	"lint-staged": {
+		"*.js": [
+			"prettier --use-tabs --no-semi --single-quote --trailing-comma es5 --write",
+			"git add"
+		]
+	}
 }

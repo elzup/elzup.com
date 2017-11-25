@@ -17,6 +17,7 @@ type State = {
 	categories: Array<string>,
 	categorySelect: string,
 	rankSelect: number,
+	loaded: boolean,
 }
 
 const ProductFilters = styled.ul`
@@ -30,15 +31,13 @@ const Products = styled.ul`
 `
 
 export default class ProductPage extends React.Component<{}, State> {
-	constructor(props: {}, context: any) {
-		super(props, context)
-		this.state = {
-			tags: [],
-			products: [],
-			categories: [],
-			categorySelect: 'ALL',
-			rankSelect: 0,
-		}
+	state = {
+		tags: [],
+		products: [],
+		categories: [],
+		categorySelect: 'ALL',
+		rankSelect: 0,
+		loaded: false,
 	}
 
 	componentDidMount() {
@@ -51,7 +50,27 @@ export default class ProductPage extends React.Component<{}, State> {
 			products,
 			categories,
 			tags,
+			loaded: true,
 		})
+	}
+
+	filters = () => {
+		if (!this.state.loaded) {
+			return 'loading...'
+		}
+		return (
+			<ProductFilters>
+				<RankFilter
+					select={this.state.rankSelect}
+					onFilterToggle={this._onRankChange.bind(this)}
+				/>
+				<CategoryFilter
+					select={this.state.categorySelect}
+					categories={this.state.categories}
+					onFilterToggle={this._onCategoryChange.bind(this)}
+				/>
+			</ProductFilters>
+		)
 	}
 
 	render() {
@@ -69,17 +88,7 @@ export default class ProductPage extends React.Component<{}, State> {
 					<HeadMenu current="Product" />
 					<h1>Product</h1>
 					<p>えるざっぷの制作物一覧</p>
-					<ProductFilters>
-						<RankFilter
-							select={this.state.rankSelect}
-							onFilterToggle={this._onRankChange.bind(this)}
-						/>
-						<CategoryFilter
-							select={this.state.categorySelect}
-							categories={this.state.categories}
-							onFilterToggle={this._onCategoryChange.bind(this)}
-						/>
-					</ProductFilters>
+					{this.filters()}
 				</header>
 				<Products>
 					{displayProducts.map(p => <ProductBox key={p.sid} product={p} />)}
@@ -88,11 +97,11 @@ export default class ProductPage extends React.Component<{}, State> {
 		)
 	}
 
-	_onRankChange(select: number) {
+	_onRankChange = (select: number) => {
 		this.setState({ rankSelect: select })
 	}
 
-	_onCategoryChange(state: string) {
+	_onCategoryChange = (state: string) => {
 		this.setState({ categorySelect: state })
 	}
 }

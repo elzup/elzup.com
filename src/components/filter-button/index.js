@@ -8,6 +8,9 @@ const Button = styled.button`
 	border: none;
 	border-left: 0.5em solid black;
 	width: 5em;
+	border-radius: 0;
+	height: 20px;
+
 	&:first-child {
 		border-radius: 5px 0 0 5px;
 	}

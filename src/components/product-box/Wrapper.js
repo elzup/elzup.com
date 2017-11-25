@@ -33,13 +33,6 @@ export const ImgWrap = styled.div`
 
 export const Image = styled.img`
 	height: 100%;
-	width: 100%;
-`
-
-export const NoImgWrap = styled.div`
-	height: 100%;
-	height: 219px;
-	margin: 0 auto;
 `
 
 export const Tag = styled.div`
