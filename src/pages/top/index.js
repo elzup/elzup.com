@@ -29,10 +29,10 @@ export default class TopPage extends React.Component<{}> {
 					</EyeCatch>
 					<Layer2>
 						<Menu>
-							<Item label="Product" name="product" />
-							<Item label="Art" name="art" />
+							<Item label="Product" path="/product" />
+							<Item label="Art" path="/art" />
 							<DummyItem />
-							<Item label="Log" name="log" />
+							<Item label="Make" path="http://elzup.tumblr.com/tagged/diy" />
 						</Menu>
 						<Layer3>
 							<Layer4 />

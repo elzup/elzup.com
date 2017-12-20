@@ -45,13 +45,13 @@ export const DummyItem = styled.li`
 `
 
 type Props = {
-	name: string,
+	path: string,
 	label: string,
 }
 
-const Component = ({ name, label }: Props) => (
+const Component = ({ path, label }: Props) => (
 	<Wrapper>
-		<Link href={'/' + name}>
+		<Link href={path}>
 			<span>{label}</span>
 		</Link>
 	</Wrapper>

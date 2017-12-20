@@ -22,7 +22,7 @@ const pages: Page[] = [
 	{ label: 'Top', path: '/' },
 	{ label: 'Product', path: '/product' },
 	{ label: 'Art', path: '/art' },
-	{ label: 'Log', path: '/log' },
+	{ label: 'Make', path: 'http://elzup.tumblr.com/tagged/diy' },
 ]
 
 type Props = {
