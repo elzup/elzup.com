@@ -57,7 +57,7 @@ export default class TopPage extends React.Component<{}> {
 								/>
 								<Contact
 									label="Hatena"
-									link="http://elzup.hatenablog.com/"
+									link="http://elzup.hatenablog.com/archive"
 									type="hatena"
 								/>
 								<Contact label="Qiita" link="//qiita.com/elzup" type="qiita" />
