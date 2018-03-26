@@ -9,7 +9,7 @@
 		"eject": "react-scripts eject",
 		"precommit": "lint-staged",
 		"deploy":
-			"(cd ~/.ghq/github.com/elzup/elzup.com/ && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/)"
+			"npm run build && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/"
 	},
 	"main": "index.js",
 	"repository": {
