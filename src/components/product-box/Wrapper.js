@@ -41,7 +41,7 @@ export const Tag = styled.div`
 	margin-right: 5px;
 	color: white;
 	padding: 3px 5px;
-	font-size: 0.5em;
+	font-size: 0.8em;
 	margin-bottom: 2px;
 
 	${media.handheld(`
