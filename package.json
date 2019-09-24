@@ -22,7 +22,7 @@
 	},
 	"homepage": "https://elzup.com",
 	"dependencies": {
-		"axios": "^0.17.1",
+		"axios": "^0.18.0",
 		"lodash": "^4.17.4",
 		"normalize.css": "^7.0.0",
 		"react": "^16.1.1",
