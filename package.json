@@ -42,7 +42,7 @@
 		"flow-bin": "0.108.0",
 		"font-awesome": "4.7.0",
 		"husky": "3.0.7",
-		"lint-staged": "5.0.0",
+		"lint-staged": "9.4.1",
 		"node-noop": "1.0.0",
 		"prettier": "1.18.2"
 	},
