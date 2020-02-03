@@ -20,14 +20,14 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
       - run: yarn install
 
       - name: Start local server
-        run: npm run start & npx wait-on http://localhost:3000
+        run: yarn start & npx wait-on http://localhost:3000
 
       - run: npx qawolf test
         env:
