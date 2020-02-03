@@ -61,16 +61,4 @@ describe('browsing', () => {
 	it('can click canvas', async () => {
 		await browser.click(selectors[13])
 	})
-
-	it('can click canvas', async () => {
-		await browser.click(selectors[14])
-	})
-
-	it('can click canvas', async () => {
-		await browser.click(selectors[15])
-	})
-
-	it('can click canvas', async () => {
-		await browser.click(selectors[16])
-	})
 })
