@@ -29,7 +29,7 @@ jobs:
       - name: Start local server
         run: yarn start & npx wait-on http://localhost:3000
 
-      - run: npx qawolf test
+      - run: yarn test
         env:
           QAW_ARTIFACT_PATH: ${{ github.workspace }}/artifacts
 
