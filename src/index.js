@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import ReactDOM from 'react-dom'
 
-import './initialize'
+import { GlobalStyle } from './initialize'
 
 import registerServiceWorker from './registerServiceWorker'
 
@@ -14,6 +14,7 @@ import NotFoundPage from './pages/404/index'
 
 ReactDOM.render(
 	<BrowserRouter>
+		<GlobalStyle />
 		<Switch>
 			<Route exact path="/" component={TopPage} />
 			<Route path="/product" component={ProductPage} />
