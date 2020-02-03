@@ -5,11 +5,10 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"test": "react-scripts test --env=jsdom",
+		"test": "qawolf test",
 		"eject": "react-scripts eject",
 		"precommit": "lint-staged",
-		"deploy":
-			"npm run build && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/"
+		"deploy": "npm run build && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/"
 	},
 	"main": "index.js",
 	"repository": {
@@ -41,10 +40,12 @@
 		"babel-plugin-lodash": "3.3.4",
 		"flow-bin": "0.117.0",
 		"font-awesome": "4.7.0",
-		"husky": "3.1.0",
+		"husky": "4.2.1",
+		"jest-cli": "^25.1.0",
 		"lint-staged": "10.0.7",
 		"node-noop": "1.0.0",
-		"prettier": "1.19.1"
+		"prettier": "1.19.1",
+		"qawolf": "^0.8.3"
 	},
 	"lint-staged": {
 		"*.js": [
