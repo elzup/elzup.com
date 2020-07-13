@@ -45,7 +45,7 @@
 		"jest-styled-components": "7.0.2",
 		"lint-staged": "10.2.11",
 		"node-noop": "1.0.0",
-		"playwright": "1.0.1",
+		"playwright": "1.2.0",
 		"prettier": "2.0.5",
 		"qawolf": "1.0.1"
 	},
