@@ -16,13 +16,14 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: actions/setup-node@v1
+      - uses: microsoft/playwright-github-action@v1
 
       - uses: actions/cache@v1
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-yarn-
 
       - run: yarn install
 
