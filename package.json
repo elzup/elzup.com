@@ -35,19 +35,19 @@
 		"styled-components": "^5.1.1"
 	},
 	"devDependencies": {
-		"@babel/cli": "7.12.8",
-		"@babel/preset-env": "7.12.7",
+		"@babel/cli": "7.12.10",
+		"@babel/preset-env": "7.12.11",
 		"babel-plugin-lodash": "3.3.4",
-		"flow-bin": "0.138.0",
+		"flow-bin": "0.141.0",
 		"font-awesome": "4.7.0",
-		"husky": "4.3.0",
+		"husky": "4.3.6",
 		"jest-cli": "26.6.3",
 		"jest-styled-components": "7.0.3",
-		"lint-staged": "10.5.2",
+		"lint-staged": "10.5.3",
 		"node-noop": "1.0.0",
-		"playwright": "1.6.2",
+		"playwright": "1.7.1",
 		"prettier": "2.2.1",
-		"qawolf": "1.6.0"
+		"qawolf": "1.7.0"
 	},
 	"husky": {
 		"hooks": {
