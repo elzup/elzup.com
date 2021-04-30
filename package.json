@@ -35,14 +35,14 @@
 		"styled-components": "^5.1.1"
 	},
 	"devDependencies": {
-		"@babel/cli": "7.13.14",
-		"@babel/preset-env": "7.13.12",
+		"@babel/cli": "7.13.16",
+		"@babel/preset-env": "7.14.0",
 		"babel-plugin-lodash": "3.3.4",
-		"flow-bin": "0.147.0",
+		"flow-bin": "0.150.0",
 		"font-awesome": "4.7.0",
 		"husky": "4.3.8",
 		"jest-cli": "26.6.3",
-		"jest-styled-components": "7.0.3",
+		"jest-styled-components": "7.0.4",
 		"lint-staged": "10.5.4",
 		"node-noop": "1.0.0",
 		"playwright": "1.10.0",
