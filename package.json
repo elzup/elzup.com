@@ -8,6 +8,7 @@
 		"eject": "react-scripts eject",
 		"precommit": "lint-staged",
 		"deploy": "npm run build && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/",
+		"sync:products": "curl -L $PRODUCT_URL > ./public/data/products.json",
 		"cypress:open": "cypress open",
 		"prepare": "husky install"
 	},
