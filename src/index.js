@@ -1,10 +1,10 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import ReactDOM from 'react-dom'
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'
+import reportWebVitals from './reportWebVitals'
 
 import { GlobalStyle } from './initialize'
-
-import registerServiceWorker from './registerServiceWorker'
 
 import TopPage from './pages/top'
 import ProductPage from './pages/product/index'
@@ -13,16 +13,20 @@ import LogPage from './pages/log/index'
 import NotFoundPage from './pages/404/index'
 
 ReactDOM.render(
-	<BrowserRouter>
-		<GlobalStyle />
-		<Switch>
-			<Route exact path="/" component={TopPage} />
-			<Route path="/product" component={ProductPage} />
-			<Route path="/art" component={ArtPage} />
-			<Route path="/log" component={LogPage} />
-			<Route component={NotFoundPage} />
-		</Switch>
-	</BrowserRouter>,
+	<React.StrictMode>
+		<BrowserRouter>
+			<GlobalStyle />
+			<Switch>
+				<Route exact path="/" component={TopPage} />
+				<Route path="/product" component={ProductPage} />
+				<Route path="/art" component={ArtPage} />
+				<Route path="/log" component={LogPage} />
+				<Route component={NotFoundPage} />
+			</Switch>
+		</BrowserRouter>
+	</React.StrictMode>,
 	document.getElementById('root')
 )
-registerServiceWorker()
+serviceWorkerRegistration.register()
+
+reportWebVitals()
