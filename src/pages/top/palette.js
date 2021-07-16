@@ -1,6 +1,6 @@
 // @flow
 
-import _ from 'lodash'
+import { random, shuffle } from '../../utils'
 
 type Emotion = {
 	x: number,
@@ -45,7 +45,7 @@ function init() {
 	return { body, canvas, container, W, H }
 }
 
-export default async function palette() {
+function palette() {
 	const { canvas, W, H } = init()
 	const ctx = canvas.getContext('2d')
 
@@ -55,7 +55,7 @@ export default async function palette() {
 
 	const emoW = W / 10
 	const baseSpeed = W / 60
-	const emoPase = 1 // != 0
+	const emoPase = 10 // != 0
 	const clearRate = 30 // <0, 100>
 
 	const randH = () => Math.random() * H - emoW / 2
@@ -64,11 +64,11 @@ export default async function palette() {
 		vy: (Math.random() / 4 - 0.125) * baseSpeed,
 	})
 	const randHWC = () => {
-		const color = _.random(100) < clearRate ? null : ''
-		const d = _.random() / 5 + 0.9
+		const color = random(100) < clearRate ? null : ''
+		const d = Math.random() / 5 + 0.9
 		const v1 = emoW * d
 		const v2 = emoW * d * 1.6180339887
-		const [h, w] = _.shuffle([v1, v2])
+		const [h, w] = Math.random() < 0.5 ? [v1, v2] : [v2, v1]
 		return { h, w, color }
 	}
 	function newEmo(): Emotion {
@@ -77,7 +77,7 @@ export default async function palette() {
 			...randSpeeds(),
 			y: randH(),
 			...randHWC(),
-			seed: _.random(99),
+			seed: random(99),
 		}
 	}
 
@@ -104,7 +104,7 @@ export default async function palette() {
 	function draw() {
 		ctx.clearRect(0, 0, W, H)
 		ctx.beginPath()
-		state.emos.forEach(emo => {
+		state.emos.forEach((emo) => {
 			if (emo.color === null) {
 				ctx.clearRect(emo.x, emo.y, emo.w, emo.h)
 			} else {
@@ -117,8 +117,8 @@ export default async function palette() {
 	}
 
 	function update() {
-		const emos = _.compact(
-			state.emos.map(emo => {
+		const emos = state.emos
+			.map((emo) => {
 				const x = emo.x + emo.vx
 				const y = emo.y + emo.vy
 
@@ -130,7 +130,8 @@ export default async function palette() {
 				const color = emoColor(emo, state)
 				return { ...emo, x, y, color }
 			})
-		)
+			.filter(Boolean)
+
 		if (Math.random() * emoPase < 1) {
 			// if (state.g % emoPase === 0) {
 			emos.push(newEmo())
@@ -139,7 +140,7 @@ export default async function palette() {
 		state.g++
 	}
 
-	setInterval(() => {
+	const t = setInterval(() => {
 		update()
 		draw()
 	}, 50)
@@ -148,4 +149,7 @@ export default async function palette() {
 		state.mouse.x = e.clientX
 		state.mouse.y = e.clientY
 	})
+	return t
 }
+
+export default palette

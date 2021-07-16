@@ -5,10 +5,11 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"test": "qawolf test --headless",
 		"eject": "react-scripts eject",
 		"precommit": "lint-staged",
-		"deploy": "npm run build && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/"
+		"deploy": "npm run build && rsync -rtvpl ./build/ sakura:~/docker/repos/elzup.com-v5/public/",
+		"cypress:open": "cypress open",
+		"prepare": "husky install"
 	},
 	"main": "index.js",
 	"repository": {
@@ -21,8 +22,6 @@
 	},
 	"homepage": "https://elzup.com",
 	"dependencies": {
-		"axios": "^0.21.0",
-		"lodash": "^4.17.19",
 		"normalize.css": "^8.0.0",
 		"react": "^17.0.0",
 		"react-dom": "^17.0.0",
@@ -31,23 +30,22 @@
 		"react-router": "^5.2.0",
 		"react-router-dom": "^5.2.0",
 		"react-scripts": "^4.0.0",
-		"react-tooltip": "^4.2.7",
-		"styled-components": "^5.1.1"
+		"react-tooltip": "^4.2.21",
+		"styled-components": "^5.3.0"
 	},
 	"devDependencies": {
-		"@babel/cli": "7.13.16",
-		"@babel/preset-env": "7.14.0",
-		"babel-plugin-lodash": "3.3.4",
-		"flow-bin": "0.150.0",
+		"@babel/cli": "7.14.5",
+		"@babel/preset-env": "7.14.7",
+		"cypress": "^7.7.0",
+		"flow-bin": "0.155.0",
 		"font-awesome": "4.7.0",
-		"husky": "4.3.8",
-		"jest-cli": "26.6.3",
-		"jest-styled-components": "7.0.4",
-		"lint-staged": "10.5.4",
+		"husky": "^7.0.0",
+		"jest-cli": "27.0.6",
+		"jest-styled-components": "7.0.5",
+		"lint-staged": "11.0.1",
 		"node-noop": "1.0.0",
-		"playwright": "1.10.0",
-		"prettier": "2.2.1",
-		"qawolf": "1.7.0"
+		"playwright": "1.12.3",
+		"prettier": "2.3.2"
 	},
 	"husky": {
 		"hooks": {

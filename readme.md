@@ -1,4 +1,4 @@
-# elzup.com v5 [![Actions Status](https://github.com/elzup/elzup.com/workflows/qawolf/badge.svg)](https://github.com/elzup/elzup.com/actions)
+# elzup.com v5
 
 elzup web page
 

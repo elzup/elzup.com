@@ -8,3 +8,6 @@ export const media = {
 		}
 	`,
 }
+
+export const uniq = (arr: number) => arr.filter((e, i, a) => a.indexOf(e) === i)
+export const random = (max: number) => Math.floor(Math.random() * (max + 1))
