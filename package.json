@@ -3,6 +3,7 @@
 	"version": "1.0.1",
 	"description": "elzup.com Web Site",
 	"scripts": {
+		"test": "echo 0",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"eject": "react-scripts eject",
