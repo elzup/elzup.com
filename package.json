@@ -37,8 +37,8 @@
 		"web-vitals": "^2.1.0"
 	},
 	"devDependencies": {
-		"@babel/cli": "7.14.8",
-		"@babel/preset-env": "7.15.0",
+		"@babel/cli": "7.16.0",
+		"@babel/preset-env": "7.16.5",
 		"cypress": "8.7.0",
 		"flow-bin": "0.165.1",
 		"font-awesome": "4.7.0",
