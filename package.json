@@ -40,7 +40,7 @@
 		"@babel/cli": "7.16.0",
 		"@babel/preset-env": "7.16.5",
 		"cypress": "8.7.0",
-		"flow-bin": "0.165.1",
+		"flow-bin": "0.173.0",
 		"font-awesome": "4.7.0",
 		"husky": "7.0.4",
 		"jest-cli": "27.4.5",
@@ -48,7 +48,7 @@
 		"lint-staged": "11.2.6",
 		"node-noop": "1.0.0",
 		"playwright": "1.17.1",
-		"prettier": "2.4.1"
+		"prettier": "2.5.1"
 	},
 	"husky": {
 		"hooks": {
