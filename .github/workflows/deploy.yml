@@ -1,0 +1,35 @@
+# .github/workflows/deploy.yml
+# build して build/ を Cloudflare Workers (static assets) へ上げる。PR ではビルドだけ行う
+name: Build and Deploy to Cloudflare Workers
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: yarn install --frozen-lockfile --ignore-engines
+      # CRA 4 (webpack 4) を Node 17+ で動かすための回避:
+      # - openssl-legacy-provider: webpack 4 の md4 ハッシュが OpenSSL 3 で使えない
+      # - GENERATE_SOURCEMAP=false: source-map 0.8 が Node 18+ で mappings.wasm を要求して落ちる
+      # - CI=false: CRA が CI 上で warning を error 扱いにするのを止める
+      - run: yarn build
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
+          GENERATE_SOURCEMAP: 'false'
+          CI: 'false'
+      # Netlify 用の _redirects は Workers が無限ループとして拒否する (SPA は wrangler.toml の not_found_handling で賄う)
+      - run: rm -f build/_redirects
+
+      - name: Deploy to Cloudflare Workers
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+        timeout-minutes: 5

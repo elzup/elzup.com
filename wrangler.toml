@@ -1,0 +1,11 @@
+name = "elzup-com"
+compatibility_date = "2026-11-01"
+# 本番ドメインとは別に、確認・ベンチ用に workers.dev も残す
+workers_dev = true
+
+# スクリプト (main) を持たない assets だけの Worker。静的配信のリクエストは課金・無料枠の計上対象外
+[assets]
+directory = "./build"
+# react-router の SPA。Netlify の _redirects (/, /product, /art → index.html) の代わりに、存在しないパスは index.html を返す
+# build/_redirects は deploy 前に消す (Workers は `/ /index.html 200` を無限ループとして拒否する。.assetsignore でも除外されない)
+not_found_handling = "single-page-application"
