@@ -3,6 +3,10 @@ compatibility_date = "2026-11-01"
 # 本番ドメインとは別に、確認・ベンチ用に workers.dev も残す
 workers_dev = true
 
+routes = [
+  { pattern = "elzup.com", custom_domain = true },
+]
+
 # スクリプト (main) を持たない assets だけの Worker。静的配信のリクエストは課金・無料枠の計上対象外
 [assets]
 directory = "./build"
