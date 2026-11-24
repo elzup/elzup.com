@@ -8,6 +8,7 @@ import HeadMenu from '../../components/head-menu'
 import RankFilter from '../../components/rank-filter'
 import CategoryFilter from '../../components/category-filter'
 import ProductBox from '../../components/product-box'
+import AnozonCard from '../../components/anozon-card'
 
 import { getProducts } from '../../api'
 
@@ -20,8 +21,11 @@ type State = {
 	loaded: boolean,
 }
 
-const ProductFilters = styled.ul`
+const ProductFilters = styled.div`
 	display: flex;
+	flex-wrap: wrap;
+	gap: 12px 24px;
+	margin: 16px 0 8px;
 `
 
 const Products = styled.ul`
@@ -75,7 +79,10 @@ export default class ProductPage extends React.Component<{}, State> {
 
 	render() {
 		const { products } = this.state
-		const displayProducts = products.filter(x => {
+		// 絞り込み中は「探している作品」以外を混ぜない
+		const isFiltering =
+			this.state.rankSelect !== 0 || this.state.categorySelect !== 'ALL'
+		const displayProducts = products.filter((x) => {
 			return (
 				(this.state.rankSelect === 0 || this.state.rankSelect === x.rank) &&
 				(this.state.categorySelect === 'ALL' ||
@@ -91,7 +98,10 @@ export default class ProductPage extends React.Component<{}, State> {
 					{this.filters()}
 				</header>
 				<Products>
-					{displayProducts.map(p => <ProductBox key={p.sid} product={p} />)}
+					{isFiltering ? null : <AnozonCard />}
+					{displayProducts.map((p) => (
+						<ProductBox key={p.sid} product={p} />
+					))}
 				</Products>
 			</main>
 		)
