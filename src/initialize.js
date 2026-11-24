@@ -2,17 +2,14 @@
 
 import { createGlobalStyle } from 'styled-components'
 
-const d = new Date()
-const h = (d.getMonth() * 123 + d.getDay() * 456 + d.getFullYear() * 789) % 360
-const start = `hsl(${h}, 100%, 80%)`
-const end = `hsl(${(h + 40) % 360}, 100%, 80%)`
-
 export const GlobalStyle = createGlobalStyle`
 
 html {
 	font-family: 'Abel', 'Hiragino Kaku Gothic Pro W3', 'ヒラギノ角ゴ Pro W3', 'Meiryo',
 		'メイリオ', 'Noto Sans Japanese Regular', sans-serif;
-	background: linear-gradient(-135deg, ${start}, ${end});
+	/* 黒い箱 (メニュー・連絡先) が沈まない程度に黒から離した暗色 */
+	background: #17171b;
+	color: #eee;
 }
 
 body {
@@ -33,7 +30,7 @@ li {
 }
 
 a {
-	color: black;
+	color: #eee;
 }
 
 @media screen and (max-width: 480px) {

@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import FilterButton from '../filter-button'
+import FilterButton, { FilterGroup, FilterLabel } from '../filter-button'
 
 import styled from 'styled-components'
 
@@ -16,8 +16,8 @@ type Props = {
 
 const RankFilter = ({ select, onFilterToggle }: Props) => (
 	<Wrapper>
-		<p>Quality Select</p>
-		<div>
+		<FilterLabel>Quality</FilterLabel>
+		<FilterGroup>
 			<FilterButton
 				category={0}
 				label="ALL"
@@ -42,7 +42,7 @@ const RankFilter = ({ select, onFilterToggle }: Props) => (
 				toggle={select === 3}
 				onFilterToggle={onFilterToggle}
 			/>
-		</div>
+		</FilterGroup>
 	</Wrapper>
 )
 

@@ -7,9 +7,6 @@ import ProductFooterLink, { FooterLinkBase } from '../product-footer-link'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-	position: absolute;
-	bottom: 0;
-	right: 5px;
 	display: flex;
 	margin: 0;
 	padding: 0;

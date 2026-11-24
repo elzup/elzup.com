@@ -13,6 +13,7 @@ export const DummyContact = styled.li`
 
 const Wrapper = styled.li`
 	background: black;
+	box-shadow: 0 0 0 1px #3a3a42;
 	list-style-type: none;
 	margin: 2px;
 	width: 55px;

@@ -3,7 +3,16 @@
 import React from 'react'
 import ProductFooter from '../product-footer'
 import ImageBox from './ImageBox'
-import { Wrapper, TitleLink, Description, Tag, Members } from './Wrapper'
+import {
+	Wrapper,
+	Body,
+	Subtitle,
+	FooterRow,
+	TitleLink,
+	Description,
+	Tag,
+	Members,
+} from './Wrapper'
 import type { Product } from '../../types'
 
 type Props = {
@@ -21,7 +30,7 @@ const ProductBox = (props: Props) => {
 	) : (
 		base_title
 	)
-	const members = product.members.map(x => {
+	const members = product.members.map((x) => {
 		const link = '//twitter.com/' + x.name
 		return (
 			<li key={product.sid + ':' + x.name}>
@@ -32,14 +41,18 @@ const ProductBox = (props: Props) => {
 	return (
 		<Wrapper>
 			<ImageBox url={'/images/product/sc_' + product.sid + '.png'} />
-			{title}
-			<p>{product.subtitle}</p>
-			<div style={{ display: 'flex', flexDirection: 'column' }}>
+			<Body>
+				{title}
+				<Subtitle>{product.subtitle}</Subtitle>
 				<Description>{product.description}</Description>
 				<Members>{members}</Members>
 				<div>
-					{product.tags.map(x => <Tag key={product.sid + ':' + x}>{x}</Tag>)}
+					{product.tags.map((x) => (
+						<Tag key={product.sid + ':' + x}>{x}</Tag>
+					))}
 				</div>
+			</Body>
+			<FooterRow>
 				<ProductFooter
 					key={product.sid}
 					isAlive={product.is_alive}
@@ -47,7 +60,7 @@ const ProductBox = (props: Props) => {
 					github={product.github}
 					trello={product.trello}
 				/>
-			</div>
+			</FooterRow>
 		</Wrapper>
 	)
 }

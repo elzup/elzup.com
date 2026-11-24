@@ -1,12 +1,11 @@
 // @flow
 
 import React from 'react'
-import FilterButton from '../filter-button'
+import FilterButton, { FilterGroup, FilterLabel } from '../filter-button'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
 	margin-bottom: 10px;
-	margin-left: 20px;
 `
 
 type Props = {
@@ -17,9 +16,9 @@ type Props = {
 
 const CategoryFilter = ({ categories, select, onFilterToggle }: Props) => (
 	<Wrapper>
-		<p>Category Select</p>
-		<div>
-			{categories.map(x => (
+		<FilterLabel>Category</FilterLabel>
+		<FilterGroup>
+			{categories.map((x) => (
 				<FilterButton
 					key={x}
 					category={x}
@@ -28,7 +27,7 @@ const CategoryFilter = ({ categories, select, onFilterToggle }: Props) => (
 					onFilterToggle={onFilterToggle}
 				/>
 			))}
-		</div>
+		</FilterGroup>
 	</Wrapper>
 )
 
